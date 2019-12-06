@@ -1,4 +1,12 @@
-<a routerLink="/">Home</a>
-<a routerLink="/contact">Contact</a>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav role="navigation">
+    <app-sidenav (sideNavClose)="sideNav.close();"></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (sideNavToggle)="sideNav.toggle();"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
 
-<router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
