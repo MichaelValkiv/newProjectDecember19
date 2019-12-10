@@ -1,12 +1,15 @@
 <mat-sidenav-container>
   <mat-sidenav #sideNav role="navigation">
     <app-sidenav (sideNavClose)="sideNav.close();"></app-sidenav>
+    <div class="site-name">
+      <img src="assets/images/logo_transparent.png" height="40">
+      <span>Комфорт-Dім</span>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header (sideNavToggle)="sideNav.toggle();"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

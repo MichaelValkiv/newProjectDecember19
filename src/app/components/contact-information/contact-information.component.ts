@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTitleService } from '../../services/page-title.service';
 
 @Component({
   selector: 'app-contact-information',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactInformationComponent implements OnInit {
 
-  constructor() { }
+  constructor( private pageTitle: PageTitleService ) { }
 
   ngOnInit() {
+    this.pageTitle.setTitle('Комфорт-Дім - Контактна Інформація');
   }
 
 }

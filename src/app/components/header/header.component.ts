@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faInfoCircle, faFileSignature} from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faFileSignature, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   faInfoCircle = faInfoCircle;
   faFileSignature = faFileSignature;
+  faBars = faBars;
 
   @Output() public sideNavToggle = new EventEmitter();
 

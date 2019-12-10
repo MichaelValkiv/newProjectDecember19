@@ -1,3 +1,8 @@
+$darkSiteColor: #403121;
+$lightSiteColor: #ed9728;
+$veryLightSiteColor: #ffbc49;
+$middleSiteColor: #a65e09;
+
 mat-sidenav-container,
 mat-sidenav-content,
 mat-sidenav
@@ -7,9 +12,44 @@ mat-sidenav
 mat-sidenav
 {
   width: 250px;
-  background-color: #ffffff;
+  background-color: $veryLightSiteColor;
 }
 main
 {
-  padding: 10px;
+
+}
+mat-sidenav-content
+{
+  background-image: url('/assets/backgrounds/city-main-background1.png');
+  background-size: auto 100%;
+}
+div.site-name
+{
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  color: $darkSiteColor;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  img
+  {
+    //margin-top: 8px;
+    display: block;
+    margin-left: 100px;
+    margin-bottom: 5px;
+  }
+  span
+  {
+    //position: absolute;
+    //left: 50px;
+    //top: 13px;
+    display: block;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 }
