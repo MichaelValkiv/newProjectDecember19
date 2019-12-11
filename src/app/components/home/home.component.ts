@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLongArrowAltUp, faLongArrowAltDown, faBuilding, faCity, faWarehouse, faCalculator } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,13 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
 
-  faCoffee = faCoffee;
+  faHome = faHome;
+  faLongArrowAltUp = faLongArrowAltUp;
+  faLongArrowAltDown = faLongArrowAltDown;
+  faBuilding = faBuilding;
+  faCity = faCity;
+  faWarehouse = faWarehouse;
+  faCalculator = faCalculator;
 
   constructor( private pageTitle: PageTitleService ) { }
 

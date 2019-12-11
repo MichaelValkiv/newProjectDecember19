@@ -22,6 +22,10 @@ a.nav-link
   -o-transition: all ease-in-out .25s;
   transition: all ease-in-out .25s;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 a.nav-link::after
 {
@@ -95,7 +99,7 @@ mat-toolbar
   position: sticky;
   top: 0;
   //border-bottom: 5px solid $darkSiteColor;
-  -webkit-box-shadow: 0 5px 5px 0 rgba(50, 50, 50, 0.7);
-  -moz-box-shadow:    0 5px 5px 0 rgba(50, 50, 50, 0.7);
-  box-shadow:         0 5px 5px 0 rgba(50, 50, 50, 0.7);
+  -webkit-box-shadow: 0 5px 5px 0 rgba(50, 50, 50, .7);
+  -moz-box-shadow:    0 5px 5px 0 rgba(50, 50, 50, .7);
+  box-shadow:         0 5px 5px 0 rgba(50, 50, 50, .7);
 }
