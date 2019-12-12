@@ -66,7 +66,8 @@ $middleSiteColor: #a65e09;
   .home-info-text
   {
     width: calc(1400px - 246px);
-    background-color: rgba(166, 94, 9, .8);
+    background-color: rgba(255, 188, 73, .8);
+    border-bottom: 3px solid $darkSiteColor;
     display: flex;
     align-items: center;
     justify-content: center;
