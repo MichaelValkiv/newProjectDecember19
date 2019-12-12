@@ -1,1 +1,42 @@
-<p>footer works!</p>
+<div class="footer transitionStyle">
+  <div class="footer-nav transitionStyle">
+    <a routerLink="/" class="nav-link transitionStyle">
+      <fa-icon [icon]="faInfoCircle"></fa-icon>
+      ІНФОРМАЦІЯ
+    </a>
+    <a routerLink="/contact" class="nav-link transitionStyle">
+      <fa-icon [icon]="faFileSignature"></fa-icon>
+      КОНТАКТИ
+    </a>
+  </div>
+  <div class="footer-info transitionStyle">
+    <a routerLink="/">
+      <img src="assets/images/logo_transparent.png" height="100" class="footer-logo">
+    </a>
+    <div class="footer-title">
+      Товариство з обмеженою відповідальністю<br>"Управляюча компанія "Комфорт-Дім"
+    </div>
+  </div>
+  <div class="footer-address">
+    <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+    <div>
+      77300 Україна, Івано-Франківська обл., м. Калуш, вул. Грушевського 54
+    </div>
+  </div>
+  <div class="footer-other transitionStyle">
+    <a href="https://github.com/MichaelValkiv" target="_blank" class="transitionStyle">
+      <fa-icon [icon]="faGithub" class="gitHub"></fa-icon>
+      <div>
+        GitHub/MichaelValkiv
+      </div>
+      <fa-icon [icon]="faExternalLinkAlt" class="external-link"></fa-icon>
+    </a>
+    <a href="https://github.com/MVYV" target="_blank" class="transitionStyle">
+      <fa-icon [icon]="faGithub" class="gitHub"></fa-icon>
+      <div>
+        GitHub/MVYV
+      </div>
+      <fa-icon [icon]="faExternalLinkAlt" class="external-link"></fa-icon>
+    </a>
+  </div>
+</div>

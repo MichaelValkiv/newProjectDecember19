@@ -16,7 +16,7 @@ $middleSiteColor: #a65e09;
 .home-title
 {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   width: calc(100% - 20px);
   text-align: center;
   background: rgb(255,255,191);
@@ -166,10 +166,6 @@ $middleSiteColor: #a65e09;
 }
 @media screen and (max-width: 570px)
 {
-  .home-title
-  {
-
-  }
   .home-info-item
   {
     .home-info-icon
@@ -191,10 +187,6 @@ $middleSiteColor: #a65e09;
 }
 @media screen and (max-width: 510px)
 {
-  .home-title
-  {
-
-  }
   .home-info-item
   {
     .home-info-text
@@ -209,10 +201,6 @@ $middleSiteColor: #a65e09;
 }
 @media screen and (max-width: 480px)
 {
-  .home-title
-  {
-
-  }
   .home-info-item
   {
     .home-info-text
@@ -228,10 +216,6 @@ $middleSiteColor: #a65e09;
 }
 @media screen and (max-width: 410px)
 {
-  .home-title
-  {
-
-  }
   .home-info-item
   {
     .home-info-icon

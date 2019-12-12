@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faInfoCircle, faFileSignature, faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+
+  faInfoCircle = faInfoCircle;
+  faFileSignature = faFileSignature;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faGithub = faGithub;
+  faGithubSquare = faGithubSquare;
+  faExternalLinkAlt = faExternalLinkAlt;
 
   constructor() { }
 
