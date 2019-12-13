@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
 import { faHome, faLongArrowAltUp, faLongArrowAltDown, faBuilding, faCity, faWarehouse, faCalculator } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ import { faHome, faLongArrowAltUp, faLongArrowAltDown, faBuilding, faCity, faWar
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   faHome = faHome;
   faLongArrowAltUp = faLongArrowAltUp;
@@ -21,6 +21,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Опис Компанії');
+  }
+
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
   }
 
 }

@@ -19,12 +19,13 @@ mat-sidenav
 }
 main
 {
-
+  margin-top: 84px;
 }
 mat-sidenav-content
 {
   background-image: url('/assets/backgrounds/city-main-background1.png');
-  background-size: auto 100%;
+  background-size: auto 100vh;
+  background-attachment: fixed;
 }
 div.site-name
 {

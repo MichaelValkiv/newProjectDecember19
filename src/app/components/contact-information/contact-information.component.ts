@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
 import { faMapMarkerAlt, faCreditCard, faPhone, faMobileAlt, faEnvelope, faCalendarAlt, faMugHot, faWindowClose, faTint, faBolt, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ import { faMapMarkerAlt, faCreditCard, faPhone, faMobileAlt, faEnvelope, faCalen
   templateUrl: './contact-information.component.html',
   styleUrls: ['./contact-information.component.scss']
 })
-export class ContactInformationComponent implements OnInit {
+export class ContactInformationComponent implements OnInit, AfterViewInit {
 
   faMapMarkerAlt = faMapMarkerAlt;
   faCreditCard = faCreditCard;
@@ -25,6 +25,10 @@ export class ContactInformationComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Контактна Інформація');
+  }
+
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
   }
 
 }

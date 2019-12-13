@@ -92,7 +92,8 @@ a.site-name:hover
 mat-toolbar
 {
   background-color: $veryLightSiteColor;
-  position: sticky;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   -webkit-box-shadow: 0 5px 5px 0 rgba(50, 50, 50, .7);
   -moz-box-shadow:    0 5px 5px 0 rgba(50, 50, 50, .7);
