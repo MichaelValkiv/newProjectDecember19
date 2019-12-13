@@ -3,6 +3,8 @@ $lightSiteColor: #ed9728;
 $veryLightSiteColor: #ffbc49;
 $ultraLightSiteColor: #ffffbf;
 $middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
 
 .transitionStyle
 {
@@ -86,7 +88,7 @@ $middleSiteColor: #a65e09;
     justify-content: center;
     font-size: 100px;
     font-family: 'Montserrat Alternates', sans-serif;
-    color: #000000;
+    color: $blackSiteColor;
   }
 }
 @media screen and (max-width: 1450px)

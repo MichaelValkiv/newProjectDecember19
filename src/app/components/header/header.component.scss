@@ -1,7 +1,10 @@
 $darkSiteColor: #403121;
 $lightSiteColor: #ed9728;
 $veryLightSiteColor: #ffbc49;
+$ultraLightSiteColor: #ffffbf;
 $middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
 
 .sideNavBtn
 {
@@ -15,7 +18,7 @@ a.nav-link
   font-weight: bold;
   letter-spacing: .5px;
   text-decoration: none;
-  color: $darkSiteColor;
+  color: $blackSiteColor;
   display: inline-block;
   -webkit-transition: all ease-in-out .25s;
   -moz-transition: all ease-in-out .25s;
@@ -57,7 +60,7 @@ a.site-name
   position: relative;
   width: 200px;
   text-decoration: none;
-  color: $darkSiteColor;
+  color: $blackSiteColor;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

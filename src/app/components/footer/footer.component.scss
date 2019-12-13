@@ -3,6 +3,8 @@ $lightSiteColor: #ed9728;
 $veryLightSiteColor: #ffbc49;
 $ultraLightSiteColor: #ffffbf;
 $middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
 
 .transitionStyle
 {
@@ -37,7 +39,7 @@ $middleSiteColor: #a65e09;
       font-weight: bold;
       letter-spacing: .5px;
       text-decoration: none;
-      color: #000000;
+      color: $blackSiteColor;
       display: inline-block;
       -webkit-transition: all ease-in-out .25s;
       -moz-transition: all ease-in-out .25s;
@@ -112,7 +114,7 @@ $middleSiteColor: #a65e09;
       justify-content: center;
       text-align: center;
       text-decoration: none;
-      color: #000000;
+      color: $blackSiteColor;
       margin: 0 10px;
       fa-icon.gitHub
       {
