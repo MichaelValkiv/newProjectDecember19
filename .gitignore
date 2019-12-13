@@ -40,3 +40,8 @@ Thumbs.db
 /server/.idea
 /server/target
 /server/march11webapp.iml
+
+# Firebase
+.firebase
+.firebaseerc
+firebase
