@@ -9,6 +9,7 @@ import { AboutComponent } from './components/about/about.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ServicesComponent } from './components/services/services.component';
 import { QuestionsComponent } from './components/questions/questions.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'questions', component: QuestionsComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'not-found', component: PageNotFoundComponent },

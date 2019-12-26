@@ -19,6 +19,10 @@
     <fa-icon [icon]="faBell"></fa-icon>
     <span class="nav-caption">Оголошення</span>
   </a>
+  <a mat-list-item routerLink="/dashboard" class="side-nav-item" (click)="onSideNavClose();">
+    <fa-icon [icon]="faTools"></fa-icon>
+    <span class="nav-caption">Адміністрування</span>
+  </a>
   <a mat-list-item routerLink="/notifications" class="side-nav-item" (click)="onSideNavClose();">
     <fa-icon [icon]="faSignInAlt"></fa-icon>
     <span class="nav-caption">Вхід</span>
