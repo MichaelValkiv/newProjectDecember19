@@ -1,0 +1,89 @@
+$darkSiteColor: #403121;
+$lightSiteColor: #ed9728;
+$veryLightSiteColor: #ffbc49;
+$ultraLightSiteColor: #ffffbf;
+$middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
+
+.transitionStyle
+{
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+}
+
+.login-container
+{
+  width: 600px;
+  height: calc(100vh - 100px);
+  background-color: rgba(255, 188, 73, .8);
+  border: 3px solid $darkSiteColor;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+.login-title
+{
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login-subtitle
+{
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  height: 3px;
+  width: 100%;
+  background-color: $darkSiteColor;
+}
+.form-container
+{
+  form
+  {
+    span.ui-float-label
+    {
+      margin-top: 20px;
+      label
+      {
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: $middleSiteColor;
+      }
+      input
+      {
+        width: 100%;
+        background-color: transparent;
+        border-color: $darkSiteColor;
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: $darkSiteColor;
+      }
+    }
+    button
+    {
+      margin-top: 20px;
+      width: 100%;
+      background-color: $darkSiteColor;
+      border-color: $darkSiteColor;
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: $lightSiteColor;
+    }
+    button:focus
+    {
+      -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
+      -moz-box-shadow:    0 0 10px 0 rgba(0, 0, 0, 1);
+      box-shadow:         0 0 10px 0 rgba(0, 0, 0, 1);
+    }
+  }
+}

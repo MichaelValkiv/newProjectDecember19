@@ -11,12 +11,10 @@ $whiteSiteColor: #ffffff;
   margin-right: 15px;
   cursor: pointer;
 }
-a.nav-link
+a.nav-link-login
 {
-  font-size: 14px;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 16px;
   font-weight: bold;
-  letter-spacing: .5px;
   text-decoration: none;
   color: $blackSiteColor;
   display: inline-block;
@@ -30,6 +28,31 @@ a.nav-link
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+a.nav-link
+{
+  font-size: 14px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: bold;
+  letter-spacing: .5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $blackSiteColor;
+  display: inline-block;
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  fa-icon
+  {
+    font-size: 16px;
+  }
 }
 a.nav-link::after
 {

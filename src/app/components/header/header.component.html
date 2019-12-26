@@ -11,15 +11,44 @@
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <a routerLink="/" class="nav-link">
-          <fa-icon [icon]="faInfoCircle"></fa-icon>
-          ІНФОРМАЦІЯ
+        <a routerLink="/services" class="nav-link">
+          <fa-icon [icon]="faCogs"></fa-icon>
+          Послуги
         </a>
       </li>
       <li>
         <a routerLink="/contacts" class="nav-link">
           <fa-icon [icon]="faFileSignature"></fa-icon>
-          КОНТАКТИ
+          Контакти
+        </a>
+      </li>
+      <li>
+        <a routerLink="/" class="nav-link">
+          <fa-icon [icon]="faInfoCircle"></fa-icon>
+          Інформація
+        </a>
+      </li>
+      <li>
+        <a routerLink="/questions" class="nav-link">
+          <fa-icon [icon]="faQuestionCircle"></fa-icon>
+          Запитання
+        </a>
+      </li>
+      <li>
+        <a routerLink="/notifications" class="nav-link">
+          <fa-icon [icon]="faBell"></fa-icon>
+          Оголошення
+        </a>
+      </li>
+      <!--<li>-->
+        <!--<a routerLink="/about" class="nav-link">-->
+          <!--<fa-icon [icon]="faUsers"></fa-icon>-->
+          <!--Про Нас-->
+        <!--</a>-->
+      <!--</li>-->
+      <li>
+        <a routerLink="/login" class="nav-link-login">
+          <fa-icon [icon]="faSignInAlt"></fa-icon>
         </a>
       </li>
     </ul>

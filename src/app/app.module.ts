@@ -15,6 +15,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AboutComponent } from './components/about/about.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ServicesComponent } from './components/services/services.component';
+
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -23,7 +34,14 @@ import { FooterComponent } from './components/footer/footer.component';
     ContactInformationComponent,
     HeaderComponent,
     SidenavComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    LogoutComponent,
+    PageNotFoundComponent,
+    AboutComponent,
+    QuestionsComponent,
+    NotificationsComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +55,10 @@ import { FooterComponent } from './components/footer/footer.component';
     MatButtonModule,
     FlexLayoutModule,
     MatListModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    InputTextModule,
+    ButtonModule,
+    PasswordModule
   ],
   exports: [
     MatSidenavModule,
