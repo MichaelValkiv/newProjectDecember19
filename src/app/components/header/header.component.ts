@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faInfoCircle, faFileSignature, faBars, faSignInAlt, faSignOutAlt, faCogs, faQuestionCircle, faBell, faUsers, faTools } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faFileSignature, faBars, faSignInAlt, faSignOutAlt, faCogs, faQuestionCircle, faBell, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,11 @@ export class HeaderComponent implements OnInit {
   faQuestionCircle = faQuestionCircle;
   faBell = faBell;
   faUsers = faUsers;
-  faTools = faTools;
+  faCog = faCog;
 
   @Output() public sideNavToggle = new EventEmitter();
 
-  constructor() { }
+  constructor( public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }

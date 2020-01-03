@@ -1,0 +1,124 @@
+$darkSiteColor: #403121;
+$lightSiteColor: #ed9728;
+$veryLightSiteColor: #ffbc49;
+$ultraLightSiteColor: #ffffbf;
+$middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
+
+.transitionStyle
+{
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+}
+
+.services-title
+{
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 32px;
+  width: calc(100% - 6px);
+  text-align: center;
+  background: rgb(255,255,191);
+  background: -moz-linear-gradient(left, rgba(255,255,191,1) 0%, rgba(255,255,191,1) 15%, rgba(255,188,73,1) 49%, rgba(255,188,73,1) 51%, rgba(255,255,191,1) 85%, rgba(255,255,191,1) 100%);
+  background: -webkit-linear-gradient(left, rgba(255,255,191,1) 0%,rgba(255,255,191,1) 15%,rgba(255,188,73,1) 49%,rgba(255,188,73,1) 51%,rgba(255,255,191,1) 85%,rgba(255,255,191,1) 100%);
+  background: linear-gradient(to right, rgba(255,255,191,1) 0%,rgba(255,255,191,1) 15%,rgba(255,188,73,1) 49%,rgba(255,188,73,1) 51%,rgba(255,255,191,1) 85%,rgba(255,255,191,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffbf', endColorstr='#ffffbf',GradientType=1 );
+  margin: 20px 0 20px 0;
+  padding: 20px 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.services-container
+{
+  width: 1400px;
+  margin: 10px auto 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.service-item
+{
+  width: calc(33.33333% - 20px);
+  margin: 10px 10px;
+  border: 3px solid $darkSiteColor;
+  background-color: rgba(255, 188, 73, .8);
+  .service-icon
+  {
+    background-color: rgba(64, 49, 33, 1);
+    color: $lightSiteColor;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+  }
+  .service-description
+  {
+    height: 250px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (max-width: 1450px)
+{
+  .services-container
+  {
+    width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1250px)
+{
+  .services-container
+  {
+    width: 1000px;
+  }
+  .service-item
+  {
+    .service-description
+    {
+      font-size: 18px;
+      height: 150px;
+    }
+  }
+}
+@media screen and (max-width: 1050px)
+{
+  .services-container
+  {
+    width: 100%;
+  }
+  .service-item
+  {
+    width: calc(50% - 20px);
+    .service-description
+    {
+      font-size: 18px;
+      height: 150px;
+    }
+  }
+}
+@media screen and (max-width: 600px)
+{
+  .service-item
+  {
+    width: calc(100% - 20px);
+    .service-description
+    {
+      font-size: 18px;
+      height: 150px;
+    }
+  }
+}

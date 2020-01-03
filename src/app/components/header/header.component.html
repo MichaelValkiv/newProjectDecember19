@@ -46,14 +46,19 @@
           <!--Про Нас-->
         <!--</a>-->
       <!--</li>-->
-      <li>
+      <li *ngIf="authenticationService.isLoggedIn();">
         <a routerLink="/dashboard" class="nav-link-icon">
-          <fa-icon [icon]="faTools"></fa-icon>
+          <fa-icon [icon]="faCog"></fa-icon>
         </a>
       </li>
-      <li>
+      <li *ngIf="!authenticationService.isLoggedIn();">
         <a routerLink="/login" class="nav-link-icon">
           <fa-icon [icon]="faSignInAlt"></fa-icon>
+        </a>
+      </li>
+      <li *ngIf="authenticationService.isLoggedIn();">
+        <a routerLink="/logout" class="nav-link-icon">
+          <fa-icon [icon]="faSignOutAlt"></fa-icon>
         </a>
       </li>
     </ul>

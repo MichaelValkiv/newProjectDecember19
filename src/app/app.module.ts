@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactInformationComponent } from './components/contact-information/contact-information.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatSidenavModule, MatTabsModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule } from '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,6 +23,7 @@ import { AboutComponent } from './components/about/about.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ServicesComponent } from './components/services/services.component';
+import { AuthenticationHttpInterceptorService } from './services/authentication-http-interceptor.service';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -50,6 +52,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule,
@@ -70,7 +73,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatButtonModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthenticationHttpInterceptorService, multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
