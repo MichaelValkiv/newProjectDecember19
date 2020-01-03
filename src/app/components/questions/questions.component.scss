@@ -107,6 +107,9 @@ $whiteSiteColor: #ffffff;
         font-family: 'Montserrat Alternates', sans-serif;
         color: $darkSiteColor;
         font-size: 16px;
+        resize: vertical;
+        height: 400px;
+        min-height: 250px;
       }
     }
     button
