@@ -26,7 +26,7 @@ $whiteSiteColor: #ffffff;
   background: -webkit-linear-gradient(left, rgba(255,255,191,1) 0%,rgba(255,255,191,1) 15%,rgba(255,188,73,1) 49%,rgba(255,188,73,1) 51%,rgba(255,255,191,1) 85%,rgba(255,255,191,1) 100%);
   background: linear-gradient(to right, rgba(255,255,191,1) 0%,rgba(255,255,191,1) 15%,rgba(255,188,73,1) 49%,rgba(255,188,73,1) 51%,rgba(255,255,191,1) 85%,rgba(255,255,191,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffbf', endColorstr='#ffffbf',GradientType=1 );
-  margin: 20px 0 20px 0;
+  margin: 20px 0 10px 0;
   padding: 20px 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -37,7 +37,7 @@ $whiteSiteColor: #ffffff;
 .services-container
 {
   width: 1400px;
-  margin: 10px auto 20px;
+  margin: 0 auto 20px;
   display: flex;
   flex-flow: row wrap;
 }
@@ -81,6 +81,10 @@ $whiteSiteColor: #ffffff;
 
 @media screen and (max-width: 1250px)
 {
+  .services-title
+  {
+    font-size: 24px;
+  }
   .services-container
   {
     width: 1000px;

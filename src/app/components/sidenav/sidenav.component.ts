@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faInfoCircle, faFileSignature, faSignInAlt, faSignOutAlt, faCogs, faQuestionCircle, faBell, faUsers, faTools } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faFileSignature, faSignInAlt, faSignOutAlt, faCogs, faQuestionCircle, faBell, faUsers, faTools, faWrench, faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidenav',
@@ -17,6 +17,8 @@ export class SidenavComponent implements OnInit {
   faBell = faBell;
   faUsers = faUsers;
   faTools = faTools;
+  faWrench = faWrench;
+  faCog = faCog;
 
   @Output() public sideNavClose = new EventEmitter();
 

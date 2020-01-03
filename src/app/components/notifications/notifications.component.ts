@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-notifications',
@@ -7,6 +8,8 @@ import { PageTitleService } from '../../services/page-title.service';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
+
+  faBell = faBell;
 
   constructor( private pageTitle: PageTitleService ) { }
 

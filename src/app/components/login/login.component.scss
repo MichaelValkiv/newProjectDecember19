@@ -18,14 +18,14 @@ $whiteSiteColor: #ffffff;
 .login-container
 {
   width: 600px;
-  height: calc(100vh - 100px);
+  //height: calc(100vh - 100px);
   background-color: rgba(255, 188, 73, .8);
   border: 3px solid $darkSiteColor;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 150px 20px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -87,5 +87,21 @@ $whiteSiteColor: #ffffff;
       -moz-box-shadow:    0 0 10px 0 rgba(0, 0, 0, 1);
       box-shadow:         0 0 10px 0 rgba(0, 0, 0, 1);
     }
+  }
+}
+@media screen and (max-width: 650px)
+{
+  .login-container
+  {
+    width: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  .login-title
+  {
+    font-size: 24px;
   }
 }

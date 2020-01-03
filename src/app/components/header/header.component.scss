@@ -6,6 +6,15 @@ $middleSiteColor: #a65e09;
 $blackSiteColor: #000000;
 $whiteSiteColor: #ffffff;
 
+.transitionStyle
+{
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+}
+
 .sideNavBtn
 {
   margin-right: 15px;
@@ -112,6 +121,10 @@ a.site-name:hover
   margin: 0;
   padding: 0;
 }
+.nav-text
+{
+  margin-left: 5px;
+}
 mat-toolbar
 {
   background-color: $veryLightSiteColor;
@@ -121,4 +134,11 @@ mat-toolbar
   -webkit-box-shadow: 0 5px 5px 0 rgba(50, 50, 50, .7);
   -moz-box-shadow:    0 5px 5px 0 rgba(50, 50, 50, .7);
   box-shadow:         0 5px 5px 0 rgba(50, 50, 50, .7);
+}
+@media screen and (max-width: 980px)
+{
+  .nav-text
+  {
+    display: none;
+  }
 }

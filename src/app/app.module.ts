@@ -23,12 +23,13 @@ import { AboutComponent } from './components/about/about.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ServicesComponent } from './components/services/services.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthenticationHttpInterceptorService } from './services/authentication-http-interceptor.service';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FontAwesomeModule,
     InputTextModule,
     ButtonModule,
-    PasswordModule
+    PasswordModule,
+    InputTextareaModule
   ],
   exports: [
     MatSidenavModule,
