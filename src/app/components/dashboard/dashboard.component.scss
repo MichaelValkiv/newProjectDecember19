@@ -1,0 +1,54 @@
+$darkSiteColor: #403121;
+$lightSiteColor: #ed9728;
+$veryLightSiteColor: #ffbc49;
+$ultraLightSiteColor: #ffffbf;
+$middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
+
+.transitionStyle
+{
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+}
+.dashboard-container
+{
+  width: 100%;
+  margin: 0 auto 20px;
+  min-height: calc(100vh - 64px);
+}
+:host ::ng-deep
+{
+  .ui-tabview
+  {
+    font-family: 'Montserrat Alternates', sans-serif;
+    background-color: transparent;
+  }
+  .ui-tabview-nav > li:active
+  {
+    outline: none;
+  }
+  .ui-tabview-nav > li > a
+  {
+    background-color: $veryLightSiteColor;
+    color: $darkSiteColor;
+  }
+  .ui-tabview-selected
+  {
+    border: 1px solid $darkSiteColor !important;
+    outline: none;
+  }
+  .ui-tabview-selected > a
+  {
+    background-color: $darkSiteColor !important;
+    color: $veryLightSiteColor !important;
+  }
+  .ui-tabview-panels
+  {
+    background-color: transparent !important;
+  }
+}
+

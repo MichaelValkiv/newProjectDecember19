@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <p-tabView>
+    <p-tabPanel header="Інформація" class="dashboardTab">
+      <div *ngFor="let data of company">
+        {{data.characteristic}}
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Послуги" class="dashboardTab">
+      <ng-template pTemplate="content">
+        Complex Content to Lazy Load
+      </ng-template>
+    </p-tabPanel>
+
+    <p-tabPanel header="Контакти" class="dashboardTab">
+      <ng-template pTemplate="content">
+        Complex Content to Lazy Load
+      </ng-template>
+    </p-tabPanel>
+
+    <p-tabPanel header="Запитання" class="dashboardTab">
+      <ng-template pTemplate="content">
+        Complex Content to Lazy Load
+      </ng-template>
+    </p-tabPanel>
+
+    <p-tabPanel header="Оголошення" class="dashboardTab">
+      <ng-template pTemplate="content">
+        Complex Content to Lazy Load
+      </ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</div>

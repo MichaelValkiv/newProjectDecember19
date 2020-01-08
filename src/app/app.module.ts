@@ -30,6 +30,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TabViewModule } from 'primeng/tabview';
+import { DataViewModule } from 'primeng/dataview';
+import { CompanyService } from './services/company.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputTextModule,
     ButtonModule,
     PasswordModule,
-    InputTextareaModule
+    InputTextareaModule,
+    TabViewModule,
+    DataViewModule
   ],
   exports: [
     MatSidenavModule,
@@ -76,6 +81,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     MatListModule
   ],
   providers: [
+    CompanyService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthenticationHttpInterceptorService, multi: true
     },
