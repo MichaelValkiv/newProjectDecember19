@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
-import { faExclamationTriangle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationTriangle, faQuestionCircle, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-questions',
@@ -11,6 +11,7 @@ export class QuestionsComponent implements OnInit {
 
   faExclamationTriangle = faExclamationTriangle;
   faQuestionCircle = faQuestionCircle;
+  faUser = faUser;
 
   constructor( private pageTitle: PageTitleService ) { }
 

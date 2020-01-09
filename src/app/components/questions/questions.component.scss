@@ -85,31 +85,66 @@ $whiteSiteColor: #ffffff;
     span.ui-float-label
     {
       margin-top: 20px;
+      display: flex;
+      flex-flow: row-reverse nowrap;
       label
       {
         font-family: 'Montserrat Alternates', sans-serif;
         color: $middleSiteColor;
+        margin-left: 50px;
       }
       input
       {
-        width: 100%;
+        width: calc(100% - 45px);
+        height: 45px;
         background-color: transparent;
         border-color: $darkSiteColor;
         font-family: 'Montserrat Alternates', sans-serif;
         color: $darkSiteColor;
         font-size: 16px;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
       }
       textarea
       {
-        width: 100%;
+        width: calc(100% - 45px);
         background-color: transparent;
         border-color: $darkSiteColor;
         font-family: 'Montserrat Alternates', sans-serif;
         color: $darkSiteColor;
         font-size: 16px;
         resize: vertical;
-        height: 400px;
+        height: 250px;
         min-height: 250px;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+      }
+      fa-icon
+      {
+        width: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $darkSiteColor;
+        border-right: none;
+        background-color: $darkSiteColor;
+        color: $lightSiteColor;
+        -webkit-border-radius: 3px 0 0 3px;
+        -moz-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;
+        font-size: 18px;
+      }
+      input:focus ~ fa-icon
+      {
+        background-color: transparent;
+        color: $darkSiteColor;
+      }
+      textarea:focus ~ fa-icon
+      {
+        background-color: transparent;
+        color: $darkSiteColor;
       }
     }
     button
@@ -124,9 +159,9 @@ $whiteSiteColor: #ffffff;
     }
     button:focus
     {
-      -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
-      -moz-box-shadow:    0 0 10px 0 rgba(0, 0, 0, 1);
-      box-shadow:         0 0 10px 0 rgba(0, 0, 0, 1);
+      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
+      -moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
+      box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
     }
   }
 }

@@ -1,21 +1,25 @@
-<div class="login-container">
-  <div class="login-title">
-    Товариство з обмеженою відповідальністю<br>"Управляюча компанія "Комфорт-Дім"
-  </div>
-  <img src="assets/images/logo_transparent.png" height="100" class="">
-  <div class="login-subtitle">
-  </div>
-  <div class="form-container">
-    <form autocomplete="off">
-      <span class="ui-float-label">
-        <input id="float-input-login" type="text" size="30" pInputText name="username" [(ngModel)]="username">
-        <label for="float-input-login">Логін</label>
-      </span>
-      <span class="ui-float-label">
-        <input id="float-input-pass" type="password" size="30" pPassword [feedback]="false" name="password" [(ngModel)]="password">
-        <label for="float-input-pass">Пароль</label>
-      </span>
-      <button pButton type="button" label="Вхід" (click)="checkLogin();"></button>
-    </form>
+<div class="loginBox">
+  <div class="login-container">
+    <div class="login-title">
+      Товариство з обмеженою відповідальністю<br>"Управляюча компанія "Комфорт-Дім"
+    </div>
+    <img src="assets/images/logo_transparent.png" height="100" class="">
+    <div class="login-subtitle">
+    </div>
+    <div class="form-container">
+      <form autocomplete="off">
+        <span class="ui-float-label inputBox">
+          <input id="float-input-login" type="text" size="30" pInputText name="username" [(ngModel)]="username">
+          <label for="float-input-login">Логін</label>
+          <fa-icon [icon]="faUser" class="transitionStyle"></fa-icon>
+        </span>
+        <span class="ui-float-label inputBox">
+          <input id="float-input-pass" type="password" size="30" pPassword [feedback]="false" name="password" [(ngModel)]="password">
+          <label for="float-input-pass">Пароль</label>
+          <fa-icon [icon]="faKey" class="transitionStyle"></fa-icon>
+        </span>
+        <button pButton type="button" label="Вхід" (click)="checkLogin();"></button>
+      </form>
+    </div>
   </div>
 </div>

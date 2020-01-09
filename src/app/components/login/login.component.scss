@@ -14,18 +14,24 @@ $whiteSiteColor: #ffffff;
   -o-transition: all ease-in-out .25s;
   transition: all ease-in-out .25s;
 }
-
+.loginBox
+{
+  min-height: calc(100vh - 104px);
+  width: 600px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .login-container
 {
-  width: 600px;
   //height: calc(100vh - 100px);
   background-color: rgba(255, 188, 73, .8);
   border: 3px solid $darkSiteColor;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  margin: 20px auto;
-  padding: 150px 20px;
+  padding: 50px 20px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -34,17 +40,17 @@ $whiteSiteColor: #ffffff;
 .login-title
 {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .login-subtitle
 {
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 20px;
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   height: 3px;
   width: 100%;
   background-color: $darkSiteColor;
@@ -56,25 +62,54 @@ $whiteSiteColor: #ffffff;
     span.ui-float-label
     {
       margin-top: 20px;
+      display: flex;
+      flex-flow: row-reverse nowrap;
       label
       {
         font-family: 'Montserrat Alternates', sans-serif;
         color: $middleSiteColor;
+        margin-left: 50px;
+      }
+      fa-icon
+      {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $darkSiteColor;
+        border-right: none;
+        background-color: $darkSiteColor;
+        color: $lightSiteColor;
+        -webkit-border-radius: 3px 0 0 3px;
+        -moz-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;
+        font-size: 18px;
       }
       input
       {
-        width: 100%;
+        width: calc(100% - 45px);
+        height: 45px;
         background-color: transparent;
         border-color: $darkSiteColor;
         font-family: 'Montserrat Alternates', sans-serif;
         color: $darkSiteColor;
         font-size: 16px;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+      }
+      input:focus ~ fa-icon
+      {
+        background-color: transparent;
+        color: $darkSiteColor;
       }
     }
     button
     {
       margin-top: 20px;
       width: 100%;
+      height: 45px;
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;
@@ -83,14 +118,18 @@ $whiteSiteColor: #ffffff;
     }
     button:focus
     {
-      -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
-      -moz-box-shadow:    0 0 10px 0 rgba(0, 0, 0, 1);
-      box-shadow:         0 0 10px 0 rgba(0, 0, 0, 1);
+      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
+      -moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
+      box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
     }
   }
 }
 @media screen and (max-width: 650px)
 {
+  .loginBox
+  {
+    width: 100%;
+  }
   .login-container
   {
     width: 100%;
