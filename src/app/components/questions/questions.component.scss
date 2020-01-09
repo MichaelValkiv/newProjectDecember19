@@ -102,7 +102,7 @@ $whiteSiteColor: #ffffff;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  background-color: $veryLightSiteColor;
+  background-color: $ultraLightSiteColor;
   border: 3px solid $darkSiteColor;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -189,7 +189,7 @@ $whiteSiteColor: #ffffff;
         border: 1px solid $darkSiteColor;
         border-right: none;
         background-color: $darkSiteColor;
-        color: $lightSiteColor;
+        color: $ultraLightSiteColor;
         -webkit-border-radius: 3px 0 0 3px;
         -moz-border-radius: 3px 0 0 3px;
         border-radius: 3px 0 0 3px;
@@ -213,7 +213,7 @@ $whiteSiteColor: #ffffff;
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;
-      color: $lightSiteColor;
+      color: $ultraLightSiteColor;
       font-size: 16px;
     }
     button:focus

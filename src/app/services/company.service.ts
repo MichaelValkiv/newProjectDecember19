@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Company } from '../models/company.model';
 
@@ -8,9 +8,17 @@ import { Company } from '../models/company.model';
 })
 export class CompanyService {
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+      'Access-Control-Allow-Headers': 'accept, content-type'
+    })
+  };
+
   constructor( private http: HttpClient ) { }
 
   public getCompanyInfo(): Observable<Company[]> {
-    return this.http.get<Company[]>('http://localhost/komfort_dim_backend/company_get.php');
+    return this.http.get<Company[]>('http://localhost/komfort_dim_backend/company_get.php', this.httpOptions);
   }
 }
