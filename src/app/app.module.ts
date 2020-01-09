@@ -33,6 +33,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TabViewModule } from 'primeng/tabview';
 import { DataViewModule } from 'primeng/dataview';
 import { CompanyService } from './services/company.service';
+import { DialogModule } from 'primeng/dialog';
+
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,9 @@ import { CompanyService } from './services/company.service';
     PasswordModule,
     InputTextareaModule,
     TabViewModule,
-    DataViewModule
+    DataViewModule,
+    ScrollToModule.forRoot(),
+    DialogModule
   ],
   exports: [
     MatSidenavModule,

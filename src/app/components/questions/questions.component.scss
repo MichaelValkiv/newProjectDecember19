@@ -14,6 +14,14 @@ $whiteSiteColor: #ffffff;
   -o-transition: all ease-in-out .25s;
   transition: all ease-in-out .25s;
 }
+.slowTransitionStyle
+{
+  -webkit-transition: all ease-in-out .5s;
+  -moz-transition: all ease-in-out .5s;
+  -ms-transition: all ease-in-out .5s;
+  -o-transition: all ease-in-out .5s;
+  transition: all ease-in-out .5s;
+}
 .question-header
 {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -32,10 +40,60 @@ $whiteSiteColor: #ffffff;
   -ms-user-select: none;
   user-select: none;
 }
+.showFormBtn
+{
+  position: fixed;
+  top: 80px;
+  left: 14px;
+  width: 50px;
+  height: 50px;
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.showFormBtn:hover
+{
+  background-color: $veryLightSiteColor;
+  color: $darkSiteColor;
+  border: 1px solid $darkSiteColor;
+}
 .questions-container
 {
   width: 1400px;
+  min-height: calc(100vh - 104px);
   margin: 0 auto 20px;
+}
+:host ::ng-deep
+{
+  .ui-dialog
+  {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+  .ui-dialog-titlebar
+  {
+    background-color: $darkSiteColor !important;
+    color: $lightSiteColor !important;
+    border-color: $lightSiteColor !important;
+    cursor: move;
+  }
+  .ui-dialog-title
+  {
+    cursor: default;
+  }
+  .ui-dialog-titlebar-icon
+  {
+    color: $lightSiteColor !important;
+  }
+  .ui-dialog-content
+  {
+    background-color: $darkSiteColor !important;
+    border-color: $lightSiteColor !important;
+  }
 }
 .question-form
 {
@@ -44,7 +102,7 @@ $whiteSiteColor: #ffffff;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 188, 73, .8);
+  background-color: $veryLightSiteColor;
   border: 3px solid $darkSiteColor;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -53,6 +111,7 @@ $whiteSiteColor: #ffffff;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: $darkSiteColor;
   .question-form-title
   {
     font-family: 'Montserrat Alternates', sans-serif;
@@ -239,5 +298,17 @@ $whiteSiteColor: #ffffff;
     {
       width: 100%;
     }
+  }
+}
+@media screen and (max-width: 600px)
+{
+  .showFormBtn
+  {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    top: 65px;
+    left: 5px;
+    border: 1px solid $lightSiteColor;
   }
 }
