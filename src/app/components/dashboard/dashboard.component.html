@@ -1,33 +1,265 @@
 <div class="dashboard-container">
   <p-tabView>
     <p-tabPanel header="Інформація" class="dashboardTab">
-      <div *ngFor="let data of company">
-        {{data.characteristic}}
-      </div>
+       <p-dataView #dv [value]="company" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="characteristic"
+                  [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <div class="ui-g header-tools">
+              <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewCompanyInfo();">
+                <fa-icon [icon]="faPlusSquare"></fa-icon>
+              </div>
+              <div class="ui-g-3">
+                <p-dropdown [options]="companySortOptions" [(ngModel)]="sortKey" placeholder="Сортувати" (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+              </div>
+              <div class="ui-g-3 filter-container">
+                <div style="position:relative">
+                  <input type="search" pInputText placeholder="Пошук за назвою" (input)="dv.filter($event.target.value)">
+                </div>
+              </div>
+              <div class="" style="text-align:right">
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <ng-template let-company_data pTemplate="listItem">
+          <div class="ui-g-12">
+            <div class="car-details">
+              <div>
+                <div>{{company_data.characteristic}}</div>
+                <div class="ui-g">
+                  <div class="ui-g-12">Кількість: <b>{{company_data.characteristic_value}}</b></div>
+                </div>
+              </div>
+              <div class="editBtn" title="Редагувати" (click)="editCompanyInfo(company_data); showCompanyForm();">
+                <fa-icon [icon]="faPencilAlt"></fa-icon>
+              </div>
+              <div class="deleteBtn" title="Видалити" (click)="editCompanyInfo(company_data); showDeleteDialog('company');">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-company_data pTemplate="gridItem">
+          <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="company_data.characteristic_value" [style]="{'text-align':'center'}">
+              <div class="car-detail">{{company_data.characteristic}}</div>
+              <!--<hr class="ui-widget-content" style="border-top:0">-->
+              <div class="hrBox"></div>
+              <div class="editBtn" title="Редагувати" (click)="editCompanyInfo(company_data); showCompanyForm();">
+                <fa-icon [icon]="faPencilAlt"></fa-icon>
+              </div>
+              <div class="deleteBtn" title="Видалити" (click)="editCompanyInfo(company_data); showDeleteDialog('company');">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+              </div>
+            </p-panel>
+          </div>
+        </ng-template>
+      </p-dataView>
     </p-tabPanel>
+
+
+
 
     <p-tabPanel header="Послуги" class="dashboardTab">
       <ng-template pTemplate="content">
-        Complex Content to Lazy Load
+        <p-dataView #dv [value]="_service" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="service_name"
+                    [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <div class="ui-g header-tools">
+                <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewServiceInfo();">
+                  <fa-icon [icon]="faPlusSquare"></fa-icon>
+                </div>
+                <div class="ui-g-3">
+                  <p-dropdown [options]="serviceSortOptions" [(ngModel)]="sortKey" placeholder="Сортувати" (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+                </div>
+                <div class="ui-g-3 filter-container">
+                  <div style="position:relative">
+                    <input type="search" pInputText placeholder="Пошук за назвою" (input)="dv.filter($event.target.value)">
+                  </div>
+                </div>
+                <div class="" style="text-align:right">
+                  <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+              </div>
+            </div>
+          </p-header>
+          <ng-template let-service_data pTemplate="listItem">
+            <div class="ui-g-12">
+              <div class="car-details">
+                <div>
+                  <div>{{service_data.service_name}}</div>
+                </div>
+                <div class="editBtn" title="Редагувати" (click)="editServiceInfo(service_data); showServiceForm();">
+                  <fa-icon [icon]="faPencilAlt"></fa-icon>
+                </div>
+                <div class="deleteBtn" title="Видалити" (click)="editServiceInfo(service_data); showDeleteDialog('service');">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template let-service_data pTemplate="gridItem">
+            <div style="padding:.5em" class="ui-g-12 ui-md-3">
+              <p-panel [header]="service_data.service_name" [style]="{'text-align':'center'}">
+                <div class="hrBox"></div>
+                <div class="editBtn" title="Редагувати" (click)="editServiceInfo(service_data); showServiceForm();">
+                  <fa-icon [icon]="faPencilAlt"></fa-icon>
+                </div>
+                <div class="deleteBtn" title="Видалити" (click)="editServiceInfo(service_data); showDeleteDialog('service');">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </div>
+              </p-panel>
+            </div>
+          </ng-template>
+        </p-dataView>
       </ng-template>
     </p-tabPanel>
+
+
+
 
     <p-tabPanel header="Контакти" class="dashboardTab">
       <ng-template pTemplate="content">
-        Complex Content to Lazy Load
-      </ng-template>
-    </p-tabPanel>
-
-    <p-tabPanel header="Запитання" class="dashboardTab">
-      <ng-template pTemplate="content">
-        Complex Content to Lazy Load
-      </ng-template>
-    </p-tabPanel>
-
-    <p-tabPanel header="Оголошення" class="dashboardTab">
-      <ng-template pTemplate="content">
-        Complex Content to Lazy Load
+        <p-dataView #dv [value]="contact" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="contact"
+                    [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <div class="ui-g header-tools">
+                <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewContactInfo();">
+                  <fa-icon [icon]="faPlusSquare"></fa-icon>
+                </div>
+                <div class="ui-g-3">
+                  <p-dropdown [options]="contactSortOptions" [(ngModel)]="sortKey" placeholder="Сортувати" (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+                </div>
+                <div class="ui-g-3 filter-container">
+                  <div style="position:relative">
+                    <input type="search" pInputText placeholder="Пошук за назвою" (input)="dv.filter($event.target.value)">
+                  </div>
+                </div>
+                <div class="" style="text-align:right">
+                  <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+              </div>
+            </div>
+          </p-header>
+          <ng-template let-contact_data pTemplate="listItem">
+            <div class="ui-g-12">
+              <div class="car-details">
+                <div>
+                  <div>{{contact_data.contact}}</div>
+                </div>
+                <div class="editBtn" title="Редагувати" (click)="editContactInfo(contact_data); showContactForm();">
+                  <fa-icon [icon]="faPencilAlt"></fa-icon>
+                </div>
+                <div class="deleteBtn" title="Видалити" (click)="editContactInfo(contact_data); showDeleteDialog('contact');">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template let-contact_data pTemplate="gridItem">
+            <div style="padding:.5em" class="ui-g-12 ui-md-3">
+              <p-panel [header]="contact_data.contact" [style]="{'text-align':'center'}">
+                <div class="hrBox"></div>
+                <div class="editBtn" title="Редагувати" (click)="editContactInfo(contact_data); showContactForm();">
+                  <fa-icon [icon]="faPencilAlt"></fa-icon>
+                </div>
+                <div class="deleteBtn" title="Видалити" (click)="editContactInfo(contact_data); showDeleteDialog('contact');">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </div>
+              </p-panel>
+            </div>
+          </ng-template>
+        </p-dataView>
       </ng-template>
     </p-tabPanel>
   </p-tabView>
+
+  <p-dialog header="Форма для додавання і редагування інформації про компанію" [(visible)]="displayCompanyForm" [responsive]="true" [maximizable]="true" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70" [baseZIndex]="10000">
+    <div class="question-form" id="questionForm" #questionForm>
+      <div class="question-form-title">
+        Додайте, або відредагуйте значення.
+      </div>
+      <div class="question-line">
+      </div>
+      <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
+      <form autocomplete="off">
+        <span class="ui-float-label">
+          <input id="float-input-first-name" type="text" size="30" pInputText name="characteristic" [(ngModel)]="newOrEditedCompanyInfo.characteristic">
+          <label for="float-input-first-name">Характеристика Компанії</label>
+          <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input-last-name" type="text" size="30" pInputText name="characteristic_value" [(ngModel)]="newOrEditedCompanyInfo.characteristic_value">
+          <label for="float-input-last-name">Значення Характеристики</label>
+          <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
+        </span>
+        <button pButton type="button" label="Додати" (click)="addOrModifyCompanyInfo();"></button>
+      </form>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="Форма для додавання і редагування інформації про компанію" [(visible)]="displayContactForm" [responsive]="true" [maximizable]="true" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70" [baseZIndex]="10000">
+    <div class="question-form">
+      <div class="question-form-title">
+        Додайте, або відредагуйте значення.
+      </div>
+      <div class="question-line">
+      </div>
+      <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
+      <form autocomplete="off">
+        <span class="ui-float-label">
+          <input id="float-input-first-name" type="text" size="30" pInputText name="contact" [(ngModel)]="newOrEditedContactInfo.contact">
+          <label for="float-input-first-name">Контакт</label>
+          <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
+        </span>
+        <button pButton type="button" label="Додати" (click)="addOrModifyContactInfo();"></button>
+      </form>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="Форма для додавання і редагування інформації про компанію" [(visible)]="displayServiceForm" [responsive]="true" [maximizable]="true" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70" [baseZIndex]="10000">
+    <div class="question-form">
+      <div class="question-form-title">
+        Додайте, або відредагуйте значення.
+      </div>
+      <div class="question-line">
+      </div>
+      <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
+      <form autocomplete="off">
+        <span class="ui-float-label">
+          <input id="float-input-first-name" type="text" size="30" pInputText name="_service" [(ngModel)]="newOrEditedServiceInfo.service_name">
+          <label for="float-input-first-name">Послуга</label>
+          <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
+        </span>
+        <button pButton type="button" label="Додати" (click)="addOrModifyServiceInfo();"></button>
+      </form>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="Підтвердіть видалення елемента" [(visible)]="displayDeleteDialog" [responsive]="true" [maximizable]="true" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70" [baseZIndex]="10000">
+    <div class="deleteDialogBox">
+      <div class="deletion-icon"><fa-icon [icon]="faExclamationTriangle" class="transitionStyle"></fa-icon></div>
+      <h1 *ngIf="databaseKey === 'company'">Справді видалити цю характеристику компанії?<br><br><span class="selectedDeletion">{{newOrEditedCompanyInfo.characteristic}}</span></h1>
+      <h1 *ngIf="databaseKey === 'service'">Справді видалити цю послугу, яку надає компанія?</h1>
+      <h1 *ngIf="databaseKey === 'contact'">Справді видалити цей контакт компанії?</h1>
+      <div class="btn-container">
+        <div class="delBtn transitionStyle" title="Видалити" *ngIf="databaseKey === 'company'" (click)="deleteCompanyInfo();">
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </div>
+        <div class="delBtn transitionStyle" title="Видалити" *ngIf="databaseKey === 'service'" (click)="deleteServiceInfo();">
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </div>
+        <div class="delBtn transitionStyle" title="Видалити" *ngIf="databaseKey === 'contact'" (click)="deleteContactInfo();">
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </div>
+        <div class="cancelBtn transitionStyle" title="Скасувати" (click)="hideDeleteDialog();">
+          <fa-icon [icon]="faTimes"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
 </div>

@@ -28,6 +28,14 @@ $newProjectDecember19-theme: mat-light-theme($newProjectDecember19-primary, $new
 
 /* You can add global styles to this file, and also import other style files */
 
+$darkSiteColor: #403121;
+$lightSiteColor: #ed9728;
+$veryLightSiteColor: #ffbc49;
+$ultraLightSiteColor: #ffffbf;
+$middleSiteColor: #a65e09;
+$blackSiteColor: #000000;
+$whiteSiteColor: #ffffff;
+
 html,
 body
 {
@@ -38,4 +46,28 @@ body
 {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   //background-image: url('/assets/backgrounds/light-tile.gif');
+}
+.ui-dialog
+{
+  font-family: 'Montserrat Alternates', sans-serif !important;
+}
+.ui-dialog-titlebar
+{
+  background-color: $darkSiteColor !important;
+  color: $lightSiteColor !important;
+  border-color: $lightSiteColor !important;
+  cursor: move;
+}
+.ui-dialog-title
+{
+  cursor: default;
+}
+.ui-dialog-titlebar-icon
+{
+  color: $lightSiteColor !important;
+}
+.ui-dialog-content
+{
+  background-color: $darkSiteColor !important;
+  border-color: $lightSiteColor !important;
 }

@@ -34,8 +34,12 @@ import { TabViewModule } from 'primeng/tabview';
 import { DataViewModule } from 'primeng/dataview';
 import { CompanyService } from './services/company.service';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { PanelModule } from 'primeng/panel';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { DashboardCompanyComponent } from './components/dashboard-company/dashboard-company.component';
+import { DashboardServicesComponent } from './components/dashboard-services/dashboard-services.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,9 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     QuestionsComponent,
     NotificationsComponent,
     ServicesComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardCompanyComponent,
+    DashboardServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +81,9 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     TabViewModule,
     DataViewModule,
     ScrollToModule.forRoot(),
-    DialogModule
+    DialogModule,
+    DropdownModule,
+    PanelModule
   ],
   exports: [
     MatSidenavModule,
