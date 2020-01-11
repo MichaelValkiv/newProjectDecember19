@@ -92,6 +92,10 @@ $whiteSiteColor: #ffffff;
   {
     background-color: $lightSiteColor !important;
   }
+  .ui-dropdown-trigger-icon
+  {
+    color: $veryLightSiteColor !important;
+  }
   .ui-paginator
   {
     background-color: $darkSiteColor;
@@ -200,6 +204,21 @@ $whiteSiteColor: #ffffff;
   background-color: $darkSiteColor;
   color: $lightSiteColor;
   font-size: 32px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+  cursor: pointer;
+}
+.addBtn:hover,
+.editBtn:hover,
+.deleteBtn:hover
+{
+  background-color: $veryLightSiteColor;
+  color: $darkSiteColor;
+  border-color: $darkSiteColor;
 }
 .header-tools
 {
@@ -320,7 +339,7 @@ $whiteSiteColor: #ffffff;
     }
     button
     {
-      margin-top: 25px;
+      margin: 25px 10px 0;
       width: 50%;
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
@@ -330,9 +349,8 @@ $whiteSiteColor: #ffffff;
     }
     button:focus
     {
-      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
-      -moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
-      box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
+      outline: none !important;
+      border: none !important;
     }
   }
 }
@@ -348,7 +366,7 @@ h3, h1
 .deletion-icon
 {
   text-align: center;
-  font-size: 26px;
+  font-size: 36px;
   color: $lightSiteColor;
 }
 .selectedDeletion
@@ -365,6 +383,28 @@ h3, h1
   flex-flow: row nowrap;
   justify-content: space-evenly;
 }
+.item-btn-container
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  div
+  {
+    margin-left: 10px;
+  }
+}
+.item-btn-container-table
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  div
+  {
+    //margin-left: 10px;
+  }
+}
 .delBtn,
 .cancelBtn
 {
@@ -377,6 +417,7 @@ h3, h1
   justify-content: center;
   font-size: 32px;
   border: 1px solid $lightSiteColor;
+  cursor: pointer;
 }
 .delBtn:hover,
 .cancelBtn:hover
@@ -384,4 +425,34 @@ h3, h1
   background-color: $darkSiteColor;
   color: $lightSiteColor;
   border: 1px solid $lightSiteColor;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success {
+  color: $darkSiteColor !important;
+  background-color: $lightSiteColor !important;
+  border: 2px solid $darkSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error {
+  color: $lightSiteColor !important;
+  background-color: $darkSiteColor !important;
+  border: 2px solid $lightSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-summary
+{
+  font-size: 20px !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-detail
+{
+  text-decoration-style: dotted !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success .ui-toast-close-icon {
+  color: $darkSiteColor !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error .ui-toast-close-icon {
+  color: $lightSiteColor !important;
+}
+.one-item
+{
+  border-bottom: 1px solid $darkSiteColor;
 }

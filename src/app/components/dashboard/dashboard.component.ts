@@ -1,19 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { PageTitleService } from '../../services/page-title.service';
-import { CompanyService } from '../../services/company.service';
-import { ContactsService } from '../../services/contacts.service';
-import { ServicesService } from '../../services/services.service';
-import { Company } from '../../models/company.model';
-import { SortOptions } from '../../models/sort_options.model';
-import { faPencilAlt, faTrashAlt, faPlusSquare, faDatabase, faExclamationTriangle, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Contacts } from '../../models/contacts.model';
-import { Services } from '../../models/services.model';
+import {Component, OnInit} from '@angular/core';
+import {PageTitleService} from '../../services/page-title.service';
+import {CompanyService} from '../../services/company.service';
+import {ContactsService} from '../../services/contacts.service';
+import {ServicesService} from '../../services/services.service';
+import {Company} from '../../models/company.model';
+import {SortOptions} from '../../models/sort_options.model';
+import {
+  faPencilAlt,
+  faTrashAlt,
+  faPlusSquare,
+  faDatabase,
+  faExclamationTriangle,
+  faCheck,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+import {Contacts} from '../../models/contacts.model';
+import {Services} from '../../models/services.model';
+import {MessageService} from 'primeng/api';
+
+interface ContactTypes {
+  name: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   faPencilAlt = faPencilAlt;
@@ -27,9 +42,11 @@ export class DashboardComponent implements OnInit {
   company: Company[];
   contact: Contacts[];
   _service: Services[];
+
   companySortOptions: SortOptions[];
   contactSortOptions: SortOptions[];
   serviceSortOptions: SortOptions[];
+
   sortKey: string;
   sortField: string;
   sortOrder: number;
@@ -42,16 +59,30 @@ export class DashboardComponent implements OnInit {
   newOrEditedCompanyInfo: Company;
   newOrEditedContactInfo: Contacts;
   newOrEditedServiceInfo: Services;
+
   isNewCompanyInfo: boolean;
   isNewContactInfo: boolean;
   isNewServiceInfo: boolean;
 
-  databaseKey: string;
+  isLoadingCompanyInfo: boolean;
+  isLoadingContactInfo: boolean;
+  isLoadingServiceInfo: boolean;
 
-  constructor( private pageTitle: PageTitleService,
-               private companyService: CompanyService,
-               private contactsService: ContactsService,
-               private servicesService: ServicesService ) { }
+  databaseKey: string;
+  contactTypes: ContactTypes[];
+  selectedContact: any;
+
+  constructor(private pageTitle: PageTitleService,
+              private companyService: CompanyService,
+              private contactsService: ContactsService,
+              private servicesService: ServicesService,
+              private messageService: MessageService) {
+    this.contactTypes = [
+      {name: 'Контактна Інформація Компанії', value: 'company_contact'},
+      {name: 'Графік Роботи Компанії', value: 'company_schedule'},
+      {name: 'Телефони Диспетчерських Служб', value: 'company_phones'}
+    ];
+  }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Адміністрування');
@@ -103,8 +134,20 @@ export class DashboardComponent implements OnInit {
     this.companyService.getCompanyInfo().subscribe(
       data => {
         this.company = data;
+        this.isLoadingCompanyInfo = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Характеристики Компанії.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       }, () => {
-
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       });
   }
 
@@ -112,8 +155,20 @@ export class DashboardComponent implements OnInit {
     this.contactsService.getContactInfo().subscribe(
       data => {
         this.contact = data;
+        this.isLoadingContactInfo = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Контактні Дані Компанії.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       }, () => {
-
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       });
   }
 
@@ -121,8 +176,20 @@ export class DashboardComponent implements OnInit {
     this.servicesService.getServiceInfo().subscribe(
       data => {
         this._service = data;
+        this.isNewServiceInfo = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Послуги, Які Надає Компанія.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       }, () => {
-
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
       });
   }
 
@@ -174,19 +241,39 @@ export class DashboardComponent implements OnInit {
       this.newOrEditedCompanyInfo.id = null;
       this.companyService.postCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.companyInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.companyInfoGet();
         });
     } else {
       this.companyService.putCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.companyInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.companyInfoGet();
         });
     }
@@ -195,21 +282,43 @@ export class DashboardComponent implements OnInit {
   addOrModifyContactInfo() {
     if (this.isNewContactInfo) {
       this.newOrEditedContactInfo.id = null;
+      this.newOrEditedContactInfo.contact_type = this.selectedContact.name;
       this.contactsService.postContactInfo(this.newOrEditedContactInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.contactInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.contactInfoGet();
         });
     } else {
+      this.newOrEditedContactInfo.contact_type = this.selectedContact.name;
       this.contactsService.putContactInfo(this.newOrEditedContactInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.contactInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.contactInfoGet();
         });
     }
@@ -220,19 +329,39 @@ export class DashboardComponent implements OnInit {
       this.newOrEditedServiceInfo.id = null;
       this.servicesService.postServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.serviceInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.serviceInfoGet();
         });
     } else {
       this.servicesService.putServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
-          console.log('YES');
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Зміни Успішно Збережено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.serviceInfoGet();
         }, () => {
-          console.log('NO');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Сталася Помилка. Зміни не внесено.',
+            detail: 'Повідомлення від сервера Комфорт-Дім',
+            life: 7000
+          });
           this.serviceInfoGet();
         });
     }
@@ -241,8 +370,20 @@ export class DashboardComponent implements OnInit {
   deleteCompanyInfo() {
     this.companyService.deleteCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
       () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Видалено.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.companyInfoGet();
       }, () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Видалення Не Відбулося.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.companyInfoGet();
       });
   }
@@ -250,8 +391,20 @@ export class DashboardComponent implements OnInit {
   deleteContactInfo() {
     this.contactsService.deleteContactInfo(this.newOrEditedContactInfo).subscribe(
       () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Видалено.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.contactInfoGet();
       }, () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Видалення Не Відбулося.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.contactInfoGet();
       });
   }
@@ -259,8 +412,20 @@ export class DashboardComponent implements OnInit {
   deleteServiceInfo() {
     this.servicesService.deleteServiceInfo(this.newOrEditedServiceInfo).subscribe(
       () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Видалено.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.serviceInfoGet();
       }, () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Видалення Не Відбулося.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 7000
+        });
         this.serviceInfoGet();
       });
   }
@@ -276,6 +441,10 @@ export class DashboardComponent implements OnInit {
       this.sortOrder = 1;
       this.sortField = value;
     }
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
 }

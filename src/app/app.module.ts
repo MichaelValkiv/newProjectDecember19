@@ -36,10 +36,14 @@ import { CompanyService } from './services/company.service';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { PanelModule } from 'primeng/panel';
+import { ToastModule } from 'primeng/toast';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { DashboardCompanyComponent } from './components/dashboard-company/dashboard-company.component';
 import { DashboardServicesComponent } from './components/dashboard-services/dashboard-services.component';
+import { MessageService } from 'primeng/api';
+import { ContactsService } from './services/contacts.service';
+import { ServicesService } from './services/services.service';
 
 @NgModule({
   declarations: [
@@ -83,7 +87,8 @@ import { DashboardServicesComponent } from './components/dashboard-services/dash
     ScrollToModule.forRoot(),
     DialogModule,
     DropdownModule,
-    PanelModule
+    PanelModule,
+    ToastModule
   ],
   exports: [
     MatSidenavModule,
@@ -95,6 +100,9 @@ import { DashboardServicesComponent } from './components/dashboard-services/dash
   ],
   providers: [
     CompanyService,
+    ContactsService,
+    ServicesService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthenticationHttpInterceptorService, multi: true
     },
