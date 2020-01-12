@@ -75,6 +75,10 @@ $whiteSiteColor: #ffffff;
     border-color: $middleSiteColor !important;
     color: $darkSiteColor !important;
   }
+  .ui-dropdown
+  {
+    padding-right: 10px;
+  }
   .ui-dropdown-trigger
   {
     background-color: $middleSiteColor !important;
@@ -339,8 +343,8 @@ $whiteSiteColor: #ffffff;
     }
     button
     {
-      margin: 25px 10px 0;
-      width: 50%;
+      margin: 25px 10px 10px 10px;
+      width: calc(50% - 20px);
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;

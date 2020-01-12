@@ -208,8 +208,8 @@ $whiteSiteColor: #ffffff;
     }
     button
     {
-      margin-top: 25px;
-      width: 50%;
+      margin: 25px 10px 10px 10px;
+      width: calc(50% - 20px);
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;
@@ -218,9 +218,9 @@ $whiteSiteColor: #ffffff;
     }
     button:focus
     {
-      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
-      -moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
-      box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
+      //-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
+      //-moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
+      //box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
     }
   }
 }
@@ -256,6 +256,102 @@ $whiteSiteColor: #ffffff;
       font-size: 18px;
     }
   }
+}
+.delBtn,
+.cancelBtn
+{
+  background-color: $lightSiteColor;
+  color: $darkSiteColor;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 1px solid $lightSiteColor;
+  cursor: pointer;
+}
+.delBtn:hover,
+.cancelBtn:hover
+{
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  border: 1px solid $lightSiteColor;
+}
+.editBtn,
+.deleteBtn
+{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  font-size: 32px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+  cursor: pointer;
+}
+.editBtn:hover,
+.deleteBtn:hover
+{
+  background-color: $veryLightSiteColor;
+  color: $darkSiteColor;
+  border-color: $darkSiteColor;
+}
+h3, h1
+{
+  color: $lightSiteColor;
+  text-align: center;
+}
+.btn-container
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+.item-btn-container-table
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  div
+  {
+    //margin-left: 10px;
+  }
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success {
+  color: $darkSiteColor !important;
+  background-color: $lightSiteColor !important;
+  border: 2px solid $darkSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error {
+  color: $lightSiteColor !important;
+  background-color: $darkSiteColor !important;
+  border: 2px solid $lightSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-summary
+{
+  font-size: 20px !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-detail
+{
+  text-decoration-style: dotted !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success .ui-toast-close-icon {
+  color: $darkSiteColor !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error .ui-toast-close-icon {
+  color: $lightSiteColor !important;
 }
 @media screen and (max-width: 1450px)
 {

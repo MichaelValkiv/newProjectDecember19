@@ -44,6 +44,8 @@ import { DashboardServicesComponent } from './components/dashboard-services/dash
 import { MessageService } from 'primeng/api';
 import { ContactsService } from './services/contacts.service';
 import { ServicesService } from './services/services.service';
+import { QuestionsService } from './services/questions.service';
+import { NotificationsService } from './services/notifications.service';
 
 @NgModule({
   declarations: [
@@ -102,6 +104,8 @@ import { ServicesService } from './services/services.service';
     CompanyService,
     ContactsService,
     ServicesService,
+    QuestionsService,
+    NotificationsService,
     MessageService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthenticationHttpInterceptorService, multi: true

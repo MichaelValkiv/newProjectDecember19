@@ -1,61 +1,73 @@
 <div class="notifications-header">Оголошення від "Комфорт-Дім"</div>
-<div class="notifications-container">
-  <div class="notifications-item">
-    <div class="notifications-icon">
-      <fa-icon [icon]="faBell"></fa-icon>
-    </div>
-    <div class="notifications-text">
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-    </div>
-
-  </div>
-
-  <div class="notifications-item">
-    <div class="notifications-icon">
-      <fa-icon [icon]="faBell"></fa-icon>
-    </div>
-    <div class="notifications-text">
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-    </div>
-  </div>
-
-  <div class="notifications-item">
-    <div class="notifications-icon">
-      <fa-icon [icon]="faBell"></fa-icon>
-    </div>
-    <div class="notifications-text">
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-    </div>
-  </div>
-
-  <div class="notifications-item">
-    <div class="notifications-icon">
-      <fa-icon [icon]="faBell"></fa-icon>
-    </div>
-    <div class="notifications-text">
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-    </div>
-  </div>
-
-  <div class="notifications-item">
-    <div class="notifications-icon">
-      <fa-icon [icon]="faBell"></fa-icon>
-    </div>
-    <div class="notifications-text">
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-      Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why? Why?
-    </div>
-  </div>
+<div (click)="showForm(); addNewNotification();" class="showFormBtn transitionStyle" id="showFormBtn" title="Додати Оголошення">
+  <fa-icon [icon]="faBell" class=""></fa-icon>
 </div>
+<p-toast styleClass="custom-toast" [showTransitionOptions]="'800ms ease-out'"
+         [hideTransitionOptions]="'800ms ease-out'"></p-toast>
+<div class="notifications-container">
+  <div class="notification-box" *ngFor="let notificationItem of allNotifications">
+    <div class="notifications-item">
+      <div class="notifications-icon">
+        <fa-icon [icon]="faBell"></fa-icon>
+      </div>
+      <div class="notifications-text">
+        {{notificationItem.notification}}
+        {{notificationItem.notification_date}}
+        <div class="item-btn-container-table">
+          <div class="editBtn" title="Редагувати" (click)="editNotification(notificationItem); showForm();">
+            <fa-icon [icon]="faPencilAlt"></fa-icon>
+          </div>
+          <div class="deleteBtn" title="Видалити"
+               (click)="editNotification(notificationItem); showDeleteDialog();">
+            <fa-icon [icon]="faTrashAlt"></fa-icon>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<p-dialog header="Форма для оголошень" [(visible)]="displayForm" [responsive]="true" [maximizable]="true" [minY]="70" [focusOnShow]="false" [baseZIndex]="10000">
+  <div class="question-form" id="questionForm" #questionForm>
+    <div class="question-form-title">
+      Введіть текст оголошення в полі нижче.
+    </div>
+    <div class="question-line">
+    </div>
+    <form autocomplete="off">
+      <span class="ui-float-label">
+          <textarea id="question-textarea" pInputTextarea name="notificationText" [(ngModel)]="newOrEditedNotification.notification"></textarea>
+          <label for="question-textarea">Текст Оголошення</label>
+          <fa-icon [icon]="faBell" class="transitionStyle"></fa-icon>
+        </span>
+      <button pButton type="button" label="Опублікувати" (click)="addOrModifyNotification(); displayForm = false;"></button>
+      <button pButton type="button" label="Скасувати" (click)="displayForm = false;"></button>
+    </form>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Підтвердіть видалення елемента" [(visible)]="displayDeleteDialog" [responsive]="true" [focusOnShow]="false"
+          [maximizable]="false" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70"
+          [baseZIndex]="10000">
+  <div class="deleteDialogBox">
+    <div class="deletion-icon">
+      <fa-icon [icon]="faExclamationTriangle" class="transitionStyle"></fa-icon>
+    </div>
+    <h1>Справді видалити цю характеристику компанії?<br><br><span
+      class="selectedDeletion"></span></h1>
+    <div class="btn-container">
+      <div class="delBtn transitionStyle" title="Видалити"
+           (click)="deleteNotification(); hideDeleteDialog();">
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </div>
+      <div class="cancelBtn transitionStyle" title="Скасувати" (click)="hideDeleteDialog();">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </div>
+    </div>
+  </div>
+</p-dialog>

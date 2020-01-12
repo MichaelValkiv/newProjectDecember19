@@ -32,10 +32,189 @@ $whiteSiteColor: #ffffff;
   -ms-user-select: none;
   user-select: none;
 }
+.showFormBtn
+{
+  position: fixed;
+  top: 80px;
+  left: 14px;
+  width: 50px;
+  height: 50px;
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.showFormBtn:hover
+{
+  background-color: $veryLightSiteColor;
+  color: $darkSiteColor;
+  border: 1px solid $darkSiteColor;
+}
 .notifications-container
 {
   width: 1400px;
+  min-height: calc(100vh - 104px);
   margin: 0 auto 20px;
+}
+:host ::ng-deep
+{
+  .ui-dialog
+  {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+  .ui-dialog-titlebar
+  {
+    background-color: $darkSiteColor !important;
+    color: $lightSiteColor !important;
+    border-color: $lightSiteColor !important;
+    cursor: move;
+  }
+  .ui-dialog-title
+  {
+    cursor: default;
+  }
+  .ui-dialog-titlebar-icon
+  {
+    color: $lightSiteColor !important;
+  }
+  .ui-dialog-content
+  {
+    background-color: $darkSiteColor !important;
+    border-color: $lightSiteColor !important;
+  }
+}
+.question-form
+{
+  padding: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: $ultraLightSiteColor;
+  border: 3px solid $darkSiteColor;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: $darkSiteColor;
+  .question-form-title
+  {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 32px;
+    text-align: center;
+  }
+  .question-line
+  {
+    width: 50%;
+    height: 3px;
+    background-color: $blackSiteColor;
+    margin: 25px 0;
+  }
+  .alert-icon
+  {
+    font-size: 64px;
+    margin-bottom: 15px;
+  }
+  .question-form-subtitle
+  {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  form
+  {
+    width: 50%;
+    text-align: center;
+    span.ui-float-label
+    {
+      margin-top: 20px;
+      display: flex;
+      flex-flow: row-reverse nowrap;
+      label
+      {
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: $middleSiteColor;
+        margin-left: 50px;
+      }
+      input
+      {
+        width: calc(100% - 45px);
+        height: 45px;
+        background-color: transparent;
+        border-color: $darkSiteColor;
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: $darkSiteColor;
+        font-size: 16px;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+      }
+      textarea
+      {
+        width: calc(100% - 45px);
+        background-color: transparent;
+        border-color: $darkSiteColor;
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: $darkSiteColor;
+        font-size: 16px;
+        resize: vertical;
+        height: 250px;
+        min-height: 250px;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+      }
+      fa-icon
+      {
+        width: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $darkSiteColor;
+        border-right: none;
+        background-color: $darkSiteColor;
+        color: $ultraLightSiteColor;
+        -webkit-border-radius: 3px 0 0 3px;
+        -moz-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;
+        font-size: 18px;
+      }
+      input:focus ~ fa-icon
+      {
+        background-color: transparent;
+        color: $darkSiteColor;
+      }
+      textarea:focus ~ fa-icon
+      {
+        background-color: transparent;
+        color: $darkSiteColor;
+      }
+    }
+    button
+    {
+      margin: 25px 10px 10px 10px;
+      width: calc(50% - 20px);
+      background-color: $darkSiteColor;
+      border-color: $darkSiteColor;
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: $ultraLightSiteColor;
+      font-size: 16px;
+    }
+    button:focus
+    {
+      //-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
+      //-moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
+      //box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
+    }
+  }
 }
 .notifications-item
 {
@@ -65,6 +244,102 @@ $whiteSiteColor: #ffffff;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 18px;
   }
+}
+.delBtn,
+.cancelBtn
+{
+  background-color: $lightSiteColor;
+  color: $darkSiteColor;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 1px solid $lightSiteColor;
+  cursor: pointer;
+}
+.delBtn:hover,
+.cancelBtn:hover
+{
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  border: 1px solid $lightSiteColor;
+}
+.editBtn,
+.deleteBtn
+{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $darkSiteColor;
+  color: $lightSiteColor;
+  font-size: 32px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-in-out .25s;
+  -moz-transition: all ease-in-out .25s;
+  -ms-transition: all ease-in-out .25s;
+  -o-transition: all ease-in-out .25s;
+  transition: all ease-in-out .25s;
+  cursor: pointer;
+}
+.editBtn:hover,
+.deleteBtn:hover
+{
+  background-color: $veryLightSiteColor;
+  color: $darkSiteColor;
+  border-color: $darkSiteColor;
+}
+h3, h1
+{
+  color: $lightSiteColor;
+  text-align: center;
+}
+.btn-container
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+.item-btn-container-table
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  div
+  {
+    //margin-left: 10px;
+  }
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success {
+  color: $darkSiteColor !important;
+  background-color: $lightSiteColor !important;
+  border: 2px solid $darkSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error {
+  color: $lightSiteColor !important;
+  background-color: $darkSiteColor !important;
+  border: 2px solid $lightSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-summary
+{
+  font-size: 20px !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-detail
+{
+  text-decoration-style: dotted !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success .ui-toast-close-icon {
+  color: $darkSiteColor !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error .ui-toast-close-icon {
+  color: $lightSiteColor !important;
 }
 @media screen and (max-width: 1450px)
 {
