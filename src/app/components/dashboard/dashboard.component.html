@@ -37,6 +37,7 @@
                 <div class="ui-g">
                   <div class="ui-g-12">Кількість: <b>{{company_data.characteristic_value}}</b></div>
                 </div>
+                <div>{{company_data.characteristic_type}}</div>
               </div>
               <div class="item-btn-container">
                 <div class="editBtn" title="Редагувати" (click)="editCompanyInfo(company_data); showCompanyForm();">
@@ -54,6 +55,7 @@
           <div style="padding:.5em" class="ui-g-12 ui-md-3">
             <p-panel [header]="company_data.characteristic_value" [style]="{'text-align':'center'}">
               <div class="car-detail">{{company_data.characteristic}}</div>
+              <div class="car-detail">{{company_data.characteristic_type}}</div>
               <!--<hr class="ui-widget-content" style="border-top:0">-->
               <div class="hrBox"></div>
               <div class="item-btn-container-table">
@@ -106,6 +108,9 @@
                 <div>
                   <div>{{service_data.service_name}}</div>
                 </div>
+                <div>
+                  <div>{{service_data.service_type}}</div>
+                </div>
                 <div class="item-btn-container">
                   <div class="editBtn" title="Редагувати" (click)="editServiceInfo(service_data); showServiceForm();">
                     <fa-icon [icon]="faPencilAlt"></fa-icon>
@@ -120,7 +125,8 @@
           </ng-template>
           <ng-template let-service_data pTemplate="gridItem">
             <div style="padding:.5em" class="ui-g-12 ui-md-3">
-              <p-panel [header]="service_data.service_name" [style]="{'text-align':'center'}">
+              <p-panel [header]="service_data.service_type" [style]="{'text-align':'center'}">
+                <div>{{service_data.service_name}}</div>
                 <div class="hrBox"></div>
                 <div class="item-btn-container-table">
                   <div class="editBtn" title="Редагувати" (click)="editServiceInfo(service_data); showServiceForm();">
@@ -190,7 +196,8 @@
           </ng-template>
           <ng-template let-contact_data pTemplate="gridItem">
             <div style="padding:.5em" class="ui-g-12 ui-md-3">
-              <p-panel [header]="contact_data.contact" [style]="{'text-align':'center'}">
+              <p-panel [header]="contact_data.contact_type" [style]="{'text-align':'center'}">
+                <div>{{contact_data.contact}}</div>
                 <div class="hrBox"></div>
                 <div class="item-btn-container-table">
                   <div class="editBtn" title="Редагувати" (click)="editContactInfo(contact_data); showContactForm();">
@@ -221,9 +228,11 @@
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
       <form autocomplete="off">
+        <p-dropdown [options]="characteristicTypes" name="characteristic_types" [(ngModel)]="selectedCharacteristic"
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
         <span class="ui-float-label">
-          <input id="float-input-first-name" type="text" size="30" pInputText name="characteristic"
-                 [(ngModel)]="newOrEditedCompanyInfo.characteristic">
+          <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="characteristic"
+                    [(ngModel)]="newOrEditedCompanyInfo.characteristic"></textarea>
           <label for="float-input-first-name">Характеристика Компанії</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
@@ -254,14 +263,14 @@
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
       <form autocomplete="off">
+        <p-dropdown [options]="contactTypes" name="contact_types" [(ngModel)]="selectedContact"
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
         <span class="ui-float-label">
-          <input id="float-input-first-name" type="text" size="30" pInputText name="contact"
-                 [(ngModel)]="newOrEditedContactInfo.contact">
+          <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="contact"
+                    [(ngModel)]="newOrEditedContactInfo.contact"></textarea>
           <label for="float-input-first-name">Контакт</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
-        <p-dropdown [options]="contactTypes" name="contact_types" [(ngModel)]="selectedContact"
-                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
         <button *ngIf="isNewContactInfo" pButton type="button" label="Додати"
                 (click)="addOrModifyContactInfo(); displayContactForm = false;"></button>
         <button *ngIf="!isNewContactInfo" pButton type="button" label="Змінити"
@@ -283,9 +292,11 @@
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
       <form autocomplete="off">
+        <p-dropdown [options]="serviceTypes" name="service_types" [(ngModel)]="selectedService"
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
         <span class="ui-float-label">
-          <input id="float-input-first-name" type="text" size="30" pInputText name="_service"
-                 [(ngModel)]="newOrEditedServiceInfo.service_name">
+          <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="_service"
+                    [(ngModel)]="newOrEditedServiceInfo.service_name"></textarea>
           <label for="float-input-first-name">Послуга</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>

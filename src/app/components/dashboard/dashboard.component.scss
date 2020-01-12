@@ -25,7 +25,23 @@ $whiteSiteColor: #ffffff;
   .ui-tabview
   {
     font-family: 'Montserrat Alternates', sans-serif;
-    background-color: transparent;
+    //background-color: transparent !important;
+    background-color: rgba(255, 188, 73, .8) !important;
+  }
+  ul.ui-tabview-nav
+  {
+    border-color: $darkSiteColor !important;
+  }
+  .ui-widget, .ui-widget *
+  {
+    border-color: $darkSiteColor !important;
+  }
+  .ui-tabview-nav > li
+  {
+    border-color: $darkSiteColor !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
   }
   .ui-tabview-nav > li:active
   {
@@ -60,12 +76,16 @@ $whiteSiteColor: #ffffff;
   }
   .ui-dataview-header
   {
-    background-color: $veryLightSiteColor !important;
+    //background-color: $veryLightSiteColor !important;
+    background-color: transparent !important;
+    border-color: $darkSiteColor !important;
   }
   .ui-dataview-content
   {
     font-family: 'Montserrat Alternates', sans-serif;
-    background-color: rgba(255, 188, 73, .8) !important;
+    //background-color: rgba(255, 188, 73, .8) !important;
+    background-color: transparent !important;
+    border-color: $darkSiteColor !important;
   }
   .ui-inputtext,
   .ui-dropdown
@@ -103,7 +123,7 @@ $whiteSiteColor: #ffffff;
   .ui-paginator
   {
     background-color: $darkSiteColor;
-
+    border-color: $darkSiteColor !important;
   }
   .ui-paginator-icon
   {

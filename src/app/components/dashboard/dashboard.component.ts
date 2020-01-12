@@ -23,6 +23,16 @@ interface ContactTypes {
   value: string;
 }
 
+interface ServiceTypes {
+  name: string;
+  value: string;
+}
+
+interface CharacteristicTypes {
+  name: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -70,7 +80,11 @@ export class DashboardComponent implements OnInit {
 
   databaseKey: string;
   contactTypes: ContactTypes[];
+  serviceTypes: ServiceTypes[];
+  characteristicTypes: CharacteristicTypes[];
   selectedContact: any;
+  selectedService: any;
+  selectedCharacteristic: any;
 
   constructor(private pageTitle: PageTitleService,
               private companyService: CompanyService,
@@ -78,10 +92,38 @@ export class DashboardComponent implements OnInit {
               private servicesService: ServicesService,
               private messageService: MessageService) {
     this.contactTypes = [
-      {name: 'Контактна Інформація Компанії', value: 'company_contact'},
+      {name: 'Контактна Інформація Компанії (Державні Реєстри)', value: 'company_contact_country'},
+      {name: 'Контактна Інформація Компанії (Адреса)', value: 'company_contact_location'},
+      {name: 'Контактна Інформація Компанії (Банківські Реквізити)', value: 'company_contact_bank'},
+      {name: 'Контактна Інформація Компанії (Стаціонарний Телефон)', value: 'company_contact_phone'},
+      {name: 'Контактна Інформація Компанії (Мобільний номер)', value: 'company_contact_mobile'},
+      {name: 'Контактна Інформація Компанії (Електронна Пошта)', value: 'company_contact_email'},
       {name: 'Графік Роботи Компанії', value: 'company_schedule'},
       {name: 'Телефони Диспетчерських Служб', value: 'company_phones'}
     ];
+    this.serviceTypes = [
+      {name: 'Тип Послуги (Прибирання)', value: 'cleaning'},
+      {name: 'Тип Послуги (Водопостачання)', value: 'water_supply'},
+      {name: 'Тип Послуги (Водовідведення)', value: 'drainage_system'},
+      {name: 'Тип Послуги (Теплопостачання)', value: 'heat_supply'},
+      {name: 'Тип Послуги (Електропостачання)', value: 'power_supply'},
+      {name: 'Тип Послуги (Зливова Каналізація)', value: 'storm_sewer'},
+      {name: 'Тип Послуги (Внутрішньоквартирні Мережі)', value: 'interior_network'},
+      {name: 'Тип Послуги (Димовентиляційні Канали)', value: 'smoke_vents'},
+      {name: 'Тип Послуги (Технологічні Пристрої Будинків)', value: 'houses_technological_devices'},
+      {name: 'Тип Послуги (Системи Диспетчеризації)', value: 'dispatching_systems'},
+      {name: 'Тип Послуги (Освітлення)', value: 'lighting'},
+      {name: 'Тип Послуги (Обслуговування Ліфтів)', value: 'elevator_service'},
+    ];
+    this.characteristicTypes = [
+      {name: 'Тип Характеристики (Будинків Загалом)', value: 'all_houses'},
+      {name: 'Тип Характеристики (Будинків З Ліфтами)', value: 'elevator_houses'},
+      {name: 'Тип Характеристики (Ліфти)', value: 'elevators'},
+      {name: 'Тип Характеристики (Загальна Площа Будинків)', value: 'overall_area'},
+      {name: 'Тип Характеристики (Кількість Квартир Загалом)', value: 'number_of_apartments'},
+      {name: 'Тип Характеристики (Нежитлових Приміщень Загалом)', value: 'warehouses'},
+    ];
+
   }
 
   ngOnInit() {
@@ -91,17 +133,26 @@ export class DashboardComponent implements OnInit {
     this.serviceInfoGet();
 
     this.companySortOptions = [
-      {label: 'Найбільше значення', value: '!characteristic_value'},
-      {label: 'Найменше Значення', value: 'characteristic_value'},
-      {label: 'Назва', value: 'characteristic'}
+      // {label: 'Найбільше значення', value: '!characteristic_value'},
+      // {label: 'Найменше Значення', value: 'characteristic_value'},
+      {label: 'Назва [ А-Я ]', value: 'characteristic'},
+      {label: 'Назва [ Я-А ]', value: '!characteristic'},
+      {label: 'Тип Характеристики [ А-Я ]', value: 'characteristic_type'},
+      {label: 'Тип Характеристики [ Я-А ]', value: '!characteristic_type'}
     ];
 
     this.contactSortOptions = [
-      {label: 'Назва', value: 'contact'}
+      {label: 'Назва [ А-Я ]', value: 'contact'},
+      {label: 'Назва [ Я-А ]', value: '!contact'},
+      {label: 'Тип Контактних Даних [ А-Я ]', value: 'contact_type'},
+      {label: 'Тип Контактних Даних [ Я-А ]', value: '!contact_type'}
     ];
 
     this.serviceSortOptions = [
-      {label: 'Назва', value: 'service_name'}
+      {label: 'Назва [ А-Я ]', value: 'service_name'},
+      {label: 'Назва [ Я-А ]', value: '!service_name'},
+      {label: 'Тип Послуги [ А-Я ]', value: 'service_type'},
+      {label: 'Тип Послуги [ Я-А ]', value: '!service_type'}
     ];
 
     this.newOrEditedCompanyInfo = new Company();
@@ -139,14 +190,14 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Завантажено Характеристики Компанії.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       }, () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       });
   }
@@ -160,14 +211,14 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Завантажено Контактні Дані Компанії.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       }, () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       });
   }
@@ -181,14 +232,14 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Завантажено Послуги, Які Надає Компанія.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       }, () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
       });
   }
@@ -239,13 +290,14 @@ export class DashboardComponent implements OnInit {
   addOrModifyCompanyInfo() {
     if (this.isNewCompanyInfo) {
       this.newOrEditedCompanyInfo.id = null;
+      this.newOrEditedCompanyInfo.characteristic_type = this.selectedCharacteristic.name;
       this.companyService.postCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.companyInfoGet();
         }, () => {
@@ -253,18 +305,19 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.companyInfoGet();
         });
     } else {
+      this.newOrEditedCompanyInfo.characteristic_type = this.selectedCharacteristic.name;
       this.companyService.putCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.companyInfoGet();
         }, () => {
@@ -272,7 +325,7 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.companyInfoGet();
         });
@@ -289,7 +342,7 @@ export class DashboardComponent implements OnInit {
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.contactInfoGet();
         }, () => {
@@ -297,7 +350,7 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.contactInfoGet();
         });
@@ -309,7 +362,7 @@ export class DashboardComponent implements OnInit {
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.contactInfoGet();
         }, () => {
@@ -317,7 +370,7 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.contactInfoGet();
         });
@@ -327,13 +380,14 @@ export class DashboardComponent implements OnInit {
   addOrModifyServiceInfo() {
     if (this.isNewServiceInfo) {
       this.newOrEditedServiceInfo.id = null;
+      this.newOrEditedServiceInfo.service_type = this.selectedService.name;
       this.servicesService.postServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.serviceInfoGet();
         }, () => {
@@ -341,18 +395,19 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.serviceInfoGet();
         });
     } else {
+      this.newOrEditedServiceInfo.service_type = this.selectedService.name;
       this.servicesService.putServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.serviceInfoGet();
         }, () => {
@@ -360,7 +415,7 @@ export class DashboardComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 5000
           });
           this.serviceInfoGet();
         });
@@ -374,7 +429,7 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Видалено.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.companyInfoGet();
       }, () => {
@@ -382,7 +437,7 @@ export class DashboardComponent implements OnInit {
           severity: 'error',
           summary: 'Сталася Помилка. Видалення Не Відбулося.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.companyInfoGet();
       });
@@ -395,7 +450,7 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Видалено.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.contactInfoGet();
       }, () => {
@@ -403,7 +458,7 @@ export class DashboardComponent implements OnInit {
           severity: 'error',
           summary: 'Сталася Помилка. Видалення Не Відбулося.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.contactInfoGet();
       });
@@ -416,7 +471,7 @@ export class DashboardComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Видалено.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.serviceInfoGet();
       }, () => {
@@ -424,7 +479,7 @@ export class DashboardComponent implements OnInit {
           severity: 'error',
           summary: 'Сталася Помилка. Видалення Не Відбулося.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 5000
         });
         this.serviceInfoGet();
       });
