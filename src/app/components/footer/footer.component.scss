@@ -39,7 +39,7 @@ $whiteSiteColor: #ffffff;
       font-weight: bold;
       letter-spacing: .5px;
       text-decoration: none;
-      color: $blackSiteColor;
+      color: $darkSiteColor;
       display: inline-block;
       margin-left: 5px;
       margin-right: 5px;
@@ -57,7 +57,7 @@ $whiteSiteColor: #ffffff;
     a.nav-link:active,
     a.nav-link:hover
     {
-      color: $darkSiteColor;
+      color: $blackSiteColor;
     }
   }
   .footer-info
@@ -80,6 +80,7 @@ $whiteSiteColor: #ffffff;
       justify-content: center;
       text-align: center;
       font-size: 32px;
+      color: $darkSiteColor;
     }
   }
   .footer-address
@@ -88,6 +89,7 @@ $whiteSiteColor: #ffffff;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 18px;
     padding: 10px;
+    color: $darkSiteColor;
     border-top: 3px solid $middleSiteColor;
     display: flex;
     align-items: center;
@@ -116,7 +118,7 @@ $whiteSiteColor: #ffffff;
       justify-content: center;
       text-align: center;
       text-decoration: none;
-      color: $blackSiteColor;
+      color: $darkSiteColor;
       margin: 0 10px;
       fa-icon.gitHub
       {
@@ -131,7 +133,7 @@ $whiteSiteColor: #ffffff;
     }
     a:hover
     {
-      color: $darkSiteColor;
+      color: $blackSiteColor;
     }
   }
 }

@@ -17,6 +17,7 @@ $whiteSiteColor: #ffffff;
 .notifications-header
 {
   font-family: 'Montserrat Alternates', sans-serif;
+  color: $darkSiteColor;
   font-size: 32px;
   width: calc(100% - 6px);
   text-align: center;
@@ -114,7 +115,7 @@ $whiteSiteColor: #ffffff;
   {
     width: 50%;
     height: 3px;
-    background-color: $blackSiteColor;
+    background-color: $darkSiteColor;
     margin: 25px 0;
   }
   .alert-icon
@@ -222,6 +223,7 @@ $whiteSiteColor: #ffffff;
   flex-flow: row wrap;
   margin: 10px 0;
   border: 3px solid $darkSiteColor;
+  color: $darkSiteColor;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;

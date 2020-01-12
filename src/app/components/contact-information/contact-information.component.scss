@@ -23,6 +23,7 @@ $whiteSiteColor: #ffffff;
 .contact-title
 {
   font-family: 'Montserrat Alternates', sans-serif;
+  color: $darkSiteColor;
   font-size: 32px;
   width: calc(100% - 6px);
   text-align: center;
@@ -48,10 +49,10 @@ $whiteSiteColor: #ffffff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  //-webkit-user-select: none;
-  //-moz-user-select: none;
-  //-ms-user-select: none;
-  //user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   .contact-info-icon
   {
     width: 200px;
@@ -68,6 +69,7 @@ $whiteSiteColor: #ffffff;
   {
     width: calc(100% - 200px);
     background-color: rgba(255, 188, 73, .8);
+    color: $darkSiteColor;
     display: flex;
     align-items: center;
     justify-content: center;

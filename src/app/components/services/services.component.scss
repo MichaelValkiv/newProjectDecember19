@@ -18,6 +18,7 @@ $whiteSiteColor: #ffffff;
 .services-title
 {
   font-family: 'Montserrat Alternates', sans-serif;
+  color: $darkSiteColor;
   font-size: 32px;
   width: calc(100% - 6px);
   text-align: center;
@@ -47,6 +48,10 @@ $whiteSiteColor: #ffffff;
   margin: 10px 10px;
   border: 3px solid $darkSiteColor;
   background-color: rgba(255, 188, 73, .8);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   .service-icon
   {
     background-color: rgba(64, 49, 33, 1);
@@ -61,6 +66,7 @@ $whiteSiteColor: #ffffff;
   {
     height: 250px;
     font-family: 'Montserrat Alternates', sans-serif;
+    color: $darkSiteColor;
     padding: 40px 20px;
     text-align: center;
     font-size: 24px;

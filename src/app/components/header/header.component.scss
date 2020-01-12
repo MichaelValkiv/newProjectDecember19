@@ -25,7 +25,7 @@ a.nav-link-icon
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
-  color: $blackSiteColor;
+  color: $darkSiteColor;
   display: inline-block;
   -webkit-transition: all ease-in-out .25s;
   -moz-transition: all ease-in-out .25s;
@@ -46,7 +46,7 @@ a.nav-link
   letter-spacing: .5px;
   text-decoration: none;
   text-transform: uppercase;
-  color: $blackSiteColor;
+  color: $darkSiteColor;
   display: inline-block;
   -webkit-transition: all ease-in-out .25s;
   -moz-transition: all ease-in-out .25s;
@@ -92,7 +92,7 @@ a.site-name
   position: relative;
   width: 200px;
   text-decoration: none;
-  color: $blackSiteColor;
+  color: $darkSiteColor;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
