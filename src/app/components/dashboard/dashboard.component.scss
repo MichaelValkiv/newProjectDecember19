@@ -79,6 +79,8 @@ $whiteSiteColor: #ffffff;
     //background-color: $veryLightSiteColor !important;
     background-color: transparent !important;
     border-color: $darkSiteColor !important;
+    border-bottom: 1px solid $darkSiteColor !important;
+    margin-top: 5px !important;
   }
   .ui-dataview-content
   {
@@ -86,6 +88,7 @@ $whiteSiteColor: #ffffff;
     //background-color: rgba(255, 188, 73, .8) !important;
     background-color: transparent !important;
     border-color: $darkSiteColor !important;
+    margin: 15px 0 !important;
   }
   .ui-inputtext,
   .ui-dropdown
@@ -124,6 +127,8 @@ $whiteSiteColor: #ffffff;
   {
     background-color: $darkSiteColor;
     border-color: $darkSiteColor !important;
+    margin-bottom: 10px !important;
+    margin-top: 15px !important;
   }
   .ui-paginator-icon
   {
