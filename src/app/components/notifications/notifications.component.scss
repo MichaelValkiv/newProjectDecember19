@@ -199,6 +199,24 @@ $whiteSiteColor: #ffffff;
         color: $darkSiteColor;
       }
     }
+    .form-alert
+    {
+      div
+      {
+        font-family: 'Montserrat Alternates', sans-serif;
+        font-size: 18px;
+        color: $darkSiteColor;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fa-icon
+        {
+          margin-right: 10px;
+          font-size: 28px;
+        }
+      }
+    }
     button
     {
       margin: 25px 10px 10px 10px;
@@ -214,6 +232,10 @@ $whiteSiteColor: #ffffff;
       //-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
       //-moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
       //box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
+    }
+    button:disabled
+    {
+      cursor: not-allowed;
     }
   }
 }

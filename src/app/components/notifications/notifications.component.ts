@@ -4,6 +4,7 @@ import {faBell, faTimes, faCheck, faExclamationTriangle, faPencilAlt, faTrashAlt
 import { Notifications } from '../../models/notifications.model';
 import { NotificationsService } from '../../services/notifications.service';
 import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-notifications',
@@ -29,7 +30,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor( private pageTitle: PageTitleService,
                private notificationsService: NotificationsService,
-               private messageService: MessageService ) { }
+               private messageService: MessageService,
+               public authenticationService: AuthenticationService ) { }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Оголошення');

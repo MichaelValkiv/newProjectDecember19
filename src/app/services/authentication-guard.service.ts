@@ -5,7 +5,7 @@ import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationGuardService {
+export class AuthenticationGuardService implements CanActivate {
 
   constructor( private authenticationService: AuthenticationService,
                private router: Router ) { }
@@ -14,7 +14,7 @@ export class AuthenticationGuardService {
     if (this.authenticationService.isLoggedIn()) {
       return true;
     }
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
     return false;
   }
 }

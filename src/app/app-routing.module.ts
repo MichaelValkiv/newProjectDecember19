@@ -10,6 +10,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ServicesComponent } from './components/services/services.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthenticationGuardService } from './services/authentication-guard.service';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'questions', component: QuestionsComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'not-found', component: PageNotFoundComponent },

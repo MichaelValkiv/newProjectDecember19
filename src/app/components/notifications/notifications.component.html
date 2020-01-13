@@ -1,5 +1,5 @@
 <div class="notifications-header">Оголошення від "Комфорт-Дім"</div>
-<div (click)="showForm(); addNewNotification();" class="showFormBtn transitionStyle" id="showFormBtn" title="Додати Оголошення">
+<div *ngIf="authenticationService.isLoggedIn();" (click)="showForm(); addNewNotification();" class="showFormBtn transitionStyle" id="showFormBtn" title="Додати Оголошення">
   <fa-icon [icon]="faBell" class=""></fa-icon>
 </div>
 <p-toast styleClass="custom-toast" [showTransitionOptions]="'800ms ease-out'"
@@ -14,7 +14,7 @@
         <div class="notification-author">Комфорт-Дім</div>
         <div class="notification-date">{{notificationItem.notification_date}}</div>
         <div class="notification-record">{{notificationItem.notification}}</div>
-        <div class="item-btn-container-table">
+        <div *ngIf="authenticationService.isLoggedIn();" class="item-btn-container-table">
           <div class="editBtn" title="Редагувати" (click)="editNotification(notificationItem); showForm();">
             <fa-icon [icon]="faPencilAlt"></fa-icon>
           </div>
@@ -39,13 +39,19 @@
     </div>
     <div class="question-line">
     </div>
-    <form autocomplete="off">
+    <form autocomplete="off" #notificationForm="ngForm">
       <span class="ui-float-label">
-          <textarea id="question-textarea" pInputTextarea name="notificationText" [(ngModel)]="newOrEditedNotification.notification"></textarea>
+          <textarea id="question-textarea" pInputTextarea name="notificationText" [(ngModel)]="newOrEditedNotification.notification" required></textarea>
           <label for="question-textarea">Текст Оголошення</label>
           <fa-icon [icon]="faBell" class="transitionStyle"></fa-icon>
-        </span>
-      <button pButton type="button" label="Опублікувати" (click)="addOrModifyNotification(); displayForm = false;"></button>
+      </span>
+      <div class="form-alert" [hidden]="notificationForm.valid">
+        <div>
+          <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+          Заповніть Всі Поля
+        </div>
+      </div>
+      <button pButton type="button" label="Опублікувати" (click)="addOrModifyNotification(); displayForm = false;" [disabled]="!notificationForm.valid"></button>
       <button pButton type="button" label="Скасувати" (click)="displayForm = false;"></button>
     </form>
   </div>

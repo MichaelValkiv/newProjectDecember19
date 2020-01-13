@@ -45,7 +45,7 @@ export class QuestionsComponent implements OnInit {
   constructor( private pageTitle: PageTitleService,
                private questionsService: QuestionsService,
                private messageService: MessageService,
-               public authenticationService: AuthenticationService) { }
+               public authenticationService: AuthenticationService ) { }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Запитання');
