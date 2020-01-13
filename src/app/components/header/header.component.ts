@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() public sideNavToggle = new EventEmitter();
 
-  constructor( public authenticationService: AuthenticationService) { }
+  constructor( public authenticationService: AuthenticationService ) { }
 
   ngOnInit() {
   }

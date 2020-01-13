@@ -8,22 +8,23 @@
                   [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
         <p-header>
           <div class="ui-helper-clearfix">
+            <div class="addBtn" title="Новий Запис" (click)="addNewCompanyInfo();">
+              <fa-icon [icon]="faPlusSquare"></fa-icon>
+              Додати Новий Запис
+            </div>
             <div class="ui-g header-tools">
-              <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewCompanyInfo();">
-                <fa-icon [icon]="faPlusSquare"></fa-icon>
-              </div>
-              <div class="ui-g-3">
+              <div class="ui-g-12 ui-md-6 ui-lg-4">
                 <p-dropdown [options]="companySortOptions" [(ngModel)]="sortKey" placeholder="Сортувати"
                             class="sortDropdown"
                             (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
               </div>
-              <div class="ui-g-3 filter-container">
-                <div style="position:relative">
+              <div class="ui-g-12 ui-md-6 ui-lg-4 filter-container">
+                <div style="position:relative; text-align: center;">
                   <input type="search" pInputText placeholder="Пошук за назвою" class="searchInput"
                          (input)="dv.filter($event.target.value)">
                 </div>
               </div>
-              <div class="" style="text-align:right">
+              <div class="ui-g-12 ui-md-6 ui-lg-4" style="text-align:right">
                 <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
               </div>
             </div>
@@ -33,11 +34,11 @@
           <div class="ui-g-12 one-item">
             <div class="car-details">
               <div>
-                <div>{{company_data.characteristic}}</div>
-                <div class="ui-g">
-                  <div class="ui-g-12">Кількість: <b>{{company_data.characteristic_value}}</b></div>
+                <div class="record_title">{{company_data.characteristic}}</div>
+                <div class="record_value">
+                  <div>{{company_data.characteristic_value}}</div>
                 </div>
-                <div>{{company_data.characteristic_type}}</div>
+                <div class="record_type">{{company_data.characteristic_type}}</div>
               </div>
               <div class="item-btn-container">
                 <div class="editBtn" title="Редагувати" (click)="editCompanyInfo(company_data); showCompanyForm();">
@@ -53,9 +54,9 @@
         </ng-template>
         <ng-template let-company_data pTemplate="gridItem">
           <div style="padding:.5em" class="ui-g-12 ui-md-3">
-            <p-panel [header]="company_data.characteristic_value" [style]="{'text-align':'center'}">
-              <div class="car-detail">{{company_data.characteristic}}</div>
-              <div class="car-detail">{{company_data.characteristic_type}}</div>
+            <p-panel [header]="company_data.characteristic_type" [style]="{'text-align':'center'}">
+              <div class="">{{company_data.characteristic}}</div>
+              <div class="record_value_grid">{{company_data.characteristic_value}}</div>
               <!--<hr class="ui-widget-content" style="border-top:0">-->
               <div class="hrBox"></div>
               <div class="item-btn-container-table">
@@ -77,26 +78,27 @@
     <p-tabPanel header="Послуги" class="dashboardTab">
       <ng-template pTemplate="content">
         <p-dataView #dv [value]="_service" [paginator]="true" [rows]="10" paginatorPosition="both"
-                    filterBy="service_name" [loading]="isNewServiceInfo"
+                    filterBy="service_name" [loading]="isLoadingServiceInfo"
                     [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
           <p-header>
             <div class="ui-helper-clearfix">
+              <div class="addBtn" title="Новий Запис" (click)="addNewServiceInfo();">
+                <fa-icon [icon]="faPlusSquare"></fa-icon>
+                Додати Новий Запис
+              </div>
               <div class="ui-g header-tools">
-                <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewServiceInfo();">
-                  <fa-icon [icon]="faPlusSquare"></fa-icon>
-                </div>
-                <div class="ui-g-3">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
                   <p-dropdown [options]="serviceSortOptions" [(ngModel)]="sortKey" placeholder="Сортувати"
                               class="sortDropdown"
                               (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
                 </div>
-                <div class="ui-g-3 filter-container">
-                  <div style="position:relative">
+                <div class="ui-g-12 ui-md-6 ui-lg-4 filter-container">
+                  <div style="position:relative;text-align: center;">
                     <input type="search" pInputText placeholder="Пошук за назвою" class="searchInput"
                            (input)="dv.filter($event.target.value)">
                   </div>
                 </div>
-                <div class="" style="text-align:right">
+                <div class="ui-g-12 ui-md-6 ui-lg-4" style="text-align:right">
                   <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
               </div>
@@ -106,10 +108,10 @@
             <div class="ui-g-12 one-item">
               <div class="car-details">
                 <div>
-                  <div>{{service_data.service_name}}</div>
+                  <div class="record_title">{{service_data.service_name}}</div>
                 </div>
                 <div>
-                  <div>{{service_data.service_type}}</div>
+                  <div class="record_type">{{service_data.service_type}}</div>
                 </div>
                 <div class="item-btn-container">
                   <div class="editBtn" title="Редагувати" (click)="editServiceInfo(service_data); showServiceForm();">
@@ -152,22 +154,23 @@
                     [sortField]="sortField" [sortOrder]="sortOrder" [emptyMessage]="'Нічого не знайдено'">
           <p-header>
             <div class="ui-helper-clearfix">
+              <div class="addBtn" title="Новий Запис" (click)="addNewContactInfo();">
+                <fa-icon [icon]="faPlusSquare"></fa-icon>
+                Додати Новий Запис
+              </div>
               <div class="ui-g header-tools">
-                <div class="addBtn ui-g-3" title="Новий Запис" (click)="addNewContactInfo();">
-                  <fa-icon [icon]="faPlusSquare"></fa-icon>
-                </div>
-                <div class="ui-g-3">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
                   <p-dropdown [options]="contactSortOptions" [(ngModel)]="sortKey" placeholder="Сортувати"
                               class="sortDropdown"
                               (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
                 </div>
-                <div class="ui-g-3 filter-container">
-                  <div style="position:relative">
+                <div class="ui-g-12 ui-md-6 ui-lg-4 filter-container">
+                  <div style="position:relative; text-align: center;">
                     <input type="search" pInputText placeholder="Пошук за назвою" class="searchInput"
                            (input)="dv.filter($event.target.value)">
                   </div>
                 </div>
-                <div class="" style="text-align:right">
+                <div class="ui-g-12 ui-md-6 ui-lg-4" style="text-align:right">
                   <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
               </div>
@@ -177,10 +180,10 @@
             <div class="ui-g-12 one-item">
               <div class="car-details">
                 <div>
-                  <div>{{contact_data.contact}}</div>
+                  <div class="record_title">{{contact_data.contact}}</div>
                 </div>
                 <div>
-                  <div>{{contact_data.contact_type}}</div>
+                  <div class="record_type">{{contact_data.contact_type}}</div>
                 </div>
                 <div class="item-btn-container">
                   <div class="editBtn" title="Редагувати" (click)="editContactInfo(contact_data); showContactForm();">
@@ -227,24 +230,30 @@
       <div class="question-line">
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
-      <form autocomplete="off">
+      <form autocomplete="off" #characteristicForm="ngForm">
         <p-dropdown [options]="characteristicTypes" name="characteristic_types" [(ngModel)]="selectedCharacteristic"
-                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown" required="true"></p-dropdown>
         <span class="ui-float-label">
           <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="characteristic"
-                    [(ngModel)]="newOrEditedCompanyInfo.characteristic"></textarea>
+                    [(ngModel)]="newOrEditedCompanyInfo.characteristic" required></textarea>
           <label for="float-input-first-name">Характеристика Компанії</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
         <span class="ui-float-label">
           <input id="float-input-last-name" type="text" size="30" pInputText name="characteristic_value"
-                 [(ngModel)]="newOrEditedCompanyInfo.characteristic_value">
+                 [(ngModel)]="newOrEditedCompanyInfo.characteristic_value" required>
           <label for="float-input-last-name">Значення Характеристики</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
-        <button *ngIf="isNewCompanyInfo" pButton type="button" label="Додати"
+        <div class="form-alert" [hidden]="characteristicForm.valid">
+          <div>
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            Заповніть Всі Поля
+          </div>
+        </div>
+        <button *ngIf="isNewCompanyInfo" pButton type="button" label="Додати" [disabled]="!characteristicForm.valid"
                 (click)="addOrModifyCompanyInfo(); displayCompanyForm = false;"></button>
-        <button *ngIf="!isNewCompanyInfo" pButton type="button" label="Змінити"
+        <button *ngIf="!isNewCompanyInfo" pButton type="button" label="Змінити" [disabled]="!characteristicForm.valid"
                 (click)="addOrModifyCompanyInfo(); displayCompanyForm = false;"></button>
         <button pButton type="button" label="Скасувати" (click)="displayCompanyForm = false;"></button>
       </form>
@@ -262,18 +271,24 @@
       <div class="question-line">
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
-      <form autocomplete="off">
+      <form autocomplete="off" #contactForm="ngForm">
         <p-dropdown [options]="contactTypes" name="contact_types" [(ngModel)]="selectedContact"
-                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown" required="true"></p-dropdown>
         <span class="ui-float-label">
           <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="contact"
-                    [(ngModel)]="newOrEditedContactInfo.contact"></textarea>
-          <label for="float-input-first-name">Контакт</label>
+                    [(ngModel)]="newOrEditedContactInfo.contact" required></textarea>
+          <label for="float-input-first-name">Контактна Інформація</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
-        <button *ngIf="isNewContactInfo" pButton type="button" label="Додати"
+        <div class="form-alert" [hidden]="contactForm.valid">
+          <div>
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            Заповніть Всі Поля
+          </div>
+        </div>
+        <button *ngIf="isNewContactInfo" pButton type="button" label="Додати" [disabled]="!contactForm.valid"
                 (click)="addOrModifyContactInfo(); displayContactForm = false;"></button>
-        <button *ngIf="!isNewContactInfo" pButton type="button" label="Змінити"
+        <button *ngIf="!isNewContactInfo" pButton type="button" label="Змінити" [disabled]="!contactForm.valid"
                 (click)="addOrModifyContactInfo(); displayContactForm = false;"></button>
         <button pButton type="button" label="Скасувати" (click)="displayContactForm = false;"></button>
       </form>
@@ -291,18 +306,24 @@
       <div class="question-line">
       </div>
       <!--<fa-icon [icon]="faExclamationTriangle" class="alert-icon"></fa-icon>-->
-      <form autocomplete="off">
+      <form autocomplete="off" #serviceForm="ngForm">
         <p-dropdown [options]="serviceTypes" name="service_types" [(ngModel)]="selectedService"
-                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown"></p-dropdown>
+                    placeholder="Оберіть Тип Запису" optionLabel="name" class="contactDropdown" required="true"></p-dropdown>
         <span class="ui-float-label">
           <textarea id="float-input-first-name" type="text" size="30" pInputTextarea name="_service"
-                    [(ngModel)]="newOrEditedServiceInfo.service_name"></textarea>
+                    [(ngModel)]="newOrEditedServiceInfo.service_name" required></textarea>
           <label for="float-input-first-name">Послуга</label>
           <fa-icon [icon]="faDatabase" class="transitionStyle"></fa-icon>
         </span>
-        <button *ngIf="isNewServiceInfo" pButton type="button" label="Додати"
+        <div class="form-alert" [hidden]="serviceForm.valid">
+          <div>
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            Заповніть Всі Поля
+          </div>
+        </div>
+        <button *ngIf="isNewServiceInfo" pButton type="button" label="Додати" [disabled]="!serviceForm.valid"
                 (click)="addOrModifyServiceInfo(); displayServiceForm = false;"></button>
-        <button *ngIf="!isNewServiceInfo" pButton type="button" label="Змінити"
+        <button *ngIf="!isNewServiceInfo" pButton type="button" label="Змінити" [disabled]="!serviceForm.valid"
                 (click)="addOrModifyServiceInfo(); displayServiceForm = false;"></button>
         <button pButton type="button" label="Скасувати" (click)="displayServiceForm = false;"></button>
       </form>

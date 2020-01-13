@@ -7,11 +7,12 @@ import {
   faQuestion,
   faCheck,
   faTimes,
-  faPencilAlt, faTrashAlt
+  faPencilAlt, faTrashAlt, faCommentDots
 } from '@fortawesome/free-solid-svg-icons';
 import { Questions } from '../../models/questions.model';
 import { QuestionsService } from '../../services/questions.service';
 import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-questions',
@@ -28,6 +29,7 @@ export class QuestionsComponent implements OnInit {
   faQuestionCircle = faQuestionCircle;
   faUser = faUser;
   faQuestion = faQuestion;
+  faCommentDots = faCommentDots;
 
   displayForm: boolean = false;
   displayDeleteDialog: boolean = false;
@@ -42,7 +44,8 @@ export class QuestionsComponent implements OnInit {
 
   constructor( private pageTitle: PageTitleService,
                private questionsService: QuestionsService,
-               private messageService: MessageService ) { }
+               private messageService: MessageService,
+               public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Запитання');
@@ -96,14 +99,15 @@ export class QuestionsComponent implements OnInit {
       questionInfo.question_author,
       questionInfo.question,
       questionInfo.question_date,
-      questionInfo.answer
+      questionInfo.answer,
+      questionInfo.answer_date
     );
   }
 
   addOrModifyQuestion() {
     if (this.isNewQuestion) {
       this.newOrEditedQuestion.id = null;
-      this.newOrEditedQuestion.question_author = this.userFirstName + this.userLastName;
+      this.newOrEditedQuestion.question_author = this.userFirstName + ' ' + this.userLastName;
       this.newOrEditedQuestion.question_date = null;
       this.newOrEditedQuestion.answer = 'Поки що відповіді немає.';
       this.questionsService.postQuestionInfo(this.newOrEditedQuestion).subscribe(

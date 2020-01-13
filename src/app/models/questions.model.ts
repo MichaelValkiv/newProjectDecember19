@@ -4,6 +4,7 @@ export class Questions {
     public question_author?: string,
     public question?: string,
     public question_date?: any,
-    public answer?: string
+    public answer?: string,
+    public answer_date?: any
   ) { }
 }

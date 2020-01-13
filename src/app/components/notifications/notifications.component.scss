@@ -245,6 +245,72 @@ $whiteSiteColor: #ffffff;
     padding: 20px;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 18px;
+    position: relative;
+    .notification-author
+    {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $darkSiteColor;
+      color: $veryLightSiteColor;
+      padding: 2px 5px 5px 5px;
+      -webkit-border-radius: 0 0 0 5px;
+      -moz-border-radius: 0 0 0 5px;
+      border-radius: 0 0 0 5px;
+    }
+    .notification-date
+    {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: $darkSiteColor;
+      color: $veryLightSiteColor;
+      padding: 5px 5px 2px 5px;
+      -webkit-border-radius: 5px 0 0 0;
+      -moz-border-radius: 5px 0 0 0;
+      border-radius: 5px 0 0 0;
+    }
+    .notification-record
+    {
+      padding: 25px 0 50px 0;
+    }
+    .item-btn-container-table
+    {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      .editBtn,
+      .deleteBtn
+      {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $darkSiteColor;
+        color: $lightSiteColor;
+        font-size: 32px;
+        margin: 5px;
+        border: 1px solid transparent;
+        -webkit-transition: all ease-in-out .25s;
+        -moz-transition: all ease-in-out .25s;
+        -ms-transition: all ease-in-out .25s;
+        -o-transition: all ease-in-out .25s;
+        transition: all ease-in-out .25s;
+        cursor: pointer;
+      }
+      .editBtn:hover,
+      .deleteBtn:hover
+      {
+        background-color: $veryLightSiteColor;
+        color: $darkSiteColor;
+        border-color: $darkSiteColor;
+      }
+    }
   }
 }
 .delBtn,
@@ -268,32 +334,6 @@ $whiteSiteColor: #ffffff;
   color: $lightSiteColor;
   border: 1px solid $lightSiteColor;
 }
-.editBtn,
-.deleteBtn
-{
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $darkSiteColor;
-  color: $lightSiteColor;
-  font-size: 32px;
-  border: 1px solid transparent;
-  -webkit-transition: all ease-in-out .25s;
-  -moz-transition: all ease-in-out .25s;
-  -ms-transition: all ease-in-out .25s;
-  -o-transition: all ease-in-out .25s;
-  transition: all ease-in-out .25s;
-  cursor: pointer;
-}
-.editBtn:hover,
-.deleteBtn:hover
-{
-  background-color: $veryLightSiteColor;
-  color: $darkSiteColor;
-  border-color: $darkSiteColor;
-}
 h3, h1
 {
   color: $lightSiteColor;
@@ -305,17 +345,6 @@ h3, h1
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
-}
-.item-btn-container-table
-{
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-  div
-  {
-    //margin-left: 10px;
-  }
 }
 :host ::ng-deep .custom-toast .ui-toast-message-success {
   color: $darkSiteColor !important;
@@ -368,5 +397,17 @@ h3, h1
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+    .notifications-icon
+    {
+      display: none;
+    }
+    .notifications-text
+    {
+      width: 100%;
+    }
   }
+}
+@media screen and (max-width: 600px)
+{
+
 }

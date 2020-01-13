@@ -11,8 +11,9 @@
         <fa-icon [icon]="faBell"></fa-icon>
       </div>
       <div class="notifications-text">
-        {{notificationItem.notification}}
-        {{notificationItem.notification_date}}
+        <div class="notification-author">Комфорт-Дім</div>
+        <div class="notification-date">{{notificationItem.notification_date}}</div>
+        <div class="notification-record">{{notificationItem.notification}}</div>
         <div class="item-btn-container-table">
           <div class="editBtn" title="Редагувати" (click)="editNotification(notificationItem); showForm();">
             <fa-icon [icon]="faPencilAlt"></fa-icon>
