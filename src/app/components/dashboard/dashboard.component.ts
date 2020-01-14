@@ -75,9 +75,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isNewContactInfo: boolean;
   isNewServiceInfo: boolean;
 
-  isLoadingCompanyInfo: boolean;
-  isLoadingContactInfo: boolean;
-  isLoadingServiceInfo: boolean;
+  isLoadingCompanyInfo: boolean = false;
+  isLoadingContactInfo: boolean = false;
+  isLoadingServiceInfo: boolean = false;
 
   databaseKey: string;
   contactTypes: ContactTypes[];
@@ -235,6 +235,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           life: 4000
         });
       }, () => {
+        this.isLoadingCompanyInfo = true;
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
@@ -256,6 +257,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           life: 4000
         });
       }, () => {
+        this.isLoadingContactInfo = true;
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
@@ -269,7 +271,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getServiceSubscription = this.servicesService.getServiceInfo().subscribe(
       data => {
         this._service = data;
-        this.isNewServiceInfo = false;
+        this.isLoadingServiceInfo = false;
         this.messageService.add({
           severity: 'success',
           summary: 'Успішно Завантажено Послуги, Які Надає Компанія.',
@@ -277,6 +279,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           life: 4000
         });
       }, () => {
+        this.isLoadingServiceInfo = true;
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',

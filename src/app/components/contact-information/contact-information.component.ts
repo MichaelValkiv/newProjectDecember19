@@ -5,6 +5,7 @@ import { faMapMarkerAlt, faCreditCard, faPhone, faMobileAlt, faEnvelope, faCalen
 import { ContactsService } from '../../services/contacts.service';
 import { Contacts } from '../../models/contacts.model';
 import { Subscription } from 'rxjs/internal/Subscription';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-contact-information',
@@ -31,8 +32,11 @@ export class ContactInformationComponent implements OnInit, OnDestroy {
 
   contactsGetSubscription: Subscription;
 
+  isDataLoading: boolean = true;
+
   constructor( private pageTitle: PageTitleService,
                private metaService: Meta,
+               private messageService: MessageService,
                private contactsService: ContactsService ) { }
 
   ngOnInit() {
@@ -56,8 +60,21 @@ export class ContactInformationComponent implements OnInit, OnDestroy {
     this.contactsGetSubscription = this.contactsService.getContactInfo().subscribe(
       data => {
         this.allContacts = data;
+        this.isDataLoading = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Контактні Дані Компанії.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       }, () => {
-
+        this.isDataLoading = true;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       });
   }
 

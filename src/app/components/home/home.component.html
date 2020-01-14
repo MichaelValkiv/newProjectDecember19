@@ -1,3 +1,8 @@
+<div class="progressSpinnerBox" [hidden]="!isDataLoading">
+  <p-progressBar mode="indeterminate" [style]="{'height': '10px'}" class="progressBarStyle"></p-progressBar>
+</div>
+<p-toast styleClass="custom-toast" [showTransitionOptions]="'800ms ease-out'"
+         [hideTransitionOptions]="'800ms ease-out'"></p-toast>
 <div class="home-title transitionStyle">Коротка характеристика нашої компанії</div>
 
 <div class="home-container transitionStyle">

@@ -22,6 +22,13 @@ $whiteSiteColor: #ffffff;
   -o-transition: all ease-in-out .5s;
   transition: all ease-in-out .5s;
 }
+.progressSpinnerBox
+{
+  width: 100%;
+  position: fixed;
+  top: 65px;
+  left: 0;
+}
 .question-header
 {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -71,6 +78,23 @@ $whiteSiteColor: #ffffff;
 }
 :host ::ng-deep
 {
+  .progressBarStyle .ui-progressbar
+  {
+    background-color: $ultraLightSiteColor !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .progressBarStyle .ui-progressbar .ui-progressbar-label
+  {
+    color: $darkSiteColor !important;
+  }
+
+  .progressBarStyle .ui-progressbar .ui-progressbar-value
+  {
+    background: $darkSiteColor !important;
+  }
   .ui-dialog
   {
     font-family: 'Montserrat Alternates', sans-serif;
@@ -317,7 +341,7 @@ $whiteSiteColor: #ffffff;
         }
         .question-record
         {
-          padding: 25px 0 50px 0;
+          padding: 25px 0;
         }
         .item-btn-container-table
         {
@@ -332,13 +356,13 @@ $whiteSiteColor: #ffffff;
           .deleteBtn
           {
             width: 50px;
-            height: 50px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: $darkSiteColor;
             color: $lightSiteColor;
-            font-size: 32px;
+            font-size: 20px;
             margin: 5px;
             border: 1px solid transparent;
             -webkit-transition: all ease-in-out .25s;

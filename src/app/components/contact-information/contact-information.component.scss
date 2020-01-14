@@ -14,7 +14,59 @@ $whiteSiteColor: #ffffff;
   -o-transition: all ease-in-out .25s;
   transition: all ease-in-out .25s;
 }
+:host ::ng-deep .custom-toast .ui-toast-message-success {
+  color: $darkSiteColor !important;
+  background-color: $lightSiteColor !important;
+  border: 2px solid $darkSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error {
+  color: $lightSiteColor !important;
+  background-color: $darkSiteColor !important;
+  border: 2px solid $lightSiteColor !important;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+:host ::ng-deep .custom-toast .ui-toast-summary
+{
+  font-size: 20px !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-detail
+{
+  text-decoration-style: dotted !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-success .ui-toast-close-icon {
+  color: $darkSiteColor !important;
+}
+:host ::ng-deep .custom-toast .ui-toast-message-error .ui-toast-close-icon {
+  color: $lightSiteColor !important;
+}
+.progressSpinnerBox
+{
+  width: 100%;
+  position: fixed;
+  top: 65px;
+  left: 0;
+}
+:host ::ng-deep
+{
+  .progressBarStyle .ui-progressbar
+  {
+    background-color: $ultraLightSiteColor !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
 
+  .progressBarStyle .ui-progressbar .ui-progressbar-label
+  {
+    color: $darkSiteColor !important;
+  }
+
+  .progressBarStyle .ui-progressbar .ui-progressbar-value
+  {
+    background: $darkSiteColor !important;
+  }
+}
 .contact-container
 {
   width: 1400px;

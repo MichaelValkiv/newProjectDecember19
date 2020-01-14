@@ -5,6 +5,7 @@ import { faHome, faLongArrowAltUp, faLongArrowAltDown, faBuilding, faCity, faWar
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../models/company.model';
 import { Subscription } from 'rxjs/internal/Subscription';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -26,8 +27,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   companyGetSubscription: Subscription;
 
+  isDataLoading: boolean = true;
+
   constructor( private pageTitle: PageTitleService,
                private metaService: Meta,
+               private messageService: MessageService,
                private companyService: CompanyService ) { }
 
   ngOnInit() {
@@ -51,8 +55,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.companyGetSubscription = this.companyService.getCompanyInfo().subscribe(
       data => {
         this.companyCharacteristics = data;
+        this.isDataLoading = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Опис Компанії.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       }, () => {
-
+        this.isDataLoading = true;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       });
   }
 }

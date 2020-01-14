@@ -48,6 +48,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   putQuestionSubscription: Subscription;
   deleteQuestionSubscription: Subscription;
 
+  isDataLoading: boolean = true;
+
   constructor(private pageTitle: PageTitleService,
               private metaService: Meta,
               private questionsService: QuestionsService,
@@ -100,7 +102,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.getQuestionSubscription = this.questionsService.getQuestionInfo().subscribe(
       data => {
         this.allQuestions = data;
-        this.isLoadingQuestions = false;
+        this.isDataLoading = false;
         this.messageService.add({
           severity: 'success',
           summary: 'Успішно Завантажено Список Запитань Клієнтів.',
@@ -108,6 +110,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
           life: 4000
         });
       }, () => {
+        this.isDataLoading = true;
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',

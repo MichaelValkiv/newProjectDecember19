@@ -37,6 +37,8 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { DashboardCompanyComponent } from './components/dashboard-company/dashboard-company.component';
@@ -90,7 +92,9 @@ import { NotificationsService } from './services/notifications.service';
     DialogModule,
     DropdownModule,
     PanelModule,
-    ToastModule
+    ToastModule,
+    ProgressSpinnerModule,
+    ProgressBarModule
   ],
   exports: [
     MatSidenavModule,

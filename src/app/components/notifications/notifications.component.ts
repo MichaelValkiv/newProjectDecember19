@@ -35,6 +35,8 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   putNotificationSubscription: Subscription;
   deleteNotificationSubscription: Subscription;
 
+  isDataLoading: boolean = true;
+
   constructor( private pageTitle: PageTitleService,
                private metaService: Meta,
                private notificationsService: NotificationsService,
@@ -78,7 +80,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     this.getNotificationSubscription = this.notificationsService.getNotificationInfo().subscribe(
       data => {
         this.allNotifications = data;
-        this.isLoadingNotifications = false;
+        this.isDataLoading = false;
         this.messageService.add({
           severity: 'success',
           summary: 'Успішно Завантажено Список Оголошень.',
@@ -86,6 +88,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
           life: 4000
         });
       }, () => {
+        this.isDataLoading = true;
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',

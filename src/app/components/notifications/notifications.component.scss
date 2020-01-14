@@ -14,6 +14,13 @@ $whiteSiteColor: #ffffff;
   -o-transition: all ease-in-out .25s;
   transition: all ease-in-out .25s;
 }
+.progressSpinnerBox
+{
+  width: 100%;
+  position: fixed;
+  top: 65px;
+  left: 0;
+}
 .notifications-header
 {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -63,6 +70,23 @@ $whiteSiteColor: #ffffff;
 }
 :host ::ng-deep
 {
+  .progressBarStyle .ui-progressbar
+  {
+    background-color: $ultraLightSiteColor !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .progressBarStyle .ui-progressbar .ui-progressbar-label
+  {
+    color: $darkSiteColor !important;
+  }
+
+  .progressBarStyle .ui-progressbar .ui-progressbar-value
+  {
+    background: $darkSiteColor !important;
+  }
   .ui-dialog
   {
     font-family: 'Montserrat Alternates', sans-serif;

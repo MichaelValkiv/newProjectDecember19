@@ -19,6 +19,7 @@ import {
 import {ServicesService} from '../../services/services.service';
 import {Services} from '../../models/services.model';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-services',
@@ -45,8 +46,11 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   servicesGetSubscription: Subscription;
 
+  isDataLoading: boolean = true;
+
   constructor(private pageTitle: PageTitleService,
               private metaService: Meta,
+              private messageService: MessageService,
               private servicesService: ServicesService) {
   }
 
@@ -73,8 +77,21 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.servicesGetSubscription = this.servicesService.getServiceInfo().subscribe(
       data => {
         this.allServices = data;
+        this.isDataLoading = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Успішно Завантажено Послуги, Які Надає Компанія.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       }, () => {
-
+        this.isDataLoading = true;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Сталася Помилка. Сервер Не Відповідає.',
+          detail: 'Повідомлення від сервера Комфорт-Дім',
+          life: 4000
+        });
       });
   }
 
