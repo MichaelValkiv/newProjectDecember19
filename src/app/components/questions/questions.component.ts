@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PageTitleService } from '../../services/page-title.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {PageTitleService} from '../../services/page-title.service';
+import {Meta} from '@angular/platform-browser';
 import {
   faExclamationTriangle,
   faQuestionCircle,
@@ -7,23 +8,23 @@ import {
   faQuestion,
   faCheck,
   faTimes,
-  faPencilAlt, faTrashAlt, faCommentDots
+  faTrashAlt, faCommentDots
 } from '@fortawesome/free-solid-svg-icons';
-import { Questions } from '../../models/questions.model';
-import { QuestionsService } from '../../services/questions.service';
-import { MessageService } from 'primeng/api';
-import { AuthenticationService } from '../../services/authentication.service';
+import {Questions} from '../../models/questions.model';
+import {QuestionsService} from '../../services/questions.service';
+import {MessageService} from 'primeng/api';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, OnDestroy {
 
   faTimes = faTimes;
   faCheck = faCheck;
-  faPencilAlt = faPencilAlt;
   faTrashAlt = faTrashAlt;
   faExclamationTriangle = faExclamationTriangle;
   faQuestionCircle = faQuestionCircle;
@@ -42,15 +43,45 @@ export class QuestionsComponent implements OnInit {
   userFirstName: string = '';
   userLastName: string = '';
 
-  constructor( private pageTitle: PageTitleService,
-               private questionsService: QuestionsService,
-               private messageService: MessageService,
-               public authenticationService: AuthenticationService ) { }
+  getQuestionSubscription: Subscription;
+  postQuestionSubscription: Subscription;
+  putQuestionSubscription: Subscription;
+  deleteQuestionSubscription: Subscription;
+
+  constructor(private pageTitle: PageTitleService,
+              private metaService: Meta,
+              private questionsService: QuestionsService,
+              private messageService: MessageService,
+              public authenticationService: AuthenticationService) {
+  }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Запитання');
+    this.metaService.addTags([
+      {
+        name: 'keywords',
+        content: 'Комфорт-Дім, Запитання, Управляюча компанія, Калуш, Комфорт, Дім, Управляюча, Компанія, Комфорт-Дім Калуш, Комфорт-Дім Запитання'
+      },
+      {name: 'author', content: 'MVYV'},
+      {name: 'description', content: 'Комфорт-Дім - Запитання'}
+    ]);
     this.questionsGet();
     this.newOrEditedQuestion = new Questions();
+  }
+
+  ngOnDestroy() {
+    if (this.getQuestionSubscription) {
+      this.getQuestionSubscription.unsubscribe();
+    }
+    if (this.postQuestionSubscription) {
+      this.postQuestionSubscription.unsubscribe();
+    }
+    if (this.putQuestionSubscription) {
+      this.putQuestionSubscription.unsubscribe();
+    }
+    if (this.deleteQuestionSubscription) {
+      this.deleteQuestionSubscription.unsubscribe();
+    }
   }
 
   showForm() {
@@ -66,7 +97,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   questionsGet() {
-    this.questionsService.getQuestionInfo().subscribe(
+    this.getQuestionSubscription = this.questionsService.getQuestionInfo().subscribe(
       data => {
         this.allQuestions = data;
         this.isLoadingQuestions = false;
@@ -74,14 +105,14 @@ export class QuestionsComponent implements OnInit {
           severity: 'success',
           summary: 'Успішно Завантажено Список Запитань Клієнтів.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 4000
         });
       }, () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Сталася Помилка. Сервер Не Відповідає.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 4000
         });
       });
   }
@@ -110,13 +141,13 @@ export class QuestionsComponent implements OnInit {
       this.newOrEditedQuestion.question_author = this.userFirstName + ' ' + this.userLastName;
       this.newOrEditedQuestion.question_date = null;
       this.newOrEditedQuestion.answer = 'Поки що відповіді немає.';
-      this.questionsService.postQuestionInfo(this.newOrEditedQuestion).subscribe(
+      this.postQuestionSubscription = this.questionsService.postQuestionInfo(this.newOrEditedQuestion).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 4000
           });
           this.questionsGet();
         }, () => {
@@ -124,18 +155,18 @@ export class QuestionsComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 4000
           });
           this.questionsGet();
         });
     } else {
-      this.questionsService.putQuestionInfo(this.newOrEditedQuestion).subscribe(
+      this.putQuestionSubscription = this.questionsService.putQuestionInfo(this.newOrEditedQuestion).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Зміни Успішно Збережено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 4000
           });
           this.questionsGet();
         }, () => {
@@ -143,7 +174,7 @@ export class QuestionsComponent implements OnInit {
             severity: 'error',
             summary: 'Сталася Помилка. Зміни не внесено.',
             detail: 'Повідомлення від сервера Комфорт-Дім',
-            life: 7000
+            life: 4000
           });
           this.questionsGet();
         });
@@ -151,13 +182,13 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion() {
-    this.questionsService.deleteQuestionInfo(this.newOrEditedQuestion).subscribe(
+    this.deleteQuestionSubscription = this.questionsService.deleteQuestionInfo(this.newOrEditedQuestion).subscribe(
       () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Успішно Видалено.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 4000
         });
         this.questionsGet();
       }, () => {
@@ -165,7 +196,7 @@ export class QuestionsComponent implements OnInit {
           severity: 'error',
           summary: 'Сталася Помилка. Видалення Не Відбулося.',
           detail: 'Повідомлення від сервера Комфорт-Дім',
-          life: 7000
+          life: 4000
         });
         this.questionsGet();
       });

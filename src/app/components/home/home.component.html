@@ -18,53 +18,21 @@
     правил та Ваших побажань.
   </div>
 
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faHome"></fa-icon>
+  <div class="characteristic-items" *ngFor="let companyCharacteristic of companyCharacteristics">
+    <div class="home-info-item transitionStyle">
+      <div class="home-info-icon transitionStyle">
+        <fa-icon [icon]="faHome" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Будинків Загалом)'"></fa-icon>
+        <fa-icon [icon]="faBuilding" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Будинків З Ліфтами)'"></fa-icon>
+        <fa-icon [icon]="faLongArrowAltUp" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Ліфти)'"></fa-icon>
+        <fa-icon [icon]="faLongArrowAltDown" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Ліфти)'"></fa-icon>
+        <fa-icon [icon]="faCalculator" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Загальна Площа Будинків)'"></fa-icon>
+        <fa-icon [icon]="faCity" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Кількість Квартир Загалом)'"></fa-icon>
+        <fa-icon [icon]="faWarehouse" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Нежитлових Приміщень Загалом)'"></fa-icon>
+        <fa-icon [icon]="faMarker" *ngIf="companyCharacteristic.characteristic_type == 'Тип Характеристики (Загальна Характеристика)'"></fa-icon>
+      </div>
+      <div class="home-info-text transitionStyle">{{companyCharacteristic.characteristic}}</div>
+      <div class="home-info-value transitionStyle">{{companyCharacteristic.characteristic_value}}</div>
     </div>
-    <div class="home-info-text transitionStyle">Будинків на обслуговуванні</div>
-    <div class="home-info-value transitionStyle">85</div>
-  </div>
-
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faBuilding"></fa-icon>
-    </div>
-    <div class="home-info-text transitionStyle">В тому числі будинків з ліфтами</div>
-    <div class="home-info-value transitionStyle">35</div>
-  </div>
-
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faLongArrowAltUp"></fa-icon>
-      <fa-icon [icon]="faLongArrowAltDown"></fa-icon>
-    </div>
-    <div class="home-info-text transitionStyle">Кількість ліфтів</div>
-    <div class="home-info-value transitionStyle">109</div>
-  </div>
-
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faCalculator"></fa-icon>
-    </div>
-    <div class="home-info-text transitionStyle">Загальна площа будинків</div>
-    <div class="home-info-value transitionStyle">355 900 м<sup>2</sup></div>
-  </div>
-
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faCity"></fa-icon>
-    </div>
-    <div class="home-info-text transitionStyle">Кількість квартир в будинках</div>
-    <div class="home-info-value transitionStyle">6 868</div>
-  </div>
-
-  <div class="home-info-item transitionStyle">
-    <div class="home-info-icon transitionStyle">
-      <fa-icon [icon]="faWarehouse"></fa-icon>
-    </div>
-    <div class="home-info-text transitionStyle">Нежитлових приміщень</div>
-    <div class="home-info-value transitionStyle">146</div>
   </div>
 
 </div>

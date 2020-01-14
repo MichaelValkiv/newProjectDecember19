@@ -1,111 +1,26 @@
 <div class="services-title transitionStyle">Ми надаємо такі послуги:</div>
 
 <div class="services-container">
-  <div class="service-item">
+
+  <div class="service-item" *ngFor="let serviceRecord of allServices">
     <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faBroom"></fa-icon>
+      <fa-icon [icon]="faBroom" *ngIf="serviceRecord.service_type == 'Тип Послуги (Прибирання)'"></fa-icon>
+      <fa-icon [icon]="faBath" *ngIf="serviceRecord.service_type == 'Тип Послуги (Водопостачання)'"></fa-icon>
+      <fa-icon [icon]="faTint" *ngIf="serviceRecord.service_type == 'Тип Послуги (Водовідведення)'"></fa-icon>
+      <fa-icon [icon]="faTemperatureHigh" *ngIf="serviceRecord.service_type == 'Тип Послуги (Теплопостачання)'"></fa-icon>
+      <fa-icon [icon]="faBolt" *ngIf="serviceRecord.service_type == 'Тип Послуги (Електропостачання)'"></fa-icon>
+      <fa-icon [icon]="faWater" *ngIf="serviceRecord.service_type == 'Тип Послуги (Зливова Каналізація)'"></fa-icon>
+      <fa-icon [icon]="faHouseDamage" *ngIf="serviceRecord.service_type == 'Тип Послуги (Внутрішньоквартирні Мережі)'"></fa-icon>
+      <fa-icon [icon]="faWind" *ngIf="serviceRecord.service_type == 'Тип Послуги (Димовентиляційні Канали)'"></fa-icon>
+      <fa-icon [icon]="faHammer" *ngIf="serviceRecord.service_type == 'Тип Послуги (Технологічні Пристрої Будинків)'"></fa-icon>
+      <fa-icon [icon]="faTools" *ngIf="serviceRecord.service_type == 'Тип Послуги (Системи Диспетчеризації)'"></fa-icon>
+      <fa-icon [icon]="faLightbulb" *ngIf="serviceRecord.service_type == 'Тип Послуги (Освітлення)'"></fa-icon>
+      <fa-icon [icon]="faToolbox" *ngIf="serviceRecord.service_type == 'Тип Послуги (Обслуговування Ліфтів)'"></fa-icon>
+      <fa-icon [icon]="faBriefcase" *ngIf="serviceRecord.service_type == 'Тип Послуги (Загальний Тип Послуги)'"></fa-icon>
     </div>
     <div class="service-description transitionStyle">
-      Прибирання прибудинкової території, підвалів, технічних поверхів та покрівель.
+      {{serviceRecord.service_name}}
     </div>
   </div>
 
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faBath"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та ремонт внутрішньобудинкових систем холодного водопостачання.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faTint"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та ремонт внутрішньобудинкових систем водовідведення.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faTemperatureHigh"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та ремонт внутрішньобудинкових систем теплопостачання.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faBolt"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та ремонт внутрішньобудинкових систем електропостачання.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faWater"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та ремонт внутрішньобудинкових систем зливової каналізації.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faHouseDamage"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Ліквідація аварій у внутрішньоквартирних мережах.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faWind"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Обслуговування димовентиляційних каналів.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faHammer"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Поточний ремонт конструктивних елементів та технічних пристроїв будинків.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faTools"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Обслуговування систем диспетчеризації.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faLightbulb"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Освітлення місць загального користування.
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-icon transitionStyle">
-      <fa-icon [icon]="faToolbox"></fa-icon>
-    </div>
-    <div class="service-description transitionStyle">
-      Технічне обслуговування та енергопостачання ліфтів.
-    </div>
-  </div>
 </div>

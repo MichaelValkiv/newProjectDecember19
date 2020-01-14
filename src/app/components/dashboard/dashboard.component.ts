@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {PageTitleService} from '../../services/page-title.service';
-import {CompanyService} from '../../services/company.service';
-import {ContactsService} from '../../services/contacts.service';
-import {ServicesService} from '../../services/services.service';
-import {Company} from '../../models/company.model';
-import {SortOptions} from '../../models/sort_options.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageTitleService } from '../../services/page-title.service';
+import { CompanyService } from '../../services/company.service';
+import { ContactsService } from '../../services/contacts.service';
+import { ServicesService } from '../../services/services.service';
+import { Company } from '../../models/company.model';
+import { SortOptions } from '../../models/sort_options.model';
 import {
   faPencilAlt,
   faTrashAlt,
@@ -14,9 +14,10 @@ import {
   faCheck,
   faTimes
 } from '@fortawesome/free-solid-svg-icons';
-import {Contacts} from '../../models/contacts.model';
-import {Services} from '../../models/services.model';
-import {MessageService} from 'primeng/api';
+import { Contacts } from '../../models/contacts.model';
+import { Services } from '../../models/services.model';
+import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 interface ContactTypes {
   name: string;
@@ -39,7 +40,7 @@ interface CharacteristicTypes {
   styleUrls: ['./dashboard.component.scss']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   faPencilAlt = faPencilAlt;
   faTrashAlt = faTrashAlt;
@@ -86,6 +87,22 @@ export class DashboardComponent implements OnInit {
   selectedService: any;
   selectedCharacteristic: any;
 
+  getCompanySubscription: Subscription;
+  getContactSubscription: Subscription;
+  getServiceSubscription: Subscription;
+
+  postCompanySubscription: Subscription;
+  postContactSubscription: Subscription;
+  postServiceSubscription: Subscription;
+
+  putCompanySubscription: Subscription;
+  putContactSubscription: Subscription;
+  putServiceSubscription: Subscription;
+
+  deleteCompanySubscription: Subscription;
+  deleteContactSubscription: Subscription;
+  deleteServiceSubscription: Subscription;
+
   constructor(private pageTitle: PageTitleService,
               private companyService: CompanyService,
               private contactsService: ContactsService,
@@ -99,7 +116,12 @@ export class DashboardComponent implements OnInit {
       {name: 'Контактна Інформація Компанії (Мобільний номер)', value: 'company_contact_mobile'},
       {name: 'Контактна Інформація Компанії (Електронна Пошта)', value: 'company_contact_email'},
       {name: 'Графік Роботи Компанії', value: 'company_schedule'},
-      {name: 'Телефони Диспетчерських Служб', value: 'company_phones'}
+      {name: 'Графік Роботи Компанії (Обід)', value: 'company_schedule_dinner'},
+      {name: 'Графік Роботи Компанії (Вихідні)', value: 'company_schedule_weekend'},
+      {name: 'Телефони Диспетчерських Служб', value: 'company_phones'},
+      {name: 'Телефони Диспетчерських Служб (Сантехніки)', value: 'company_phones'},
+      {name: 'Телефони Диспетчерських Служб (Електромонтери)', value: 'company_phones'},
+      {name: 'Загальний Контактний Запис', value: 'company_default'}
     ];
     this.serviceTypes = [
       {name: 'Тип Послуги (Прибирання)', value: 'cleaning'},
@@ -114,6 +136,7 @@ export class DashboardComponent implements OnInit {
       {name: 'Тип Послуги (Системи Диспетчеризації)', value: 'dispatching_systems'},
       {name: 'Тип Послуги (Освітлення)', value: 'lighting'},
       {name: 'Тип Послуги (Обслуговування Ліфтів)', value: 'elevator_service'},
+      {name: 'Тип Послуги (Загальний Тип Послуги)', value: 'default_service'}
     ];
     this.characteristicTypes = [
       {name: 'Тип Характеристики (Будинків Загалом)', value: 'all_houses'},
@@ -122,6 +145,7 @@ export class DashboardComponent implements OnInit {
       {name: 'Тип Характеристики (Загальна Площа Будинків)', value: 'overall_area'},
       {name: 'Тип Характеристики (Кількість Квартир Загалом)', value: 'number_of_apartments'},
       {name: 'Тип Характеристики (Нежитлових Приміщень Загалом)', value: 'warehouses'},
+      {name: 'Тип Характеристики (Загальна Характеристика)', value: 'default'}
     ];
 
   }
@@ -160,6 +184,24 @@ export class DashboardComponent implements OnInit {
     this.newOrEditedServiceInfo = new Services();
   }
 
+  ngOnDestroy() {
+    if (this.getCompanySubscription) { this.getCompanySubscription.unsubscribe(); }
+    if (this.getContactSubscription) { this.getContactSubscription.unsubscribe(); }
+    if (this.getServiceSubscription) { this.getServiceSubscription.unsubscribe(); }
+
+    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
+    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
+    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
+
+    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
+    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
+    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
+
+    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
+    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
+    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
+  }
+
   showCompanyForm() {
     this.displayCompanyForm = true;
   }
@@ -182,7 +224,7 @@ export class DashboardComponent implements OnInit {
   }
 
   companyInfoGet() {
-    this.companyService.getCompanyInfo().subscribe(
+    this.getCompanySubscription = this.companyService.getCompanyInfo().subscribe(
       data => {
         this.company = data;
         this.isLoadingCompanyInfo = false;
@@ -203,7 +245,7 @@ export class DashboardComponent implements OnInit {
   }
 
   contactInfoGet() {
-    this.contactsService.getContactInfo().subscribe(
+    this.getContactSubscription = this.contactsService.getContactInfo().subscribe(
       data => {
         this.contact = data;
         this.isLoadingContactInfo = false;
@@ -224,7 +266,7 @@ export class DashboardComponent implements OnInit {
   }
 
   serviceInfoGet() {
-    this.servicesService.getServiceInfo().subscribe(
+    this.getServiceSubscription = this.servicesService.getServiceInfo().subscribe(
       data => {
         this._service = data;
         this.isNewServiceInfo = false;
@@ -294,7 +336,7 @@ export class DashboardComponent implements OnInit {
     if (this.isNewCompanyInfo) {
       this.newOrEditedCompanyInfo.id = null;
       this.newOrEditedCompanyInfo.characteristic_type = this.selectedCharacteristic.name;
-      this.companyService.postCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
+      this.postCompanySubscription = this.companyService.postCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -314,7 +356,7 @@ export class DashboardComponent implements OnInit {
         });
     } else {
       this.newOrEditedCompanyInfo.characteristic_type = this.selectedCharacteristic.name;
-      this.companyService.putCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
+      this.putCompanySubscription = this.companyService.putCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -339,7 +381,7 @@ export class DashboardComponent implements OnInit {
     if (this.isNewContactInfo) {
       this.newOrEditedContactInfo.id = null;
       this.newOrEditedContactInfo.contact_type = this.selectedContact.name;
-      this.contactsService.postContactInfo(this.newOrEditedContactInfo).subscribe(
+      this.postContactSubscription = this.contactsService.postContactInfo(this.newOrEditedContactInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -359,7 +401,7 @@ export class DashboardComponent implements OnInit {
         });
     } else {
       this.newOrEditedContactInfo.contact_type = this.selectedContact.name;
-      this.contactsService.putContactInfo(this.newOrEditedContactInfo).subscribe(
+      this.putContactSubscription = this.contactsService.putContactInfo(this.newOrEditedContactInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -384,7 +426,7 @@ export class DashboardComponent implements OnInit {
     if (this.isNewServiceInfo) {
       this.newOrEditedServiceInfo.id = null;
       this.newOrEditedServiceInfo.service_type = this.selectedService.name;
-      this.servicesService.postServiceInfo(this.newOrEditedServiceInfo).subscribe(
+      this.postServiceSubscription = this.servicesService.postServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -404,7 +446,7 @@ export class DashboardComponent implements OnInit {
         });
     } else {
       this.newOrEditedServiceInfo.service_type = this.selectedService.name;
-      this.servicesService.putServiceInfo(this.newOrEditedServiceInfo).subscribe(
+      this.putServiceSubscription = this.servicesService.putServiceInfo(this.newOrEditedServiceInfo).subscribe(
         () => {
           this.messageService.add({
             severity: 'success',
@@ -426,7 +468,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteCompanyInfo() {
-    this.companyService.deleteCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
+    this.deleteCompanySubscription = this.companyService.deleteCompanyInfo(this.newOrEditedCompanyInfo).subscribe(
       () => {
         this.messageService.add({
           severity: 'success',
@@ -447,7 +489,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteContactInfo() {
-    this.contactsService.deleteContactInfo(this.newOrEditedContactInfo).subscribe(
+    this.deleteContactSubscription = this.contactsService.deleteContactInfo(this.newOrEditedContactInfo).subscribe(
       () => {
         this.messageService.add({
           severity: 'success',
@@ -468,7 +510,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteServiceInfo() {
-    this.servicesService.deleteServiceInfo(this.newOrEditedServiceInfo).subscribe(
+    this.deleteServiceSubscription = this.servicesService.deleteServiceInfo(this.newOrEditedServiceInfo).subscribe(
       () => {
         this.messageService.add({
           severity: 'success',

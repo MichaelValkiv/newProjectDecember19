@@ -1,83 +1,63 @@
 <div class="contact-container transitionStyle">
+
   <div class="contact-title transitionStyle">
     Товариство з обмеженою відповідальністю<br>"Управляюча компанія "Комфорт-Дім"
   </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faIdCard"></fa-icon>
+
+  <div class="allContacts1" *ngFor="let contactRecord of allContacts">
+    <div class="contact-info-item transitionStyle"
+         *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Державні Реєстри)' ||
+                contactRecord.contact_type == 'Контактна Інформація Компанії (Адреса)' ||
+                contactRecord.contact_type == 'Контактна Інформація Компанії (Банківські Реквізити)' ||
+                contactRecord.contact_type == 'Контактна Інформація Компанії (Стаціонарний Телефон)' ||
+                contactRecord.contact_type == 'Контактна Інформація Компанії (Мобільний номер)' ||
+                contactRecord.contact_type == 'Контактна Інформація Компанії (Електронна Пошта)'">
+      <div class="contact-info-icon transitionStyle">
+        <fa-icon [icon]="faIdCard" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Державні Реєстри)'"></fa-icon>
+        <fa-icon [icon]="faMapMarkerAlt" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Адреса)'"></fa-icon>
+        <fa-icon [icon]="faCreditCard" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Банківські Реквізити)'"></fa-icon>
+        <fa-icon [icon]="faPhone" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Стаціонарний Телефон)'"></fa-icon>
+        <fa-icon [icon]="faMobileAlt" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Мобільний номер)'"></fa-icon>
+        <fa-icon [icon]="faEnvelope" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Електронна Пошта)'"></fa-icon>
+        <fa-icon [icon]="faAddressBook" *ngIf="contactRecord.contact_type == 'Загальний Контактний Запис'"></fa-icon>
+      </div>
+      <div class="contact-info-text transitionStyle">{{contactRecord.contact}}</div>
     </div>
-    <div class="contact-info-text transitionStyle">ЄДРПОУ 42192504</div>
   </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">77300 Україна, Івано-Франківська обл., м. Калуш, вул. Грушевського 54</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle credit-card">
-      <fa-icon [icon]="faCreditCard"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle bank-number">АТ КБ "Приватбанк" МФО 336677<br>p/p UA443366770000026008052536451</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faPhone"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">+380 (3472) 6-08-63</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faMobileAlt"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">+380 (99) 035-66-60</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faMobileAlt"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">+380 (50) 677-89-48</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faEnvelope"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">komfortdim2018@ukr.net</div>
-  </div>
+
   <div class="contact-title transitionStyle">
     Графік роботи
   </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faCalendarAlt"></fa-icon>
+
+  <div class="allContacts1" *ngFor="let contactRecord of allContacts">
+    <div class="contact-info-item transitionStyle"
+         *ngIf="contactRecord.contact_type == 'Графік Роботи Компанії' ||
+                contactRecord.contact_type == 'Графік Роботи Компанії (Обід)' ||
+                contactRecord.contact_type == 'Графік Роботи Компанії (Вихідні)'">
+      <div class="contact-info-icon transitionStyle">
+        <fa-icon [icon]="faCalendarAlt" *ngIf="contactRecord.contact_type == 'Графік Роботи Компанії'"></fa-icon>
+        <fa-icon [icon]="faMugHot" *ngIf="contactRecord.contact_type == 'Графік Роботи Компанії (Обід)'"></fa-icon>
+        <fa-icon [icon]="faWindowClose" *ngIf="contactRecord.contact_type == 'Графік Роботи Компанії (Вихідні)'"></fa-icon>
+      </div>
+      <div class="contact-info-text transitionStyle">{{contactRecord.contact}}</div>
     </div>
-    <div class="contact-info-text transitionStyle">З понеділка по п'ятницю з 8:00 до 17:00</div>
   </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faMugHot"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">Обід з 12:00 до 13:00</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faWindowClose"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">Вихідні: субота, неділя</div>
-  </div>
+
   <div class="contact-title transitionStyle">
     Телефони диспетчерської служби при аваріях у вихідні дні, та до 8:00 і після 17:00 в робочі дні
   </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faTint"></fa-icon>
+
+  <div class="allContacts1" *ngFor="let contactRecord of allContacts">
+    <div class="contact-info-item transitionStyle"
+         *ngIf="contactRecord.contact_type == 'Телефони Диспетчерських Служб' ||
+                contactRecord.contact_type == 'Телефони Диспетчерських Служб (Сантехніки)' ||
+                contactRecord.contact_type == 'Телефони Диспетчерських Служб (Електромонтери)'">
+      <div class="contact-info-icon transitionStyle">
+        <fa-icon [icon]="faPhoneVolume" *ngIf="contactRecord.contact_type == 'Телефони Диспетчерських Служб'"></fa-icon>
+        <fa-icon [icon]="faTint" *ngIf="contactRecord.contact_type == 'Телефони Диспетчерських Служб (Сантехніки)'"></fa-icon>
+        <fa-icon [icon]="faBolt" *ngIf="contactRecord.contact_type == 'Телефони Диспетчерських Служб (Електромонтери)'"></fa-icon>
+      </div>
+      <div class="contact-info-text transitionStyle">{{contactRecord.contact}}</div>
     </div>
-    <div class="contact-info-text transitionStyle">сантехніки: +380 (95) 334-21-37</div>
-  </div>
-  <div class="contact-info-item transitionStyle">
-    <div class="contact-info-icon transitionStyle">
-      <fa-icon [icon]="faBolt"></fa-icon>
-    </div>
-    <div class="contact-info-text transitionStyle">електромонтери: +380 (66) 423-12-87</div>
   </div>
 </div>
