@@ -62,7 +62,8 @@ export class ContactInformationComponent implements OnInit, OnDestroy {
         content: 'Комфорт-Дім, Контактні Дані, Управляюча компанія, Калуш, Комфорт, Дім, Управляюча, Компанія, Комфорт-Дім Калуш, Комфорт-Дім Контактні Дані, УК Комфорт-Дім, УК Калуш, Управляюча Компанія Калуш, УК'
       },
       {name: 'author', content: 'MVYV'},
-      {name: 'description', content: 'Комфорт-Дім - Запитання'}
+      {name: 'description', content: 'Комфорт-Дім - Запитання'},
+      {name: 'robots', content: 'index, follow'}
     ]);
     this.getAllContacts();
   }
