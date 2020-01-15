@@ -70,6 +70,7 @@ $whiteSiteColor: #ffffff;
 .contact-container
 {
   width: 1400px;
+  min-height: calc(100vh - 64px);
   margin: 0 auto;
 }
 .contact-title

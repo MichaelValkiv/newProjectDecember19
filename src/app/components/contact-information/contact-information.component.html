@@ -17,7 +17,7 @@
                 contactRecord.contact_type == 'Контактна Інформація Компанії (Стаціонарний Телефон)' ||
                 contactRecord.contact_type == 'Контактна Інформація Компанії (Мобільний номер)' ||
                 contactRecord.contact_type == 'Контактна Інформація Компанії (Електронна Пошта)'">
-      <div class="contact-info-icon transitionStyle">
+      <div class="contact-info-icon transitionStyle" [ngClass]="{'credit-card': contactRecord.contact_type == 'Контактна Інформація Компанії (Банківські Реквізити)'}">
         <fa-icon [icon]="faIdCard" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Державні Реєстри)'"></fa-icon>
         <fa-icon [icon]="faMapMarkerAlt" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Адреса)'"></fa-icon>
         <fa-icon [icon]="faCreditCard" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Банківські Реквізити)'"></fa-icon>
@@ -26,7 +26,7 @@
         <fa-icon [icon]="faEnvelope" *ngIf="contactRecord.contact_type == 'Контактна Інформація Компанії (Електронна Пошта)'"></fa-icon>
         <fa-icon [icon]="faAddressBook" *ngIf="contactRecord.contact_type == 'Загальний Контактний Запис'"></fa-icon>
       </div>
-      <div class="contact-info-text transitionStyle">{{contactRecord.contact}}</div>
+      <div class="contact-info-text transitionStyle" [ngClass]="{'bank-number': contactRecord.contact_type == 'Контактна Інформація Компанії (Банківські Реквізити)'}">{{contactRecord.contact}}</div>
     </div>
   </div>
 

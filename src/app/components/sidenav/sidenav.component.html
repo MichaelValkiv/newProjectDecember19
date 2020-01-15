@@ -19,13 +19,17 @@
     <fa-icon [icon]="faBell"></fa-icon>
     <span class="nav-caption">Оголошення</span>
   </a>
-  <a mat-list-item routerLink="/dashboard" class="side-nav-item" (click)="onSideNavClose();">
+  <a mat-list-item routerLink="/dashboard" class="side-nav-item" (click)="onSideNavClose();" *ngIf="authenticationService.isLoggedIn();">
     <fa-icon [icon]="faCog"></fa-icon>
     <span class="nav-caption">Адміністрування</span>
   </a>
-  <a mat-list-item routerLink="/notifications" class="side-nav-item" (click)="onSideNavClose();">
+  <a mat-list-item routerLink="/login" class="side-nav-item" (click)="onSideNavClose();" *ngIf="!authenticationService.isLoggedIn();">
     <fa-icon [icon]="faSignInAlt"></fa-icon>
     <span class="nav-caption">Вхід</span>
+  </a>
+  <a mat-list-item routerLink="/logout" class="side-nav-item" (click)="onSideNavClose();" *ngIf="authenticationService.isLoggedIn();">
+    <fa-icon [icon]="faSignOutAlt"></fa-icon>
+    <span class="nav-caption">Вихід</span>
   </a>
   <div class="site-name">
     <img src="assets/images/logo_transparent.png" height="40">

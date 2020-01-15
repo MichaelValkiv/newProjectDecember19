@@ -19,7 +19,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AboutComponent } from './components/about/about.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -41,8 +40,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import { DashboardCompanyComponent } from './components/dashboard-company/dashboard-company.component';
-import { DashboardServicesComponent } from './components/dashboard-services/dashboard-services.component';
 import { MessageService } from 'primeng/api';
 import { ContactsService } from './services/contacts.service';
 import { ServicesService } from './services/services.service';
@@ -60,13 +57,10 @@ import { NotificationsService } from './services/notifications.service';
     LoginComponent,
     LogoutComponent,
     PageNotFoundComponent,
-    AboutComponent,
     QuestionsComponent,
     NotificationsComponent,
     ServicesComponent,
-    DashboardComponent,
-    DashboardCompanyComponent,
-    DashboardServicesComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

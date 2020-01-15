@@ -1,10 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PageTitleService } from '../../services/page-title.service';
-import { Meta } from '@angular/platform-browser';
-import { faMapMarkerAlt, faCreditCard, faPhone, faMobileAlt, faEnvelope, faCalendarAlt, faMugHot, faWindowClose, faTint, faBolt, faIdCard, faAddressBook, faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
-import { ContactsService } from '../../services/contacts.service';
-import { Contacts } from '../../models/contacts.model';
-import { Subscription } from 'rxjs/internal/Subscription';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {PageTitleService} from '../../services/page-title.service';
+import {Meta} from '@angular/platform-browser';
+import {
+  faMapMarkerAlt,
+  faCreditCard,
+  faPhone,
+  faMobileAlt,
+  faEnvelope,
+  faCalendarAlt,
+  faMugHot,
+  faWindowClose,
+  faTint,
+  faBolt,
+  faIdCard,
+  faAddressBook,
+  faPhoneVolume
+} from '@fortawesome/free-solid-svg-icons';
+import {ContactsService} from '../../services/contacts.service';
+import {Contacts} from '../../models/contacts.model';
+import {Subscription} from 'rxjs/internal/Subscription';
 import {MessageService} from 'primeng/api';
 
 @Component({
@@ -34,17 +48,18 @@ export class ContactInformationComponent implements OnInit, OnDestroy {
 
   isDataLoading: boolean = true;
 
-  constructor( private pageTitle: PageTitleService,
-               private metaService: Meta,
-               private messageService: MessageService,
-               private contactsService: ContactsService ) { }
+  constructor(private pageTitle: PageTitleService,
+              private metaService: Meta,
+              private messageService: MessageService,
+              private contactsService: ContactsService) {
+  }
 
   ngOnInit() {
     this.pageTitle.setTitle('Комфорт-Дім - Контактна Інформація');
     this.metaService.addTags([
       {
         name: 'keywords',
-        content: 'Комфорт-Дім, Контактні Дані, Управляюча компанія, Калуш, Комфорт, Дім, Управляюча, Компанія, Комфорт-Дім Калуш, Комфорт-Дім Контактні Дані'
+        content: 'Комфорт-Дім, Контактні Дані, Управляюча компанія, Калуш, Комфорт, Дім, Управляюча, Компанія, Комфорт-Дім Калуш, Комфорт-Дім Контактні Дані, УК Комфорт-Дім, УК Калуш, Управляюча Компанія Калуш, УК'
       },
       {name: 'author', content: 'MVYV'},
       {name: 'description', content: 'Комфорт-Дім - Запитання'}
@@ -53,7 +68,9 @@ export class ContactInformationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.contactsGetSubscription) { this.contactsGetSubscription.unsubscribe(); }
+    if (this.contactsGetSubscription) {
+      this.contactsGetSubscription.unsubscribe();
+    }
   }
 
   getAllContacts() {

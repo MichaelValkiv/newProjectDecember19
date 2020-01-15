@@ -89,6 +89,7 @@ $whiteSiteColor: #ffffff;
 .home-container
 {
   width: 1400px;
+  min-height: calc(100vh - 64px);
   margin: 0 auto;
 }
 .about-company
@@ -331,7 +332,7 @@ $whiteSiteColor: #ffffff;
     }
     .home-info-value
     {
-      font-size: 50px;
+      font-size: 44px;
     }
   }
 }
@@ -363,7 +364,7 @@ $whiteSiteColor: #ffffff;
     }
     .home-info-value
     {
-      font-size: 45px;
+      font-size: 40px;
     }
   }
 }

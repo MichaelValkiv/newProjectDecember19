@@ -99,7 +99,7 @@
         </div>
       </div>
       <button *ngIf="isNewQuestion" pButton type="button" label="Запитати"
-              (click)="addOrModifyQuestion(); displayForm = false;" [disabled]="!questionForm.valid"></button>
+              (click)="addOrModifyQuestion(); displayForm = false;" [disabled]="!questionForm.valid"></button><br>
       <button *ngIf="!isNewQuestion" pButton type="button" label="Відповісти"
               (click)="addOrModifyQuestion(); displayForm = false;"></button>
       <button pButton type="button" label="Скасувати" (click)="displayForm = false;"></button>

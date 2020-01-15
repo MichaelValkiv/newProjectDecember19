@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faInfoCircle, faFileSignature, faSignInAlt, faSignOutAlt, faCogs, faQuestionCircle, faBell, faUsers, faTools, faWrench, faCog } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +23,7 @@ export class SidenavComponent implements OnInit {
 
   @Output() public sideNavClose = new EventEmitter();
 
-  constructor() { }
+  constructor( public authenticationService: AuthenticationService ) { }
 
   ngOnInit() {
   }

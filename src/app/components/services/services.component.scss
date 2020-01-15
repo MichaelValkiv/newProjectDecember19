@@ -90,6 +90,7 @@ $whiteSiteColor: #ffffff;
 .services-container
 {
   width: 1400px;
+  min-height: calc(100vh - 64px);
   margin: 0 auto 20px;
   display: flex;
   flex-flow: row wrap;

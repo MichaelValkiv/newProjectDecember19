@@ -156,7 +156,7 @@ $whiteSiteColor: #ffffff;
   }
   form
   {
-    width: 50%;
+    width: 75%;
     text-align: center;
     span.ui-float-label
     {
@@ -244,7 +244,7 @@ $whiteSiteColor: #ffffff;
     button
     {
       margin: 25px 10px 10px 10px;
-      width: calc(50% - 20px);
+      width: calc(75% - 20px);
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;
@@ -318,7 +318,7 @@ $whiteSiteColor: #ffffff;
     }
     .notification-record
     {
-      padding: 25px 0 50px 0;
+      padding: 25px 0;
     }
     .item-btn-container-table
     {
@@ -333,13 +333,13 @@ $whiteSiteColor: #ffffff;
       .deleteBtn
       {
         width: 50px;
-        height: 50px;
+        height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: $darkSiteColor;
         color: $lightSiteColor;
-        font-size: 32px;
+        font-size: 20px;
         margin: 5px;
         border: 1px solid transparent;
         -webkit-transition: all ease-in-out .25s;
@@ -455,5 +455,13 @@ h3, h1
 }
 @media screen and (max-width: 600px)
 {
-
+  .showFormBtn
+  {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    top: 65px;
+    left: 5px;
+    border: 1px solid $lightSiteColor;
+  }
 }

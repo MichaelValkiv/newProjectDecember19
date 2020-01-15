@@ -354,7 +354,7 @@ $whiteSiteColor: #ffffff;
   }
   form
   {
-    width: 75%;
+    width: 100%;
     text-align: center;
     span.ui-float-label
     {
@@ -459,13 +459,13 @@ $whiteSiteColor: #ffffff;
     }
     button
     {
-      margin: 25px 10px 10px 10px;
-      width: calc(50% - 20px);
+      margin: 25px 5px 10px 5px;
+      width: calc(50% - 10px);
       background-color: $darkSiteColor;
       border-color: $darkSiteColor;
       font-family: 'Montserrat Alternates', sans-serif;
       color: $ultraLightSiteColor;
-      font-size: 16px;
+      font-size: 15px;
     }
     button:focus
     {

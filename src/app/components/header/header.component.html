@@ -40,12 +40,6 @@
           <span class="nav-text">Оголошення</span>
         </a>
       </li>
-      <!--<li>-->
-        <!--<a routerLink="/about" class="nav-link">-->
-          <!--<fa-icon [icon]="faUsers"></fa-icon>-->
-          <!--Про Нас-->
-        <!--</a>-->
-      <!--</li>-->
       <li *ngIf="authenticationService.isLoggedIn();">
         <a routerLink="/dashboard" class="nav-link-icon">
           <fa-icon [icon]="faCog"></fa-icon>

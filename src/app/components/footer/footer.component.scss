@@ -111,6 +111,16 @@ $whiteSiteColor: #ffffff;
     flex-flow: row wrap;
     align-content: center;
     justify-content: center;
+    div.order-site
+    {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      color: $darkSiteColor;
+      margin: 0 10px;
+    }
     a
     {
       display: flex;
