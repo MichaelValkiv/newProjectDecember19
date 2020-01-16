@@ -1,7 +1,1 @@
-{
-  "/komfort_dim_backend/*": {
-    "target": "http://localhost",
-    "secure": false,
-    "logLevel": "debug"
-  }
-}
+

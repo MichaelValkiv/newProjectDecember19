@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Questions } from '../models/questions.model';
 
@@ -8,30 +8,22 @@ import { Questions } from '../models/questions.model';
 })
 export class QuestionsService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-  };
-
   constructor( private http: HttpClient ) { }
 
   public getQuestionInfo(): Observable<Questions[]> {
-    return this.http.get<Questions[]>('/komfort_dim_backend/question_get.php', this.httpOptions);
+    return this.http.get<Questions[]>('https://komfortdimphp.herokuapp.com/question_get.php');
   }
 
   public postQuestionInfo(newInfo: Questions): Observable<Questions> {
-    return this.http.post<Questions>('/komfort_dim_backend/question_post.php', newInfo, this.httpOptions);
+    return this.http.post<Questions>('https://komfortdimphp.herokuapp.com/question_post.php', newInfo);
   }
 
   public putQuestionInfo(editedInfo: Questions): Observable<Questions> {
-    return this.http.put<Questions>('/komfort_dim_backend/question_put.php', editedInfo, this.httpOptions);
+    return this.http.put<Questions>('https://komfortdimphp.herokuapp.com/question_put.php', editedInfo);
   }
 
   public deleteQuestionInfo(deletedInfo: Questions): Observable<Questions> {
-    return this.http.get<Questions>(`/komfort_dim_backend/question_delete.php/?id=${deletedInfo.id}`, this.httpOptions);
+    return this.http.get<Questions>(`https://komfortdimphp.herokuapp.com/question_delete.php/?id=${deletedInfo.id}`);
   }
 
 }

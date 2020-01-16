@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contacts } from '../models/contacts.model';
 
@@ -8,29 +8,21 @@ import { Contacts } from '../models/contacts.model';
 })
 export class ContactsService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-  };
-
   constructor( private http: HttpClient ) { }
 
   public getContactInfo(): Observable<Contacts[]> {
-    return this.http.get<Contacts[]>('/komfort_dim_backend/contact_get.php', this.httpOptions);
+    return this.http.get<Contacts[]>('https://komfortdimphp.herokuapp.com/contact_get.php');
   }
 
   public postContactInfo(newInfo: Contacts): Observable<Contacts> {
-    return this.http.post<Contacts>('/komfort_dim_backend/contact_post.php', newInfo, this.httpOptions);
+    return this.http.post<Contacts>('https://komfortdimphp.herokuapp.com/contact_post.php', newInfo);
   }
 
   public putContactInfo(editedInfo: Contacts): Observable<Contacts> {
-    return this.http.put<Contacts>('/komfort_dim_backend/contact_put.php', editedInfo, this.httpOptions);
+    return this.http.put<Contacts>('https://komfortdimphp.herokuapp.com/contact_put.php', editedInfo);
   }
 
   public deleteContactInfo(deletedInfo: Contacts): Observable<Contacts> {
-    return this.http.get<Contacts>(`/komfort_dim_backend/contact_delete.php/?id=${deletedInfo.id}`, this.httpOptions);
+    return this.http.get<Contacts>(`https://komfortdimphp.herokuapp.com/contact_delete.php/?id=${deletedInfo.id}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Notifications } from '../models/notifications.model';
 
@@ -8,30 +8,22 @@ import { Notifications } from '../models/notifications.model';
 })
 export class NotificationsService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-  };
-
   constructor( private http: HttpClient ) { }
 
   public getNotificationInfo(): Observable<Notifications[]> {
-    return this.http.get<Notifications[]>('/komfort_dim_backend/notification_get.php', this.httpOptions);
+    return this.http.get<Notifications[]>('https://komfortdimphp.herokuapp.com/notification_get.php');
   }
 
   public postNotificationInfo(newInfo: Notifications): Observable<Notifications> {
-    return this.http.post<Notifications>('/komfort_dim_backend/notification_post.php', newInfo, this.httpOptions);
+    return this.http.post<Notifications>('https://komfortdimphp.herokuapp.com/notification_post.php', newInfo);
   }
 
   public putNotificationInfo(editedInfo: Notifications): Observable<Notifications> {
-    return this.http.put<Notifications>('/komfort_dim_backend/notification_put.php', editedInfo, this.httpOptions);
+    return this.http.put<Notifications>('https://komfortdimphp.herokuapp.com/notification_put.php', editedInfo);
   }
 
   public deleteNotificationInfo(deletedInfo: Notifications): Observable<Notifications> {
-    return this.http.get<Notifications>(`/komfort_dim_backend/notification_delete.php/?id=${deletedInfo.id}`, this.httpOptions);
+    return this.http.get<Notifications>(`https://komfortdimphp.herokuapp.com/notification_delete.php/?id=${deletedInfo.id}`);
   }
 
 }
