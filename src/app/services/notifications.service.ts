@@ -11,19 +11,19 @@ export class NotificationsService {
   constructor( private http: HttpClient ) { }
 
   public getNotificationInfo(): Observable<Notifications[]> {
-    return this.http.get<Notifications[]>('https://komfortdimphp.herokuapp.com/notification_get.php');
+    return this.http.get<Notifications[]>('/notification_get.php');
   }
 
   public postNotificationInfo(newInfo: Notifications): Observable<Notifications> {
-    return this.http.post<Notifications>('https://komfortdimphp.herokuapp.com/notification_post.php', newInfo);
+    return this.http.post<Notifications>('/notification_post.php', newInfo);
   }
 
   public putNotificationInfo(editedInfo: Notifications): Observable<Notifications> {
-    return this.http.put<Notifications>('https://komfortdimphp.herokuapp.com/notification_put.php', editedInfo);
+    return this.http.put<Notifications>('/notification_put.php', editedInfo);
   }
 
   public deleteNotificationInfo(deletedInfo: Notifications): Observable<Notifications> {
-    return this.http.get<Notifications>(`https://komfortdimphp.herokuapp.com/notification_delete.php/?id=${deletedInfo.id}`);
+    return this.http.get<Notifications>(`/notification_delete.php/?id=${deletedInfo.id}`);
   }
 
 }

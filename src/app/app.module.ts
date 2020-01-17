@@ -45,6 +45,7 @@ import { ContactsService } from './services/contacts.service';
 import { ServicesService } from './services/services.service';
 import { QuestionsService } from './services/questions.service';
 import { NotificationsService } from './services/notifications.service';
+import { HttpUrlInterceptorService } from './services/http-url-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,7 @@ import { NotificationsService } from './services/notifications.service';
     NotificationsService,
     MessageService,
     {
-      provide: HTTP_INTERCEPTORS, useClass: AuthenticationHttpInterceptorService, multi: true
+      provide: HTTP_INTERCEPTORS, useClass: HttpUrlInterceptorService, multi: true
     },
   ],
   bootstrap: [AppComponent]

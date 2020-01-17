@@ -189,17 +189,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (this.getContactSubscription) { this.getContactSubscription.unsubscribe(); }
     if (this.getServiceSubscription) { this.getServiceSubscription.unsubscribe(); }
 
-    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
-    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
-    if (this.postCompanySubscription) { this.postServiceSubscription.unsubscribe(); }
+    if (this.postCompanySubscription) { this.postCompanySubscription.unsubscribe(); }
+    if (this.postContactSubscription) { this.postContactSubscription.unsubscribe(); }
+    if (this.postServiceSubscription) { this.postServiceSubscription.unsubscribe(); }
 
-    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
-    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
-    if (this.putCompanySubscription) { this.putServiceSubscription.unsubscribe(); }
+    if (this.putCompanySubscription) { this.putCompanySubscription.unsubscribe(); }
+    if (this.putContactSubscription) { this.putContactSubscription.unsubscribe(); }
+    if (this.putServiceSubscription) { this.putServiceSubscription.unsubscribe(); }
 
-    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
-    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
-    if (this.deleteCompanySubscription) { this.deleteServiceSubscription.unsubscribe(); }
+    if (this.deleteCompanySubscription) { this.deleteCompanySubscription.unsubscribe(); }
+    if (this.deleteContactSubscription) { this.deleteContactSubscription.unsubscribe(); }
+    if (this.deleteServiceSubscription) { this.deleteServiceSubscription.unsubscribe(); }
   }
 
   showCompanyForm() {

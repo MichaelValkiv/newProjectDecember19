@@ -11,19 +11,19 @@ export class QuestionsService {
   constructor( private http: HttpClient ) { }
 
   public getQuestionInfo(): Observable<Questions[]> {
-    return this.http.get<Questions[]>('https://komfortdimphp.herokuapp.com/question_get.php');
+    return this.http.get<Questions[]>('/question_get.php');
   }
 
   public postQuestionInfo(newInfo: Questions): Observable<Questions> {
-    return this.http.post<Questions>('https://komfortdimphp.herokuapp.com/question_post.php', newInfo);
+    return this.http.post<Questions>('/question_post.php', newInfo);
   }
 
   public putQuestionInfo(editedInfo: Questions): Observable<Questions> {
-    return this.http.put<Questions>('https://komfortdimphp.herokuapp.com/question_put.php', editedInfo);
+    return this.http.put<Questions>('/question_put.php', editedInfo);
   }
 
   public deleteQuestionInfo(deletedInfo: Questions): Observable<Questions> {
-    return this.http.get<Questions>(`https://komfortdimphp.herokuapp.com/question_delete.php/?id=${deletedInfo.id}`);
+    return this.http.get<Questions>(`/question_delete.php/?id=${deletedInfo.id}`);
   }
 
 }
