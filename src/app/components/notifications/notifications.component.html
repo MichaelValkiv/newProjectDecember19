@@ -2,7 +2,8 @@
   <p-progressBar mode="indeterminate" [style]="{'height': '10px'}" class="progressBarStyle"></p-progressBar>
 </div>
 <div class="notifications-header">Оголошення від "Комфорт-Дім"</div>
-<div *ngIf="authenticationService.isLoggedIn();" (click)="showForm(); addNewNotification();" class="showFormBtn transitionStyle" id="showFormBtn" title="Додати Оголошення">
+<div *ngIf="authenticationService.isLoggedIn();" (click)="showForm(); addNewNotification();"
+     class="showFormBtn transitionStyle" id="showFormBtn" title="Додати Оголошення">
   <fa-icon [icon]="faBell" class=""></fa-icon>
 </div>
 <p-toast styleClass="custom-toast" [showTransitionOptions]="'800ms ease-out'"
@@ -35,7 +36,8 @@
 </div>
 
 
-<p-dialog header="Форма для оголошень" [(visible)]="displayForm" [responsive]="true" [maximizable]="true" [minY]="70" [focusOnShow]="false" [baseZIndex]="10000">
+<p-dialog header="Форма для оголошень" [(visible)]="displayForm" [responsive]="true" [maximizable]="true" [minY]="70"
+          [modal]="true" [blockScroll]="true" [appendTo]="'body'" [focusOnShow]="false" [baseZIndex]="10000">
   <div class="question-form" id="questionForm" #questionForm>
     <div class="question-form-title">
       Введіть текст оголошення в полі нижче.
@@ -44,7 +46,8 @@
     </div>
     <form autocomplete="off" #notificationForm="ngForm">
       <span class="ui-float-label">
-          <textarea id="question-textarea" pInputTextarea name="notificationText" [(ngModel)]="newOrEditedNotification.notification" required></textarea>
+          <textarea id="question-textarea" pInputTextarea name="notificationText"
+                    [(ngModel)]="newOrEditedNotification.notification" required></textarea>
           <label for="question-textarea">Текст Оголошення</label>
           <fa-icon [icon]="faBell" class="transitionStyle"></fa-icon>
       </span>
@@ -54,14 +57,17 @@
           Заповніть Всі Поля
         </div>
       </div>
-      <button pButton type="button" label="Опублікувати" (click)="addOrModifyNotification(); displayForm = false;" [disabled]="!notificationForm.valid"></button><br>
+      <button pButton type="button" label="Опублікувати" (click)="addOrModifyNotification(); displayForm = false;"
+              [disabled]="!notificationForm.valid"></button>
+      <br>
       <button pButton type="button" label="Скасувати" (click)="displayForm = false;"></button>
     </form>
   </div>
 </p-dialog>
 
 
-<p-dialog header="Підтвердіть видалення елемента" [(visible)]="displayDeleteDialog" [responsive]="true" [focusOnShow]="false"
+<p-dialog header="Підтвердіть видалення елемента" [(visible)]="displayDeleteDialog" [responsive]="true"
+          [focusOnShow]="false"
           [maximizable]="false" [modal]="true" [blockScroll]="true" [appendTo]="'body'" [minY]="70"
           [baseZIndex]="10000">
   <div class="deleteDialogBox">

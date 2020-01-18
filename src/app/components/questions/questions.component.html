@@ -44,6 +44,7 @@
 </div>
 
 <p-dialog header="Комфорт-Дім" [(visible)]="displayForm" [responsive]="true" [maximizable]="true" [minY]="70"
+          [modal]="true" [blockScroll]="true" [appendTo]="'body'"
           [focusOnShow]="false" [baseZIndex]="10000">
   <div class="question-form" id="questionForm" #questionForm>
     <div class="question-form-title" *ngIf="!authenticationService.isLoggedIn();">
@@ -55,7 +56,7 @@
     <div class="question-form-title" *ngIf="!isNewQuestion && authenticationService.isLoggedIn();">Запитання Від
       {{newOrEditedQuestion.question_author}}
     </div>
-    <div class="question-form-title" *ngIf="isNewQuestion && authenticationService.isLoggedIn();">Ви Адміністратор.
+    <div class="question-form-title" *ngIf="isNewQuestion && authenticationService.isLoggedIn();">Ви Адмін.
       Хочете Поставити Собі Запитання?
     </div>
     <div class="question-line">
@@ -99,7 +100,8 @@
         </div>
       </div>
       <button *ngIf="isNewQuestion" pButton type="button" label="Запитати"
-              (click)="addOrModifyQuestion(); displayForm = false;" [disabled]="!questionForm.valid"></button><br>
+              (click)="addOrModifyQuestion(); displayForm = false;" [disabled]="!questionForm.valid"></button>
+      <br>
       <button *ngIf="!isNewQuestion" pButton type="button" label="Відповісти"
               (click)="addOrModifyQuestion(); displayForm = false;"></button>
       <button pButton type="button" label="Скасувати" (click)="displayForm = false;"></button>

@@ -55,6 +55,7 @@ $whiteSiteColor: #ffffff;
   font-size: 30px;
   cursor: pointer;
   border: 1px solid transparent;
+  z-index: 1000;
 }
 .showFormBtn:hover
 {
@@ -432,6 +433,19 @@ h3, h1
     width: 1000px;
   }
 }
+@media screen and (max-width: 1170px)
+{
+  .showFormBtn
+  {
+    position: fixed;
+    top: 16px;
+    left: auto;
+    right: 225px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+}
 @media screen and (max-width: 1050px)
 {
   .notifications-container
@@ -457,11 +471,17 @@ h3, h1
 {
   .showFormBtn
   {
-    width: 30px;
-    height: 30px;
+    position: fixed;
+    top: 13px;
+    left: auto;
+    right: 10px;
     font-size: 20px;
-    top: 65px;
-    left: 5px;
-    border: 1px solid $lightSiteColor;
+  }
+  .question-form
+  {
+    form
+    {
+      width: 100%;
+    }
   }
 }
