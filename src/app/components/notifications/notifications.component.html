@@ -74,8 +74,8 @@
     <div class="deletion-icon">
       <fa-icon [icon]="faExclamationTriangle" class="transitionStyle"></fa-icon>
     </div>
-    <h1>Справді видалити цю характеристику компанії?<br><br><span
-      class="selectedDeletion"></span></h1>
+    <h1>Справді видалити це оголошення?<br><br><span
+      class="selectedDeletion">{{newOrEditedNotification.notification}}</span></h1>
     <div class="btn-container">
       <div class="delBtn transitionStyle" title="Видалити"
            (click)="deleteNotification(); hideDeleteDialog();">

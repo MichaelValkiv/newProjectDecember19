@@ -419,6 +419,13 @@ h3, h1
 :host ::ng-deep .custom-toast .ui-toast-message-error .ui-toast-close-icon {
   color: $lightSiteColor !important;
 }
+.selectedDeletion
+{
+  font-size: 32px;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: $ultraLightSiteColor;
+}
 @media screen and (max-width: 1450px)
 {
   .notifications-container
