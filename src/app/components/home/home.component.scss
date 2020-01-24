@@ -214,6 +214,11 @@ $whiteSiteColor: #ffffff;
   .about-company
   {
     width: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   .home-title
   {
@@ -263,6 +268,13 @@ $whiteSiteColor: #ffffff;
     {
       font-size: 75px;
     }
+  }
+}
+@media screen and (max-width: 600px)
+{
+  .home-title
+  {
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 570px)
@@ -338,17 +350,15 @@ $whiteSiteColor: #ffffff;
 }
 @media screen and (max-width: 370px)
 {
-  .home-title
+  .about-company
   {
-    font-size: 28px;
+    font-size: 20px;
+    padding: 15px 10px 10px 10px;
+    line-height: 30px;
   }
 }
 @media screen and (max-width: 340px)
 {
-  .home-title
-  {
-    font-size: 24px;
-  }
   .home-info-item
   {
     .home-info-icon

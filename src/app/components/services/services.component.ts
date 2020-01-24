@@ -62,8 +62,9 @@ export class ServicesComponent implements OnInit, OnDestroy {
         content: 'Комфорт-Дім, Послуги, Управляюча компанія, Калуш, Комфорт, Дім, Управляюча, Компанія, Комфорт-Дім Калуш, Комфорт-Дім Послуги, УК Комфорт-Дім, УК Калуш, Управляюча Компанія Калуш, УК'
       },
       {name: 'author', content: 'MVYV'},
-      {name: 'description', content: 'Комфорт-Дім - Запитання'},
-      {name: 'robots', content: 'index, follow'}
+      {name: 'description', content: 'Комфорт-Дім - Послуги'},
+      {name: 'robots', content: 'index, follow'},
+      {name: 'googlebot', content: 'index, follow'}
     ]);
     this.getAllServices();
   }

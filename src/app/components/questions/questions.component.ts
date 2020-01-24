@@ -66,7 +66,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       },
       {name: 'author', content: 'MVYV'},
       {name: 'description', content: 'Комфорт-Дім - Запитання'},
-      {name: 'robots', content: 'index, follow'}
+      {name: 'robots', content: 'index, follow'},
+      {name: 'googlebot', content: 'index, follow'}
     ]);
     this.questionsGet();
     this.newOrEditedQuestion = new Questions();

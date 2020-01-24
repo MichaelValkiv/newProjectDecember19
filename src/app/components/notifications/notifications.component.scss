@@ -464,6 +464,18 @@ h3, h1
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
+@media screen and (max-width: 600px)
+{
+  .notifications-header
+  {
+    font-size: 20px;
+  }
+  .notifications-item
+  {
     .notifications-icon
     {
       display: none;
@@ -471,11 +483,9 @@ h3, h1
     .notifications-text
     {
       width: 100%;
+      font-size: 16px;
     }
   }
-}
-@media screen and (max-width: 600px)
-{
   .showFormBtn
   {
     position: fixed;
@@ -490,5 +500,25 @@ h3, h1
     {
       width: 100%;
     }
+  }
+}
+@media screen and (max-width: 450px)
+{
+  .notifications-item
+  {
+    .notifications-text
+    {
+      font-size: 14px;
+    }
+  }
+}
+@media screen and (max-width: 330px)
+{
+  .showFormBtn
+  {
+    top: 19px;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
   }
 }

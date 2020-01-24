@@ -175,9 +175,14 @@ $whiteSiteColor: #ffffff;
 }
 @media screen and (max-width: 600px)
 {
+  .services-title
+  {
+    font-size: 20px;
+  }
   .service-item
   {
-    width: calc(100% - 20px);
+    width: 100%;
+    margin: 10px 0;
     .service-description
     {
       font-size: 18px;
