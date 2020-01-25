@@ -84,7 +84,8 @@
       <span class="ui-float-label">
           <textarea id="question-textarea" pInputTextarea name="userQuestion" [(ngModel)]="newOrEditedQuestion.question"
                     [disabled]="!isNewQuestion" required></textarea>
-          <label for="question-textarea">Ваше Запитання</label>
+          <label *ngIf="isNewQuestion" for="question-textarea">Ваше Запитання</label>
+          <label *ngIf="!isNewQuestion" for="question-textarea">Запитання</label>
           <fa-icon [icon]="faQuestion" class="transitionStyle"></fa-icon>
       </span>
       <span class="ui-float-label" *ngIf="!isNewQuestion">

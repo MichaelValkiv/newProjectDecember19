@@ -147,6 +147,19 @@ $whiteSiteColor: #ffffff;
     }
   }
 }
+@media screen and (max-width: 990px)
+{
+  .footer
+  {
+    .footer-info
+    {
+      .footer-logo
+      {
+        margin-right: 0;
+      }
+    }
+  }
+}
 @media screen and (max-width: 510px)
 {
   .footer
