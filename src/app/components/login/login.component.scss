@@ -115,6 +115,10 @@ $whiteSiteColor: #ffffff;
       color: $lightSiteColor;
       font-size: 16px;
     }
+    button:disabled
+    {
+      cursor: not-allowed;
+    }
     button:focus
     {
       -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
