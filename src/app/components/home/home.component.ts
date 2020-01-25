@@ -5,7 +5,7 @@ import { faHome, faLongArrowAltUp, faLongArrowAltDown, faBuilding, faCity, faWar
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../models/company.model';
 import { Subscription } from 'rxjs/internal/Subscription';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-home',

@@ -78,12 +78,10 @@ $whiteSiteColor: #ffffff;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
   }
-
   .progressBarStyle .ui-progressbar .ui-progressbar-label
   {
     color: $darkSiteColor !important;
   }
-
   .progressBarStyle .ui-progressbar .ui-progressbar-value
   {
     background: $darkSiteColor !important;
@@ -252,12 +250,6 @@ $whiteSiteColor: #ffffff;
       color: $ultraLightSiteColor;
       font-size: 16px;
     }
-    button:focus
-    {
-      //-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
-      //-moz-box-shadow:    0 0 5px 0 rgba(0, 0, 0, 1);
-      //box-shadow:         0 0 5px 0 rgba(0, 0, 0, 1);
-    }
     button:disabled
     {
       cursor: not-allowed;
@@ -277,7 +269,6 @@ $whiteSiteColor: #ffffff;
   .notifications-icon
   {
     width: 100px;
-    //height: 100px;
     font-size: 50px;
     background-color: $darkSiteColor;
     color: $lightSiteColor;

@@ -6,7 +6,6 @@
 <div class="services-title transitionStyle">Ми надаємо такі послуги:</div>
 
 <div class="services-container">
-
   <div class="service-item" *ngFor="let serviceRecord of allServices">
     <div class="service-icon transitionStyle">
       <fa-icon [icon]="faBroom" *ngIf="serviceRecord.service_type == 'Тип Послуги (Прибирання)'"></fa-icon>
@@ -27,5 +26,4 @@
       {{serviceRecord.service_name}}
     </div>
   </div>
-
 </div>

@@ -157,8 +157,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.serviceInfoGet();
 
     this.companySortOptions = [
-      // {label: 'Найбільше значення', value: '!characteristic_value'},
-      // {label: 'Найменше Значення', value: 'characteristic_value'},
       {label: 'Назва [ А-Я ]', value: 'characteristic'},
       {label: 'Назва [ Я-А ]', value: '!characteristic'},
       {label: 'Тип Характеристики [ А-Я ]', value: 'characteristic_type'},
@@ -545,9 +543,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.sortField = value;
     }
   }
-
-  clear() {
-    this.messageService.clear();
-  }
-
 }

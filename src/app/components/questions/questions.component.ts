@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {PageTitleService} from '../../services/page-title.service';
-import {Meta} from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageTitleService } from '../../services/page-title.service';
+import  {Meta } from '@angular/platform-browser';
 import {
   faExclamationTriangle,
   faQuestionCircle,
@@ -10,11 +10,11 @@ import {
   faTimes,
   faTrashAlt, faCommentDots
 } from '@fortawesome/free-solid-svg-icons';
-import {Questions} from '../../models/questions.model';
-import {QuestionsService} from '../../services/questions.service';
-import {MessageService} from 'primeng/api';
-import {AuthenticationService} from '../../services/authentication.service';
-import {Subscription} from 'rxjs/internal/Subscription';
+import { Questions } from '../../models/questions.model';
+import { QuestionsService } from '../../services/questions.service';
+import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-questions',
@@ -38,7 +38,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   allQuestions: Questions[];
   newOrEditedQuestion: Questions;
   isNewQuestion: boolean;
-  isLoadingQuestions: boolean;
 
   userFirstName: string = '';
   userLastName: string = '';

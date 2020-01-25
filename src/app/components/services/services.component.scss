@@ -86,7 +86,6 @@ $whiteSiteColor: #ffffff;
   -ms-user-select: none;
   user-select: none;
 }
-
 .services-container
 {
   width: 1400px;
@@ -127,9 +126,7 @@ $whiteSiteColor: #ffffff;
     align-items: center;
     justify-content: center;
   }
-
 }
-
 @media screen and (max-width: 1450px)
 {
   .services-container
@@ -137,7 +134,6 @@ $whiteSiteColor: #ffffff;
     width: 1200px;
   }
 }
-
 @media screen and (max-width: 1250px)
 {
   .services-title

@@ -14,11 +14,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   faUser = faUser;
   faKey = faKey;
-
   username = '';
   password = '';
   invalidLogin = false;
-
   authSubscription: Subscription;
 
   constructor( private router: Router,
@@ -45,5 +43,4 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     ));
   }
-
 }

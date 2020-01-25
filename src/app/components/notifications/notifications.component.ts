@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageTitleService } from '../../services/page-title.service';
 import { Meta } from '@angular/platform-browser';
-import {faBell, faTimes, faCheck, faExclamationTriangle, faPencilAlt, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import { faBell, faTimes, faCheck, faExclamationTriangle, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Notifications } from '../../models/notifications.model';
 import { NotificationsService } from '../../services/notifications.service';
 import { MessageService } from 'primeng/api';
@@ -28,7 +28,6 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   allNotifications: Notifications[];
   newOrEditedNotification: Notifications;
   isNewNotification: boolean;
-  isLoadingNotifications: boolean;
 
   getNotificationSubscription: Subscription;
   postNotificationSubscription: Subscription;

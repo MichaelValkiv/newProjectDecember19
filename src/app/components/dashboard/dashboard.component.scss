@@ -25,7 +25,6 @@ $whiteSiteColor: #ffffff;
   .ui-tabview
   {
     font-family: 'Montserrat Alternates', sans-serif;
-    //background-color: transparent !important;
     background-color: rgba(255, 188, 73, .8) !important;
   }
   ul.ui-tabview-nav
@@ -70,13 +69,8 @@ $whiteSiteColor: #ffffff;
   {
     font-family: 'Montserrat Alternates', sans-serif;
   }
-  .ui-datawiev
-  {
-
-  }
   .ui-dataview-header
   {
-    //background-color: $veryLightSiteColor !important;
     background-color: transparent !important;
     border-color: $darkSiteColor !important;
     border-bottom: 1px solid $darkSiteColor !important;
@@ -85,7 +79,6 @@ $whiteSiteColor: #ffffff;
   .ui-dataview-content
   {
     font-family: 'Montserrat Alternates', sans-serif;
-    //background-color: rgba(255, 188, 73, .8) !important;
     background-color: transparent !important;
     border-color: $darkSiteColor !important;
     margin: 15px 0 !important;
@@ -160,8 +153,8 @@ $whiteSiteColor: #ffffff;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
   }
-  .ui-button:active  {
-
+  .ui-button:active
+  {
     outline: none !important;
   }
   .ui-button-icon-left
@@ -524,10 +517,6 @@ h3, h1
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
-  div
-  {
-    //margin-left: 10px;
-  }
 }
 .delBtn,
 .cancelBtn
@@ -580,7 +569,6 @@ h3, h1
 {
   border-bottom: 1px solid $darkSiteColor;
 }
-
 @media screen and (max-width: 500px)
 {
   .addBtn

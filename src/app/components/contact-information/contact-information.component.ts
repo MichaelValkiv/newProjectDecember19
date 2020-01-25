@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {PageTitleService} from '../../services/page-title.service';
-import {Meta} from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageTitleService } from '../../services/page-title.service';
+import { Meta } from '@angular/platform-browser';
 import {
   faMapMarkerAlt,
   faCreditCard,
@@ -16,10 +16,10 @@ import {
   faAddressBook,
   faPhoneVolume
 } from '@fortawesome/free-solid-svg-icons';
-import {ContactsService} from '../../services/contacts.service';
-import {Contacts} from '../../models/contacts.model';
-import {Subscription} from 'rxjs/internal/Subscription';
-import {MessageService} from 'primeng/api';
+import { ContactsService } from '../../services/contacts.service';
+import { Contacts } from '../../models/contacts.model';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact-information',

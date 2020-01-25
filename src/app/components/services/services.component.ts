@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {PageTitleService} from '../../services/page-title.service';
-import {Meta} from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageTitleService } from '../../services/page-title.service';
+import { Meta } from '@angular/platform-browser';
 import {
   faBroom,
   faHouseDamage,
@@ -16,10 +16,10 @@ import {
   faTint,
   faBriefcase
 } from '@fortawesome/free-solid-svg-icons';
-import {ServicesService} from '../../services/services.service';
-import {Services} from '../../models/services.model';
-import {Subscription} from 'rxjs/internal/Subscription';
-import {MessageService} from 'primeng/api';
+import { ServicesService } from '../../services/services.service';
+import { Services } from '../../models/services.model';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-services',

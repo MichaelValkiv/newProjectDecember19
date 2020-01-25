@@ -132,7 +132,6 @@ $whiteSiteColor: #ffffff;
     padding: 20px;
   }
 }
-
 @media screen and (max-width: 1450px)
 {
   .contact-container
@@ -187,21 +186,10 @@ $whiteSiteColor: #ffffff;
     }
   }
 }
-@media screen and (max-width: 830px)
-{
-  .contact-info-item
-  {
-    .contact-info-text
-    {
-
-    }
-  }
-}
 @media screen and (max-width: 800px)
 {
   .contact-info-item
   {
-
     .contact-info-icon.credit-card
     {
       width: 100%;
