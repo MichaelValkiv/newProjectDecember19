@@ -30,3 +30,10 @@ mat-sidenav-content
   background-size: auto 100vh;
   background-attachment: fixed;
 }
+@media screen and (max-width: 800px)
+{
+  mat-sidenav-content
+  {
+    background-image: url('/assets/backgrounds/city-main-background.png');
+  }
+}
