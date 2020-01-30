@@ -36,6 +36,27 @@ export class NotificationsComponent implements OnInit, OnDestroy {
 
   isDataLoading: boolean = true;
 
+  quillEditorStyle = {
+    height: '400px',
+    fontFamily: 'Montserrat Alternates'
+  };
+
+  quillEditorConfig = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ 'header': 1 }, { 'header': 2 }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'align': [] }],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['clean'],
+    ]
+  };
+
   constructor( private pageTitle: PageTitleService,
                private metaService: Meta,
                private notificationsService: NotificationsService,

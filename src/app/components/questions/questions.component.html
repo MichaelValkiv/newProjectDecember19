@@ -17,7 +17,7 @@
         <div class="question-text">
           <div class="question-author">{{questionItem.question_author}}</div>
           <div class="question-date">{{questionItem.question_date}}</div>
-          <div class="question-record">{{questionItem.question}}</div>
+          <div class="question-record" [innerHtml]="questionItem.question | safeHtml"></div>
           <div *ngIf="authenticationService.isLoggedIn();" class="item-btn-container-table">
             <div class="editBtn" title="Відповісти" (click)="editQuestion(questionItem); showForm();">
               <fa-icon [icon]="faCommentDots"></fa-icon>
@@ -36,7 +36,7 @@
         <div class="answer-text">
           <div class="answer-author">Комфорт-Дім</div>
           <div class="answer-date">{{questionItem.answer_date}}</div>
-          <div class="answer-record">{{questionItem.answer}}</div>
+          <div class="answer-record" [innerHtml]="questionItem.answer | safeHtml"></div>
         </div>
       </div>
     </div>
@@ -51,13 +51,13 @@
       Маєте запитання?<br>
       Заповніть форму і ми вам відповімо.
     </div>
-    <div class="question-form-title" *ngIf="!isNewQuestion && authenticationService.isLoggedIn();">Форма Для Відповіді
+    <div class="question-form-title" *ngIf="!isNewQuestion && authenticationService.isLoggedIn();">Форма для відповіді
     </div>
-    <div class="question-form-title" *ngIf="!isNewQuestion && authenticationService.isLoggedIn();">Запитання Від
+    <div class="question-form-title" *ngIf="!isNewQuestion && authenticationService.isLoggedIn();">Запитання від
       {{newOrEditedQuestion.question_author}}
     </div>
-    <div class="question-form-title" *ngIf="isNewQuestion && authenticationService.isLoggedIn();">Ви Адмін.
-      Хочете Поставити Собі Запитання?
+    <div class="question-form-title" *ngIf="isNewQuestion && authenticationService.isLoggedIn();">Ви адмін.
+      Хочете поставити собі запитання?
     </div>
     <div class="question-line">
     </div>
@@ -80,24 +80,21 @@
                  [disabled]="!isNewQuestion" pattern="[А-ЯІЇЄҐ]([А-ЯІЇЄҐ]*[а-яіїєґ]*[\' -]?)+" required>
           <label for="float-input-last-name">Прізвище</label>
           <fa-icon [icon]="faUser" class="transitionStyle"></fa-icon>
-        </span>
-      <span class="ui-float-label">
-          <textarea id="question-textarea" pInputTextarea name="userQuestion" [(ngModel)]="newOrEditedQuestion.question"
-                    [disabled]="!isNewQuestion" required></textarea>
-          <label *ngIf="isNewQuestion" for="question-textarea">Ваше Запитання</label>
-          <label *ngIf="!isNewQuestion" for="question-textarea">Запитання</label>
-          <fa-icon [icon]="faQuestion" class="transitionStyle"></fa-icon>
       </span>
-      <span class="ui-float-label" *ngIf="!isNewQuestion">
-          <textarea id="question-textarea-answer" pInputTextarea name="userAnswer"
-                    [(ngModel)]="newOrEditedQuestion.answer" required></textarea>
-          <label for="question-textarea-answer">Відповідь на запитання</label>
-          <fa-icon [icon]="faCommentDots" class="transitionStyle"></fa-icon>
-      </span>
+      <br>
+      <quill-editor name="userQuestion" #userQuestion="ngModel" [(ngModel)]="newOrEditedQuestion.question"
+                    *ngIf="isNewQuestion" placeholder="Запитання" [styles]="quillEditorStyle"
+                    [modules]="quillEditorConfig" required>
+      </quill-editor>
+      <div *ngIf="!isNewQuestion" [innerHtml]="newOrEditedQuestion.question | safeHtml"></div>
+      <br>
+      <quill-editor *ngIf="!isNewQuestion" name="userAnswer" #userAnswer="ngModel"
+                    [(ngModel)]="newOrEditedQuestion.answer" [styles]="quillEditorStyle"
+                    [modules]="quillEditorConfig" placeholder="Відповідь на запитання" required></quill-editor>
       <div class="form-alert" [hidden]="questionForm.valid">
         <div>
           <fa-icon [icon]="faExclamationTriangle"></fa-icon>
-          Заповніть Всі Поля Коректно.
+          Заповніть всі поля поректно.
         </div>
       </div>
       <button *ngIf="isNewQuestion" pButton type="button" label="Запитати"
@@ -118,8 +115,7 @@
     <div class="deletion-icon">
       <fa-icon [icon]="faExclamationTriangle" class="transitionStyle"></fa-icon>
     </div>
-    <h1>Справді видалити це запитання?<br><br><span
-      class="selectedDeletion">{{newOrEditedQuestion.question}}</span></h1>
+    <h1>Справді видалити це запитання?</h1>
     <div class="btn-container">
       <div class="delBtn transitionStyle" title="Видалити"
            (click)="deleteQuestion(); hideDeleteDialog();">

@@ -47,6 +47,9 @@ import { QuestionsService } from './services/questions.service';
 import { NotificationsService } from './services/notifications.service';
 import { HttpUrlInterceptorService } from './services/http-url-interceptor.service';
 
+import { QuillModule } from 'ngx-quill';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +64,8 @@ import { HttpUrlInterceptorService } from './services/http-url-interceptor.servi
     QuestionsComponent,
     NotificationsComponent,
     ServicesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -89,7 +93,8 @@ import { HttpUrlInterceptorService } from './services/http-url-interceptor.servi
     PanelModule,
     ToastModule,
     ProgressSpinnerModule,
-    ProgressBarModule
+    ProgressBarModule,
+    QuillModule.forRoot()
   ],
   exports: [
     MatSidenavModule,

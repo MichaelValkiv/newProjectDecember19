@@ -17,7 +17,7 @@
       <div class="notifications-text">
         <div class="notification-author">Комфорт-Дім</div>
         <div class="notification-date">{{notificationItem.notification_date}}</div>
-        <div class="notification-record">{{notificationItem.notification}}</div>
+        <div class="notification-record" [innerHtml]="notificationItem.notification | safeHtml"></div>
         <div *ngIf="authenticationService.isLoggedIn();" class="item-btn-container-table">
           <div class="editBtn" title="Редагувати" (click)="editNotification(notificationItem); showForm();">
             <fa-icon [icon]="faPencilAlt"></fa-icon>
@@ -41,12 +41,9 @@
     <div class="question-line">
     </div>
     <form autocomplete="off" #notificationForm="ngForm">
-      <span class="ui-float-label">
-          <textarea id="question-textarea" pInputTextarea name="notificationText"
-                    [(ngModel)]="newOrEditedNotification.notification" required></textarea>
-          <label for="question-textarea">Текст Оголошення</label>
-          <fa-icon [icon]="faBell" class="transitionStyle"></fa-icon>
-      </span>
+      <quill-editor name="notificationText" #notificationText="ngModel"
+                    [(ngModel)]="newOrEditedNotification.notification" [styles]="quillEditorStyle"
+                    [modules]="quillEditorConfig" placeholder="Введіть оголошення тут" required></quill-editor>
       <div class="form-alert" [hidden]="notificationForm.valid">
         <div>
           <fa-icon [icon]="faExclamationTriangle"></fa-icon>
@@ -69,8 +66,7 @@
     <div class="deletion-icon">
       <fa-icon [icon]="faExclamationTriangle" class="transitionStyle"></fa-icon>
     </div>
-    <h1>Справді видалити це оголошення?<br><br><span
-      class="selectedDeletion">{{newOrEditedNotification.notification}}</span></h1>
+    <h1>Справді видалити оголошення?</h1>
     <div class="btn-container">
       <div class="delBtn transitionStyle" title="Видалити"
            (click)="deleteNotification(); hideDeleteDialog();">
