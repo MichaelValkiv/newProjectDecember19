@@ -83,7 +83,7 @@
       </span>
       <br>
       <quill-editor name="userQuestion" #userQuestion="ngModel" [(ngModel)]="newOrEditedQuestion.question"
-                    *ngIf="isNewQuestion" placeholder="Запитання" [styles]="quillEditorStyle"
+                    *ngIf="isNewQuestion" placeholder="Ваше запитання" [styles]="quillEditorStyle"
                     [modules]="quillEditorConfig" required>
       </quill-editor>
       <div *ngIf="!isNewQuestion" [innerHtml]="newOrEditedQuestion.question | safeHtml"></div>
@@ -94,7 +94,7 @@
       <div class="form-alert" [hidden]="questionForm.valid">
         <div>
           <fa-icon [icon]="faExclamationTriangle"></fa-icon>
-          Заповніть всі поля поректно.
+          Заповніть всі поля коректно.
         </div>
       </div>
       <button *ngIf="isNewQuestion" pButton type="button" label="Запитати"
